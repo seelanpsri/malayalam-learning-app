@@ -853,12 +853,97 @@
     .grade-good { background: linear-gradient(135deg, #3b82f6, #2563eb); box-shadow: 0 4px 12px rgba(59, 130, 246, 0.25); }
     .grade-easy { background: linear-gradient(135deg, #10b981, #059669); box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25); }
 
-    /* Interactive Visual Sentence Lab */
+    /* ================= Interactive Visual Sentence & Question Studio ================= */
+    .lab-mode-switch {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 6px;
+      margin-bottom: 14px;
+      background: var(--surface-subtle);
+      padding: 4px;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--surface-border);
+    }
+    @media (max-width: 580px) {
+      .lab-mode-switch {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    .lab-mode-btn {
+      background: transparent;
+      border: 1px solid transparent;
+      padding: 9px 6px;
+      border-radius: var(--radius-md);
+      font-size: 0.78rem;
+      font-weight: 800;
+      color: var(--text-muted);
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .lab-mode-btn span:first-child {
+      font-size: 1.15rem;
+    }
+    .lab-mode-btn:hover {
+      color: var(--text);
+    }
+    .lab-mode-btn.active {
+      background: var(--surface);
+      color: var(--primary);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+      border-color: var(--surface-border);
+    }
+    .lab-mode-btn.active .lab-mode-title {
+      color: var(--primary);
+    }
+    .lab-mode-title {
+      font-size: 0.72rem;
+      letter-spacing: 0.2px;
+    }
+
+    .lab-sub-tabs {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 14px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--surface-border);
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .lab-sub-tabs::-webkit-scrollbar { display: none; }
+    .lab-sub-tab {
+      padding: 6px 14px;
+      border-radius: var(--radius-pill);
+      font-size: 0.78rem;
+      font-weight: 800;
+      border: 1px solid var(--surface-border);
+      background: var(--surface-subtle);
+      color: var(--text-muted);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.15s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .lab-sub-tab:hover {
+      color: var(--text);
+    }
+    .lab-sub-tab.active {
+      background: var(--primary-gradient);
+      color: white;
+      border-color: var(--primary);
+      box-shadow: var(--shadow-glow-teal);
+    }
+
     .lab-builder {
       display: flex;
       flex-direction: column;
       gap: 12px;
-      margin-top: 10px;
+      margin-top: 6px;
     }
 
     .lab-group-title {
@@ -870,6 +955,7 @@
       margin-bottom: 6px;
       display: flex;
       justify-content: space-between;
+      align-items: center;
     }
 
     .segment-chips {
@@ -898,6 +984,7 @@
       display: flex;
       align-items: center;
       gap: 5px;
+      user-select: none;
     }
 
     .segment-chip:active {
@@ -909,6 +996,20 @@
       color: white;
       border-color: var(--primary);
       box-shadow: var(--shadow-glow-teal);
+    }
+
+    .segment-chip.ques-chip.active {
+      background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);
+      border-color: #8b5cf6;
+      color: white;
+      box-shadow: 0 4px 14px rgba(139, 92, 246, 0.35);
+    }
+
+    .segment-chip.dative-chip.active {
+      background: linear-gradient(135deg, #ec4899 0%, #be185d 100%);
+      border-color: #ec4899;
+      color: white;
+      box-shadow: 0 4px 14px rgba(236, 72, 153, 0.35);
     }
 
     .segment-chip.adj-chip.active {
@@ -969,6 +1070,57 @@
       box-shadow: 0 2px 6px rgba(13, 148, 136, 0.2);
     }
 
+    /* Polar Questions Grid */
+    .polar-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      gap: 8px;
+      margin-top: 4px;
+    }
+    .polar-card {
+      background: var(--surface-subtle);
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-md);
+      padding: 10px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-align: left;
+      user-select: none;
+    }
+    .polar-card:hover {
+      background: var(--surface);
+      border-color: var(--primary);
+      transform: translateY(-1px);
+    }
+    .polar-card.active {
+      border: 1.5px solid var(--primary);
+      background: rgba(13, 148, 136, 0.1);
+      box-shadow: 0 4px 12px rgba(13, 148, 136, 0.15);
+    }
+    .polar-card-tam {
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: var(--text-heading);
+      margin-bottom: 3px;
+    }
+    .polar-card-mal {
+      font-size: 0.74rem;
+      font-weight: 700;
+      color: var(--primary);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .polar-card-mlp {
+      font-size: 0.68rem;
+      color: var(--purple);
+      font-weight: 600;
+      margin-top: 2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
     /* Grammar Formula Bar */
     .grammar-formula-bar {
       display: flex;
@@ -985,11 +1137,13 @@
       align-items: center;
       gap: 4px;
     }
+    .grammar-tag-ques { background: rgba(139, 92, 246, 0.16); color: #a78bfa; border: 1px solid rgba(139, 92, 246, 0.35); }
     .grammar-tag-subj { background: rgba(56, 189, 248, 0.14); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); }
     .grammar-tag-adj { background: rgba(245, 158, 11, 0.14); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.3); }
     .grammar-tag-obj { background: rgba(6, 182, 212, 0.14); color: #22d3ee; border: 1px solid rgba(6, 182, 212, 0.3); }
     .grammar-tag-verb { background: rgba(16, 185, 129, 0.14); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); }
     .grammar-tag-mood { background: rgba(167, 139, 250, 0.14); color: #c084fc; border: 1px solid rgba(167, 139, 250, 0.3); }
+    .grammar-tag-dative { background: rgba(236, 72, 153, 0.14); color: #f472b6; border: 1px solid rgba(236, 72, 153, 0.3); }
 
     .lab-output-box {
       margin-top: 10px;
@@ -1043,6 +1197,52 @@
     .dice-btn:active {
       transform: scale(0.97);
       background: var(--primary-subtle);
+    }
+
+    /* Template Cards for Sentences */
+    .template-card {
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-md);
+      padding: 12px 14px;
+      margin-bottom: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      transition: all 0.2s ease;
+    }
+    .template-card:hover {
+      border-color: var(--primary);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    }
+    .template-info {
+      flex: 1;
+    }
+    .template-tam {
+      font-size: 0.88rem;
+      font-weight: 800;
+      color: var(--amber);
+      margin-bottom: 3px;
+    }
+    .template-std {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--text);
+      line-height: 1.35;
+    }
+    .template-mlp {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--purple);
+      margin-top: 2px;
+    }
+    .template-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      align-items: center;
     }
 
     /* 30-Day Path & Roadmap */
@@ -1583,122 +1783,283 @@
         </div>
       </section>
 
-      <!-- ==================== TAB 2: SENTENCE & TENSE LAB ==================== -->
+      <!-- ==================== TAB 2: SENTENCE & QUESTION STUDIO ==================== -->
       <section id="view-lab" class="view">
         <div class="hero-card teal-theme">
-          <div class="hero-tag">⚡ 330,000+ COMBINATIONS & GRAMMAR</div>
-          <h2 class="hero-title tamil-txt">வாக்கிய உருவாக்கி (Grammar Studio)</h2>
+          <div class="hero-tag">⚡ 4-IN-1 MALAYALAM SENTENCE & QUESTION STUDIO</div>
+          <h2 class="hero-title tamil-txt">வாக்கிய & வினா ஆய்வகம் (Sentence Lab)</h2>
           <p class="hero-desc tamil-txt">
-            விசேஷணங்கள் (Adjectives), பொருட்கள், செயல்கள் மற்றும் இலக்கண காலங்களை இணைத்து நிஜ வாக்கியங்களை உருவாக்குங்கள்!
+            வினா வாக்கியங்கள் (Wh- & Yes/No), தேவை & உணர்வு வாக்கியங்கள் (Enikku / Ninakku), மற்றும் 50+ நிஜ உரையாடல்களை எளிதாகக் கட்டமைத்து மலையாளத்தில் சரளமாகப் பேசுங்கள்!
           </p>
         </div>
 
+        <!-- 4 Studio Mode Selector -->
+        <div class="lab-mode-switch" id="lab-main-mode-switch">
+          <button class="lab-mode-btn active" id="btn-mode-ques" onclick="setLabMode('ques')">
+            <span class="mode-icon">❓</span>
+            <span class="mode-title">வினாக்கள் (Questions)</span>
+            <span class="mode-sub">Wh & Yes/No வினா</span>
+          </button>
+          <button class="lab-mode-btn" id="btn-mode-dative" onclick="setLabMode('dative')">
+            <span class="mode-icon">⚡</span>
+            <span class="mode-title">தேவை & உணர்வு (Dative)</span>
+            <span class="mode-sub">எனக்கு வேண்டும்/தெரியும்</span>
+          </button>
+          <button class="lab-mode-btn" id="btn-mode-general" onclick="setLabMode('general')">
+            <span class="mode-icon">🎯</span>
+            <span class="mode-title">பொது வாக்கியம் (General)</span>
+            <span class="mode-sub">வினை & 12 காலங்கள்</span>
+          </button>
+          <button class="lab-mode-btn" id="btn-mode-vault" onclick="setLabMode('vault')">
+            <span class="mode-icon">📚</span>
+            <span class="mode-title">வாக்கிய வங்கி (Vault)</span>
+            <span class="mode-sub">50+ நிஜ வாக்கியங்கள்</span>
+          </button>
+        </div>
+
         <div class="app-card">
-          <div class="lab-builder">
-            <!-- 1. Subject Chips -->
-            <div>
-              <div class="lab-group-title">
-                <span>1. எழுவாய் / யார்? (Subject)</span>
-                <span id="lab-subj-preview" style="color:var(--primary); font-weight:800;">நான்</span>
-              </div>
-              <div class="segment-chips" id="lab-subj-chips"></div>
+          <!-- ================= 1. QUESTIONS STUDIO MODE ================= -->
+          <div id="mode-ques-container" class="lab-studio-mode">
+            <!-- Sub tabs: Wh-Questions vs Polar Yes/No Questions -->
+            <div class="lab-sub-tabs">
+              <button class="lab-sub-tab active" id="btn-sub-wh" onclick="setQuesSubMode('wh')">
+                🔍 Wh-வினாக்கள் (எங்கே / என்ன / எப்போது / ஏன் / எப்படி / யார்)
+              </button>
+              <button class="lab-sub-tab" id="btn-sub-polar" onclick="setQuesSubMode('polar')">
+                ⚡ Yes/No வினாக்கள் (சாப்பிட்டாயா / வருவாயா / முடியுமா / வேண்டுமா)
+              </button>
             </div>
 
-            <!-- 2. Adjective & Adverb Chips -->
-            <div>
-              <div class="lab-group-title">
-                <span>2. விசேஷணம் / எப்படி? (Adjective / Manner)</span>
-                <span id="lab-adj-preview" style="color:var(--amber); font-weight:800;">(நேரடி)</span>
+            <!-- 1A. WH-QUESTIONS BUILDER -->
+            <div id="sub-mode-wh-box" class="lab-builder">
+              <!-- Question Word -->
+              <div>
+                <div class="lab-group-title">
+                  <span>1. வினாச் சொல் (Question Word)</span>
+                  <span id="lab-wh-ques-preview" style="color:var(--primary); font-weight:800;">எங்கே? (Evide?)</span>
+                </div>
+                <div class="segment-chips" id="lab-wh-ques-chips"></div>
               </div>
-              <div class="lab-filter-row" id="adj-filter-row">
-                <button class="lab-filter-btn active" onclick="filterAdjectives('all', this)">அனைத்தும்</button>
-                <button class="lab-filter-btn" onclick="filterAdjectives('quality', this)">குணம் / சுவை</button>
-                <button class="lab-filter-btn" onclick="filterAdjectives('speed', this)">வேகம்</button>
-                <button class="lab-filter-btn" onclick="filterAdjectives('size', this)">அளவு</button>
-                <button class="lab-filter-btn" onclick="filterAdjectives('quantity', this)">எண்ணிக்கை</button>
+
+              <!-- Subject -->
+              <div>
+                <div class="lab-group-title">
+                  <span>2. எழுவாய் / யார்? (Subject)</span>
+                  <span id="lab-wh-subj-preview" style="color:var(--cyan); font-weight:800;">நீ</span>
+                </div>
+                <div class="segment-chips" id="lab-wh-subj-chips"></div>
               </div>
-              <div class="segment-chips" id="lab-adj-chips"></div>
+
+              <!-- Context / Place / Object -->
+              <div>
+                <div class="lab-group-title">
+                  <span>3. சூழல் / நேரம் / பொருள் (Context / Object)</span>
+                  <span id="lab-wh-context-preview" style="color:var(--amber); font-weight:800;">(நேரடி)</span>
+                </div>
+                <div class="segment-chips" id="lab-wh-context-chips"></div>
+              </div>
+
+              <!-- Action / Question Verb -->
+              <div>
+                <div class="lab-group-title">
+                  <span>4. வினா செயல் (Action / Predicate)</span>
+                  <span id="lab-wh-verb-preview" style="color:var(--success); font-weight:800;">போகிறாய்?</span>
+                </div>
+                <div class="segment-chips" id="lab-wh-verb-chips"></div>
+              </div>
             </div>
 
-            <!-- 3. Object / Place Chips -->
-            <div>
-              <div class="lab-group-title">
-                <span>3. பொருள் / இடம் (Object / Place)</span>
-                <span id="lab-obj-preview" style="color:var(--cyan); font-weight:800;">(நேரடி)</span>
+            <!-- 1B. POLAR YES/NO QUESTIONS BUILDER -->
+            <div id="sub-mode-polar-box" class="lab-builder" style="display:none;">
+              <!-- Polar Question Pattern -->
+              <div>
+                <div class="lab-group-title">
+                  <span>1. வினா வகை (Question Ending & Intent)</span>
+                  <span id="lab-polar-ques-preview" style="color:var(--purple); font-weight:800;">-o? (சாப்பிட்டாயா?)</span>
+                </div>
+                <div class="polar-grid" id="lab-polar-ques-chips"></div>
               </div>
-              <div class="segment-chips" id="lab-obj-chips"></div>
-            </div>
 
-            <!-- 4. Verb Chips -->
-            <div>
-              <div class="lab-group-title">
-                <span>4. முதன்மை வினை (Action Verb)</span>
-                <span id="lab-verb-preview" style="color:var(--success); font-weight:800;">வா</span>
+              <!-- Target Person / Subject -->
+              <div>
+                <div class="lab-group-title">
+                  <span>2. யாரிடம் கேட்கிறீர்கள்? (Target Person)</span>
+                  <span id="lab-polar-subj-preview" style="color:var(--cyan); font-weight:800;">நீ / நீங்கள்</span>
+                </div>
+                <div class="segment-chips" id="lab-polar-subj-chips"></div>
               </div>
-              <div class="lab-filter-row" id="verb-filter-row">
-                <button class="lab-filter-btn active" onclick="filterVerbs('all', this)">அனைத்தும் (18)</button>
-                <button class="lab-filter-btn" onclick="filterVerbs('food', this)">உணவு & குடிப்பு</button>
-                <button class="lab-filter-btn" onclick="filterVerbs('talk', this)">உரையாடல்</button>
-                <button class="lab-filter-btn" onclick="filterVerbs('travel', this)">பயணம்</button>
-                <button class="lab-filter-btn" onclick="filterVerbs('action', this)">செயல்கள்</button>
-              </div>
-              <div class="segment-chips" id="lab-verb-chips"></div>
-            </div>
 
-            <!-- 5. Tense / Mood Chips -->
-            <div>
-              <div class="lab-group-title">
-                <span>5. காலம் & துணைவினை (Tense & Mood)</span>
-                <span id="lab-tense-preview" style="color:var(--purple); font-weight:800;">நிகழ்காலம்</span>
+              <!-- Subject / Action Context -->
+              <div>
+                <div class="lab-group-title">
+                  <span>3. விஷயம் / செயல் (Action & Topic)</span>
+                  <span id="lab-polar-context-preview" style="color:var(--success); font-weight:800;">சாப்பாடு / பிரியாணி</span>
+                </div>
+                <div class="segment-chips" id="lab-polar-context-chips"></div>
               </div>
-              <div class="segment-chips" id="lab-tense-chips"></div>
             </div>
+          </div>
 
-            <!-- Surprise Me Randomizer -->
+          <!-- ================= 2. DATIVE CASE (தேவை & உணர்வு) MODE ================= -->
+          <div id="mode-dative-container" class="lab-studio-mode" style="display:none;">
+            <div class="lab-builder">
+              <div style="background:var(--purple-subtle); padding:10px 14px; border-radius:var(--radius-md); border-left:3px solid var(--purple); margin-bottom:12px; font-size:0.83rem; line-height:1.5;">
+                💡 <strong>மலையாளத்தின் முக்கிய ரகசியம்:</strong> மலையாளத்தில் 50%க்கும் மேற்பட்ட உரையாடல்கள் <strong>"எனிக்கு" (Enikku)</strong>, <strong>"நினக்கு" (Ninakku)</strong> என தொடங்கும் Dative Case வாக்கியங்களாகும்! (எனக்கு வேண்டும், எனக்குத் தெரியும், அவனுக்குப் பசிக்கிறது போன்றவை).
+              </div>
+
+              <!-- Dative Subject -->
+              <div>
+                <div class="lab-group-title">
+                  <span>1. யாருக்கு? (Dative Subject)</span>
+                  <span id="lab-dative-subj-preview" style="color:var(--purple); font-weight:800;">எனக்கு (Enikku)</span>
+                </div>
+                <div class="segment-chips" id="lab-dative-subj-chips"></div>
+              </div>
+
+              <!-- Dative Object / Topic -->
+              <div>
+                <div class="lab-group-title">
+                  <span>2. என்ன பொருள் / செயல்? (Object / Need)</span>
+                  <span id="lab-dative-obj-preview" style="color:var(--cyan); font-weight:800;">(நேரடி)</span>
+                </div>
+                <div class="segment-chips" id="lab-dative-obj-chips"></div>
+              </div>
+
+              <!-- Dative Predicate / Feeling / Need -->
+              <div>
+                <div class="lab-group-title">
+                  <span>3. தேவை / உணர்வு / நிலை (Predicate Modal)</span>
+                  <span id="lab-dative-pred-preview" style="color:var(--primary); font-weight:800;">வேண்டும் (Venam)</span>
+                </div>
+                <div class="segment-chips" id="lab-dative-pred-chips"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ================= 3. GENERAL SENTENCE LAB MODE ================= -->
+          <div id="mode-general-container" class="lab-studio-mode" style="display:none;">
+            <div class="lab-builder">
+              <!-- 1. Subject Chips -->
+              <div>
+                <div class="lab-group-title">
+                  <span>1. எழுவாய் / யார்? (Subject)</span>
+                  <span id="lab-subj-preview" style="color:var(--primary); font-weight:800;">நான்</span>
+                </div>
+                <div class="segment-chips" id="lab-subj-chips"></div>
+              </div>
+
+              <!-- 2. Adjective & Adverb Chips -->
+              <div>
+                <div class="lab-group-title">
+                  <span>2. விசேஷணம் / எப்படி? (Adjective / Manner)</span>
+                  <span id="lab-adj-preview" style="color:var(--amber); font-weight:800;">(நேரடி)</span>
+                </div>
+                <div class="lab-filter-row" id="adj-filter-row">
+                  <button class="lab-filter-btn active" onclick="filterAdjectives('all', this)">அனைத்தும்</button>
+                  <button class="lab-filter-btn" onclick="filterAdjectives('quality', this)">குணம் / சுவை</button>
+                  <button class="lab-filter-btn" onclick="filterAdjectives('speed', this)">வேகம்</button>
+                  <button class="lab-filter-btn" onclick="filterAdjectives('size', this)">அளவு</button>
+                  <button class="lab-filter-btn" onclick="filterAdjectives('quantity', this)">எண்ணிக்கை</button>
+                </div>
+                <div class="segment-chips" id="lab-adj-chips"></div>
+              </div>
+
+              <!-- 3. Object / Place Chips -->
+              <div>
+                <div class="lab-group-title">
+                  <span>3. பொருள் / இடம் (Object / Place)</span>
+                  <span id="lab-obj-preview" style="color:var(--cyan); font-weight:800;">(நேரடி)</span>
+                </div>
+                <div class="segment-chips" id="lab-obj-chips"></div>
+              </div>
+
+              <!-- 4. Verb Chips -->
+              <div>
+                <div class="lab-group-title">
+                  <span>4. முதன்மை வினை (Action Verb)</span>
+                  <span id="lab-verb-preview" style="color:var(--success); font-weight:800;">வா</span>
+                </div>
+                <div class="lab-filter-row" id="verb-filter-row">
+                  <button class="lab-filter-btn active" onclick="filterVerbs('all', this)">அனைத்தும் (18)</button>
+                  <button class="lab-filter-btn" onclick="filterVerbs('food', this)">உணவு & குடிப்பு</button>
+                  <button class="lab-filter-btn" onclick="filterVerbs('talk', this)">உரையாடல்</button>
+                  <button class="lab-filter-btn" onclick="filterVerbs('travel', this)">பயணம்</button>
+                  <button class="lab-filter-btn" onclick="filterVerbs('action', this)">செயல்கள்</button>
+                </div>
+                <div class="segment-chips" id="lab-verb-chips"></div>
+              </div>
+
+              <!-- 5. Tense / Mood Chips -->
+              <div>
+                <div class="lab-group-title">
+                  <span>5. காலம் & துணைவினை (Tense & Mood)</span>
+                  <span id="lab-tense-preview" style="color:var(--purple); font-weight:800;">நிகழ்காலம்</span>
+                </div>
+                <div class="segment-chips" id="lab-tense-chips"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ================= 4. CONVERSATIONAL VAULT MODE ================= -->
+          <div id="mode-vault-container" class="lab-studio-mode" style="display:none;">
+            <div style="margin-bottom:12px;">
+              <div class="lab-filter-row" id="vault-filter-row">
+                <button class="lab-filter-btn active" onclick="filterTemplates('all', this)">அனைத்தும் (50+)</button>
+                <button class="lab-filter-btn" onclick="filterTemplates('ques', this)">❓ வினாக்கள்</button>
+                <button class="lab-filter-btn" onclick="filterTemplates('dative', this)">⚡ தேவைகள்</button>
+                <button class="lab-filter-btn" onclick="filterTemplates('greeting', this)">🤝 நலம் விசாரிப்பு</button>
+                <button class="lab-filter-btn" onclick="filterTemplates('food', this)">🍛 உணவு & கடை</button>
+                <button class="lab-filter-btn" onclick="filterTemplates('travel', this)">🚖 பயணம்</button>
+              </div>
+            </div>
+            <div class="template-grid" id="template-list-box"></div>
+          </div>
+
+          <!-- Randomizer Button (for modes 1, 2, 3) -->
+          <div id="lab-random-btn-box" style="margin-top:14px;">
             <button class="dice-btn" onclick="randomizeSentenceLab()">
               <span>🎲</span> புதிய வாக்கியத்தை உருவாக்கு (Randomize Combination)
             </button>
           </div>
 
           <!-- Dynamic Output Display Card -->
-          <div class="lab-result-card" id="lab-result-box"></div>
+          <div class="lab-result-card" id="lab-result-box" style="margin-top:16px;"></div>
         </div>
 
         <!-- Grammar Rules Reference -->
         <div class="app-card">
           <div class="section-title" style="margin-bottom:12px;">
-            <span>📐</span> மலையாள இலக்கண மாற்றச் சுருக்கம் (Grammar Guide)
+            <span>📐</span> மலையாள வினா & வாக்கிய இலக்கண வழிகாட்டி (Master Guide)
           </div>
           <div class="phrase-list">
             <div class="phrase-card">
               <div>
-                <div class="phrase-mal-trans" style="color: #38bdf8;">1. எழுவாய் மாற்றம் (Pronouns in Dialect)</div>
+                <div class="phrase-mal-trans" style="color: #38bdf8;">1. மலையாளத்தில் கேள்வி கேட்பது எப்படி? (Wh- & Yes/No)</div>
                 <div class="phrase-tam" style="margin-top:4px;">
-                  • <strong>நீ (Nee)</strong> ➡️ மலப்புரத்தில் <strong>இஜ்ஜ் (Ijj)</strong><br>
-                  • <strong>நான் (Njaan)</strong> ➡️ மலபாரில் அன்பாக <strong>நம்மள் / ஞம்மள் (Njammal)</strong><br>
-                  • <strong>அவன் / அவள்</strong> ➡️ <strong>ஓன் (On) / ஓர் (Or)</strong>
+                  • <strong>Wh-வினாக்கள்:</strong> எங்கே ➡️ <strong>எவிடெ? (Evide?)</strong>, என்ன ➡️ <strong>எந்து? (Enthu?) / எந்தா? (Enthaa?)</strong>, எப்போது ➡️ <strong>எப்பொள்? (Eppol?) / எப்பம்? (Eppam?)</strong>, ஏன் ➡️ <strong>எந்தினா? (Enthinaa?)</strong>, எப்படி ➡️ <strong>எங்கனெ? (Engane?) / எங்கனா? (Enganaa?)</strong>, யார் ➡️ <strong>ஆரு? (Aaru?) / ஆரா? (Aaraa?)</strong><br>
+                  • <strong>Yes/No வினாக்கள்:</strong> வினைச்சொல்லின் இறுதியில் <strong>'-ஓ?' (-o?)</strong> சேர்த்தால் கேள்வி பிறக்கும்! (சாப்பிட்டாயா ➡️ <strong>கழிச்சோ? Kazhicho?</strong>, வந்தாயா ➡️ <strong>வன்னோ? Vanno?</strong>, தெரியுமா ➡️ <strong>அறியுமோ? Ariyumo?</strong>, முடியுமா ➡️ <strong>பற்றுமோ? Pattumo?</strong>)
                 </div>
               </div>
             </div>
             <div class="phrase-card">
               <div>
-                <div class="phrase-mal-trans" style="color: #fbbf24;">2. விசேஷணம் & பெயரெச்சம் (Adjectives)</div>
+                <div class="phrase-mal-trans" style="color: #fbbf24;">2. எனக்கேற்ற Dative Case (Enikku / Ninakku)</div>
                 <div class="phrase-tam" style="margin-top:4px;">
-                  மலையாளத்தில் பெயருக்கு முன்னால் '-உள்ள' (-ulla) சேர்ப்பது வழக்கம்:<br>
-                  • <strong>ருசி + உள்ள = ருசியுள்ள (Ruchiyulla)</strong> = சுவையான<br>
-                  • <strong>சூடு + உள்ள = சூடுள்ள (Choodulla)</strong> = சூடான<br>
-                  • <strong>பங்கி + உள்ள = பங்கியுள்ள (Bhangiyulla)</strong> = அழகான
+                  மலையாளத்தில் 'நான் வேண்டும்' (Njaan venam) என்று கூறக்கூடாது. எனக்கு வேண்டும் ➡️ <strong>'எனிக்கு வேணம்' (Enikku venam)</strong>.<br>
+                  • <strong>எனிக்கு அறியாம் (Enikku ariyam)</strong> = எனக்குத் தெரியும்<br>
+                  • <strong>எனிக்கு அறியில்ல (Enikku ariyilla)</strong> = எனக்குத் தெரியாது<br>
+                  • <strong>எனிக்கு விஷக்குன்னு (Enikku vishakkunnu)</strong> = எனக்குப் பசிக்கிறது<br>
+                  • <strong>நினக்கு வேணோ? (Ninakku veno?)</strong> = உனக்கு வேண்டுமா?
                 </div>
               </div>
             </div>
             <div class="phrase-card">
               <div>
-                <div class="phrase-mal-trans" style="color: #a855f7;">3. துணைவினைகள் (Modals & Auxiliaries)</div>
+                <div class="phrase-mal-trans" style="color: #a855f7;">3. மலப்புரம் / மலபார் வினா & சொல் மாற்றங்கள்</div>
                 <div class="phrase-tam" style="margin-top:4px;">
-                  • <strong>வேண்டும் (-anam)</strong> ➡️ போகணம் (Pokanam) / மலப்புரம்: போணம்<br>
-                  • <strong>வேண்டாம் (-enda)</strong> ➡️ போகேண்டா (Pokenda) / போவண்டா<br>
-                  • <strong>முடியும் (Can)</strong> ➡️ பற்றும் (Pattum) / மலப்புரம்: ஒக்கும் (Okkum)<br>
-                  • <strong>முடியாது (Cannot)</strong> ➡️ பற்றில்ல (Pattilla) / ஒக்கில (Okkila)
+                  • <strong>நீ எங்கே போகிறாய்?</strong> ➡️ Standard: நீ எவிடெ போகிறது? (Nee evide pokunnathu?) | மலப்புரம்: <strong>இஜ்ஜ் எவடெ போணது? (Ijj eveda ponathu?)</strong><br>
+                  • <strong>என்ன விசேஷம்?</strong> ➡️ Standard: எந்துண்டு விசேஷம்? (Enthundu vishesham?) | மலப்புரம்: <strong>எந்தா விசேஷம் சங்கதி? (Entha vishesham changaathi?)</strong><br>
+                  • <strong>சாப்பிட்டாயா?</strong> ➡️ Standard: பக்ஷணம் கழிச்சோ? (Bhakshanam kazhicho?) | மலப்புரம்: <strong>திண்ணோ? / சோறு கழிச்சோ? (Thinno / Choru kazhicho?)</strong>
                 </div>
               </div>
             </div>
@@ -2478,6 +2839,21 @@
       xp: parseInt(localStorage.getItem('malpro_xp') || '45'),
       streak: parseInt(localStorage.getItem('malpro_streak') || '5'),
       theme: localStorage.getItem('malpro_theme') || 'dark',
+      // Sentence & Question Studio States
+      labMode: 'ques', // 'ques' | 'dative' | 'general' | 'vault'
+      labQuesSubMode: 'wh', // 'wh' | 'polar'
+      labWhQues: 0,
+      labWhSubj: 0,
+      labWhContext: 0,
+      labWhVerb: 0,
+      labPolarQues: 0,
+      labPolarSubj: 0,
+      labPolarContext: 0,
+      labDativeSubj: 0,
+      labDativeObj: 0,
+      labDativePred: 0,
+      templateFilter: 'all',
+      // General Lab States
       labSubj: 0,
       labAdj: 0,
       labObj: 0,
@@ -2706,7 +3082,596 @@
       `).join('');
     }
 
-    // ==================== 8. TAB 2: ADVANCED SENTENCE & GRAMMAR LAB ====================
+    // ==================== 8. TAB 2: ADVANCED SENTENCE & QUESTION STUDIO ====================
+
+    // --- Studio Navigation & Sub-Tabs ---
+    function setLabMode(mode) {
+      soundClick();
+      state.labMode = mode;
+      document.querySelectorAll('#lab-main-mode-switch .lab-mode-btn').forEach(btn => btn.classList.remove('active'));
+      const activeBtn = document.getElementById(`btn-mode-${mode}`);
+      if (activeBtn) activeBtn.classList.add('active');
+
+      const containers = {
+        ques: document.getElementById('mode-ques-container'),
+        dative: document.getElementById('mode-dative-container'),
+        general: document.getElementById('mode-general-container'),
+        vault: document.getElementById('mode-vault-container')
+      };
+
+      Object.keys(containers).forEach(k => {
+        if (containers[k]) {
+          containers[k].style.display = (k === mode) ? 'block' : 'none';
+        }
+      });
+
+      const randomBtnBox = document.getElementById('lab-random-btn-box');
+      if (randomBtnBox) {
+        randomBtnBox.style.display = (mode === 'vault') ? 'none' : 'block';
+      }
+
+      runSentenceLab();
+    }
+
+    function setQuesSubMode(sub) {
+      soundClick();
+      state.labQuesSubMode = sub;
+      const btnWh = document.getElementById('btn-sub-wh');
+      const btnPolar = document.getElementById('btn-sub-polar');
+      const boxWh = document.getElementById('sub-mode-wh-box');
+      const boxPolar = document.getElementById('sub-mode-polar-box');
+
+      if (sub === 'wh') {
+        if (btnWh) btnWh.classList.add('active');
+        if (btnPolar) btnPolar.classList.remove('active');
+        if (boxWh) boxWh.style.display = 'grid';
+        if (boxPolar) boxPolar.style.display = 'none';
+      } else {
+        if (btnWh) btnWh.classList.remove('active');
+        if (btnPolar) btnPolar.classList.add('active');
+        if (boxWh) boxWh.style.display = 'none';
+        if (boxPolar) boxPolar.style.display = 'grid';
+      }
+
+      runSentenceLab();
+    }
+
+    // =========================================================================
+    // 8A. DATASET: 1. WH-QUESTIONS STUDIO (எங்கே / என்ன / எப்போது / ஏன் / எப்படி / யார்)
+    // =========================================================================
+    const LAB_QUESTIONS = [
+      {
+        tam: "எங்கே? (Evide?)",
+        badge: "Where?",
+        std: "எவிடெ? (Evide?)",
+        mlp: "எவடெ? / எவிடா? (Eveda?)",
+        scrStd: "എവിടെ?",
+        scrMlp: "എവിടെയാ?",
+        tamPrefix: "எங்கே",
+        meaning: "இடத்தைக் கேட்கும் வினா"
+      },
+      {
+        tam: "என்ன? (Enthu?)",
+        badge: "What?",
+        std: "எந்து? (Enthu?)",
+        mlp: "எந்தா? / எந்தோண்டு? (Enthaa?)",
+        scrStd: "എന്ത്?",
+        scrMlp: "എന്താ?",
+        tamPrefix: "என்ன",
+        meaning: "பொருள் / விஷயத்தை அறியும் வினா"
+      },
+      {
+        tam: "எப்போது? (Eppol?)",
+        badge: "When?",
+        std: "எப்பொள்? (Eppol?)",
+        mlp: "எப்பம்? (Eppam?)",
+        scrStd: "എപ്പോൾ?",
+        scrMlp: "എപ്പഴാ?",
+        tamPrefix: "எப்போது",
+        meaning: "நேரத்தைக் கேட்கும் வினா"
+      },
+      {
+        tam: "ஏன்? / எதற்கு? (Enthinaanu?)",
+        badge: "Why?",
+        std: "எந்தினாணு? (Enthinaanu?)",
+        mlp: "எந்தீனா? (Entheena?)",
+        scrStd: "എന്തിനാണ്?",
+        scrMlp: "എന്തിനാ?",
+        tamPrefix: "ஏன் / எதற்கு",
+        meaning: "காரணத்தைக் கேட்கும் வினா"
+      },
+      {
+        tam: "எப்படி? (Engane?)",
+        badge: "How?",
+        std: "எங்கனெ? (Engane?)",
+        mlp: "எங்கனா? (Enganaa?)",
+        scrStd: "എങ്ങനെ?",
+        scrMlp: "എങ്ങനെയാ?",
+        tamPrefix: "எப்படி",
+        meaning: "விதம் / நிலையை அறியும் வினா"
+      },
+      {
+        tam: "யார்? (Aaru?)",
+        badge: "Who?",
+        std: "ஆரு? (Aaru?)",
+        mlp: "ஆரா? (Aaraa?)",
+        scrStd: "ആര്?",
+        scrMlp: "ആരാ?",
+        tamPrefix: "யார்",
+        meaning: "நபரை அறியும் வினா"
+      },
+      {
+        tam: "எவ்வளவு? (Ethra?)",
+        badge: "How much?",
+        std: "எத்ர? (Ethra?)",
+        mlp: "எத்ரா? (Ethraa?)",
+        scrStd: "എത്ര?",
+        scrMlp: "എത്രാ?",
+        tamPrefix: "எவ்வளவு",
+        meaning: "அளவு / விலையைக் கேட்கும் வினா"
+      },
+      {
+        tam: "எந்த / எது? (Eathu?)",
+        badge: "Which?",
+        std: "ஏது? (Eathu?)",
+        mlp: "ஏதா? (Eathaa?)",
+        scrStd: "ഏത്?",
+        scrMlp: "ഏതാ?",
+        tamPrefix: "எந்த / எது",
+        meaning: "தேர்ந்தெடுக்கும் வினா"
+      },
+      {
+        tam: "எங்கிருந்து? (Evidunnu?)",
+        badge: "From where?",
+        std: "எவிடேந்நு? (Evidunnu?)",
+        mlp: "எவிடேன்னா? (Evidennaa?)",
+        scrStd: "എവിടെനിന്ന്?",
+        scrMlp: "എവിടെന്നാ?",
+        tamPrefix: "எங்கிருந்து",
+        meaning: "புறப்படும் இடத்தை அறியும் வினா"
+      },
+      {
+        tam: "யாருடன்? (Aarude koode?)",
+        badge: "With whom?",
+        std: "ஆருடெ கூடெ? (Aarude koode?)",
+        mlp: "ஆரிண்டெ கூடெ? (Aarinte koode?)",
+        scrStd: "ആരുടെ കൂടെ?",
+        scrMlp: "ആരിന്റെ കൂടെ?",
+        tamPrefix: "யாருடன்",
+        meaning: "துணை நபரை அறியும் வினா"
+      }
+    ];
+
+    const LAB_WH_SUBJECTS = [
+      { tam: "நீ (You)", std: "நீ (Nee)", mlp: "இஜ்ஜ் (Ijj)", scrStd: "നീ", scrMlp: "ഇജ്ജ്" },
+      { tam: "நீங்கள் (You - Polite)", std: "நிங்கள் (Ningal)", mlp: "நிங்கள் (Ningal)", scrStd: "നിങ്ങൾ", scrMlp: "നിങ്ങൾ" },
+      { tam: "அவன் (He)", std: "அவன் (Avan)", mlp: "ஓன் (On)", scrStd: "അവൻ", scrMlp: "ഓൻ" },
+      { tam: "அவள் (She)", std: "அவள் (Aval)", mlp: "ஓள் (Oal)", scrStd: "അവൾ", scrMlp: "ഓള്" },
+      { tam: "அவர்கள் (They)", std: "அவர் (Avar)", mlp: "ஓரோள் (Orol)", scrStd: "അവർ", scrMlp: "ഓരോള്" },
+      { tam: "நாம் / நாங்கள் (We)", std: "நம்மள் (Nammal)", mlp: "ஞம்மள் (Njammal)", scrStd: "നമ്മൾ", scrMlp: "ഞമ്മള്" },
+      { tam: "இது / அது (It)", std: "இது (Ithu)", mlp: "இது (Ithu)", scrStd: "ഇത്", scrMlp: "ഇത്" }
+    ];
+
+    const LAB_WH_CONTEXTS = [
+      { tam: "நேரடி (சூழல் இல்லை)", std: "", mlp: "", scrStd: "", scrMlp: "" },
+      { tam: "இப்போது (Now)", std: "இப்போள் (Ippol)", mlp: "இப்பம் (Ippam)", scrStd: "ഇപ്പോൾ", scrMlp: "ഇപ്പം" },
+      { tam: "நாளை (Tomorrow)", std: "நாளெ (Naale)", mlp: "நாளெ (Naale)", scrStd: "നാളെ", scrMlp: "നാളെ" },
+      { tam: "வீட்டில் (At home)", std: "வீட்டில் (Veettil)", mlp: "போரேல் (Porel)", scrStd: "വീട്ടിൽ", scrMlp: "പോരേൽ" },
+      { tam: "இந்த வேலை (This work)", std: "ஈ ஜோலி (Ee joli)", mlp: "ஈ ஜோலி (Ee joli)", scrStd: "ഈ ജോലി", scrMlp: "ഈ ജോലി" },
+      { tam: "சாப்பாடு / உணவு (Food)", std: "பக்ஷணம் (Bhakshanam)", mlp: "திண்டி (Thindi)", scrStd: "ഭക്ഷണം", scrMlp: "തിണ്ടി" },
+      { tam: "மொபைல் போன் (Phone)", std: "போன் (Phone)", mlp: "போன் (Phone)", scrStd: "ഫോൺ", scrMlp: "ഫോൺ" },
+      { tam: "இங்கே (Here)", std: "இவிடெ (Ivide)", mlp: "இவிடா (Ividaa)", scrStd: "ഇവിടെ", scrMlp: "ഇവിടെ" }
+    ];
+
+    const LAB_WH_VERBS = [
+      {
+        tam: "போகிறாய்? (Going?)",
+        std: "போகுன்னது? (Pokunnathu?)",
+        mlp: "போணது? (Ponathu?)",
+        scrStd: "പോകുന്നത്?",
+        scrMlp: "പോണത്?",
+        tamAction: "போகிறாய்"
+      },
+      {
+        tam: "செய்கிறாய்? (Doing?)",
+        std: "செய்யுன்னது? (Cheyyunnathu?)",
+        mlp: "ஒண்டாக்குணது? (Ondaakkunathu?)",
+        scrStd: "ചെയ്യുന്നത്?",
+        scrMlp: "ഉണ്ടാക്കുന്നത്?",
+        tamAction: "செய்கிறாய்"
+      },
+      {
+        tam: "இருக்கிறாய் / உள்ளாய்? (Being/Staying?)",
+        std: "உள்ளதூ? (Ullathu?)",
+        mlp: "இரிக்குணது? (Irikkanathu?)",
+        scrStd: "ഉള്ളത്?",
+        scrMlp: "ഇരിക്കുന്നത്?",
+        tamAction: "இருக்கிறாய்"
+      },
+      {
+        tam: "வருகிறாய்? (Coming?)",
+        std: "வருன்னது? (Varunnathu?)",
+        mlp: "வரணது? (Varanathu?)",
+        scrStd: "വരുന്നത്?",
+        scrMlp: "വരുന്നത്?",
+        tamAction: "வருகிறாய்"
+      },
+      {
+        tam: "சொல்கிறாய்? (Saying?)",
+        std: "பறயுன்னது? (Parayunnathu?)",
+        mlp: "பறயணது? (Parayanathu?)",
+        scrStd: "പറയുന്നത്?",
+        scrMlp: "പറയുന്നത്?",
+        tamAction: "சொல்கிறாய்"
+      },
+      {
+        tam: "வாங்குகிறாய்? (Buying?)",
+        std: "வாங்ஙுன்னது? (Vaangunnathu?)",
+        mlp: "வாங்ஙணது? (Vaanganathu?)",
+        scrStd: "വാങ്ങുന്നത്?",
+        scrMlp: "വാങ്ങുന്നത്?",
+        tamAction: "வாங்குகிறாய்"
+      },
+      {
+        tam: "சாப்பிடுகிறாய்? (Eating?)",
+        std: "கழிக்கFocus: Kazhikkunnathu?",
+        std: "கழிக்கிறது? (Kazhikkunnathu?)",
+        mlp: "தின்ணணது? (Thinnanathu?)",
+        scrStd: "കഴിക്കുന്നത്?",
+        scrMlp: "തിന്നുന്നത്?",
+        tamAction: "சாப்பிடுகிறாய்"
+      },
+      {
+        tam: "பார்க்கிறாய்? (Looking?)",
+        std: "நோக்குன்னது? (Nokkunnathu?)",
+        mlp: "நோக்கனது? (Nokkanathu?)",
+        scrStd: "നോക്കുന്നത്?",
+        scrMlp: "നോക്കുന്നത്?",
+        tamAction: "பார்க்கிறாய்"
+      }
+    ];
+
+    // =========================================================================
+    // 8B. DATASET: 2. POLAR YES/NO QUESTIONS (சாப்பிட்டாயா / வருவாயா / முடியுமா)
+    // =========================================================================
+    const POLAR_QUESTIONS = [
+      {
+        code: "kazhicho",
+        badge: "-o? (Past Action)",
+        title: "சாப்பிட்டாயா? (Kazhicho?)",
+        tamEnding: "சாப்பிட்டாயா / முடிந்ததா?",
+        stdSuffix: "கழிச்சோ? (Kazhicho?)",
+        mlpSuffix: "திண்ணோ? / கழிச்சோ? (Thinno?)",
+        scrStd: "കഴിച്ചോ?",
+        scrMlp: "തിന്നോ?",
+        grammar: "இறந்தகால வினையின் முடிவில் '-ஓ?' (-o?) சேர்த்தால் சாப்பாட்டைப் பற்றிய மிக முக்கியக் கேள்வி உருவாகும்!"
+      },
+      {
+        code: "varumo",
+        badge: "-umo? (Future / Polite)",
+        title: "வருவாயா / வருவீர்களா? (Varumo?)",
+        tamEnding: "வருவாயா / வருவீர்களா?",
+        stdSuffix: "வருமோ? (Varumo?)",
+        mlpSuffix: "வரணோ? / வருமோ? (Varano?)",
+        scrStd: "വരുമോ?",
+        scrMlp: "വരുമോ?",
+        grammar: "எதிர்காலக் கேள்விக்கு '-உமோ?' (-umo?) சேர்ப்பர். (வருமோ, போகுமோ, தருமோ)"
+      },
+      {
+        code: "pokunno",
+        badge: "-unno? (Present Continuous)",
+        title: "போகிறாயா? (Pokunno?)",
+        tamEnding: "போகிறாயா / கிளம்புகிறாயா?",
+        stdSuffix: "போகுந்நோ? (Pokunno?)",
+        mlpSuffix: "போணோ? (Pono?)",
+        scrStd: "പോകുന്നോ?",
+        scrMlp: "പോണോ?",
+        grammar: "நிகழ்காலச் செயலைக் கேட்க '-உந்நோ?' (-unno?) பயன்படும்."
+      },
+      {
+        code: "pattumo",
+        badge: "Can you? (Ability)",
+        title: "முடியுமா? (Pattumo? / Okkumo?)",
+        tamEnding: "செய்ய முடியுமா / இயலுமா?",
+        stdSuffix: "பற்றுமோ? (Pattumo?)",
+        mlpSuffix: "ஒக்குமோ? (Okkumo?)",
+        scrStd: "പറ്റുമോ?",
+        scrMlp: "ഒക്കുമോ?",
+        grammar: "முடிவதைக் கேட்க Standard-ல் 'பற்றுமோ', மலப்புரத்தில் 'ஒக்குமோ' என்பர்."
+      },
+      {
+        code: "venamo",
+        badge: "Do you want?",
+        title: "வேண்டுமா? (Venamo? / Veno?)",
+        tamEnding: "வேண்டுமா / தேவையா?",
+        stdSuffix: "வேணமோ? (Venamo?)",
+        mlpSuffix: "வேணோ? (Veno?)",
+        scrStd: "വേണമോ?",
+        scrMlp: "വേണോ?",
+        grammar: "உணவு அல்லது உதவி வேண்டுமா எனக் கேட்க 'வேணோ?' என எளிய வடிவில் கேட்பர்."
+      },
+      {
+        code: "ariyumo",
+        badge: "Do you know?",
+        title: "தெரியுமா? (Ariyumo?)",
+        tamEnding: "தெரியுமா / பரிச்சயமா?",
+        stdSuffix: "அறியுமோ? (Ariyumo?)",
+        mlpSuffix: "அறியோ? (Ariyo?)",
+        scrStd: "അറിയുമോ?",
+        scrMlp: "അറിയോ?",
+        grammar: "விஷயம் அல்லது வழி தெரியுமா என்று அறிய 'அறியுமோ?'"
+      },
+      {
+        code: "kando",
+        badge: "Did you see?",
+        title: "பார்த்தாயா? (Kando?)",
+        tamEnding: "பார்த்தாயா / கண்ணில் பட்டதா?",
+        stdSuffix: "கண்டோ? (Kando?)",
+        mlpSuffix: "கண்டோ? (Kando?)",
+        scrStd: "കണ്ടോ?",
+        scrMlp: "കണ്ടോ?",
+        grammar: "பார்த்தாயா என்பதைக் குறிக்கும் கேள்வி."
+      },
+      {
+        code: "ketto",
+        badge: "Did you hear?",
+        title: "கேட்டாயா? (Ketto?)",
+        tamEnding: "கேட்டாயா / விளங்கியதா?",
+        stdSuffix: "கேட்டோ? (Ketto?)",
+        mlpSuffix: "கேட்டோ? (Ketto?)",
+        scrStd: "കേട്ടോ?",
+        scrMlp: "കേട്ടോ?",
+        grammar: "பேச்சைக் கேட்டாயா அல்லது புரிந்ததா என்று உறுதிப்படுத்த 'கேட்டோ?'"
+      },
+      {
+        code: "ishtamaano",
+        badge: "Do you like?",
+        title: "பிடிக்குமா? (Ishtamaano?)",
+        tamEnding: "பிடிக்குமா / பிடித்திருக்கிறதா?",
+        stdSuffix: "இஷ்டமாணோ? (Ishtamaano?)",
+        mlpSuffix: "இஷ்டான்னோ? (Ishtano?)",
+        scrStd: "ഇഷ്ടമാണോ?",
+        scrMlp: "ഇഷ്ടാണോ?",
+        grammar: "விருப்பத்தைக் கேட்க 'இஷ்டமாணோ?'"
+      },
+      {
+        code: "undo",
+        badge: "Is it there?",
+        title: "உண்டா / இருக்கிறதா? (Undo?)",
+        tamEnding: "இருக்கிறதா / உள்ளதா?",
+        stdSuffix: "உண்டோ? (Undo?)",
+        mlpSuffix: "ஒண்டோ? (Ondo?)",
+        scrStd: "ഉണ്ടോ?",
+        scrMlp: "ഉണ്ടോ?",
+        grammar: "இருப்பு அல்லது கைவசம் உள்ளதா என்பதைக் கேட்கும் அடிப்படை வினா."
+      },
+      {
+        code: "mathiyo",
+        badge: "Is it enough?",
+        title: "போதுமா? (Mathiyo?)",
+        tamEnding: "போதுமா / போதுமானதா?",
+        stdSuffix: "மதியோ? (Mathiyo?)",
+        mlpSuffix: "மதியோ? (Mathiyo?)",
+        scrStd: "മതിയോ?",
+        scrMlp: "മതിയോ?",
+        grammar: "உணவு அல்லது காசு போதுமா எனக் கேட்க 'மதியோ?'"
+      },
+      {
+        code: "pore",
+        badge: "Isn't it enough?",
+        title: "போதாதா? (Porae?)",
+        tamEnding: "இன்னும் வேண்டுமா / போதாதா?",
+        stdSuffix: "போரே? (Porae?)",
+        mlpSuffix: "போரே? (Porae?)",
+        scrStd: "പോരേ?",
+        scrMlp: "പോരേ?",
+        grammar: "போதாதா என்று கேட்க 'போரே?'"
+      },
+      {
+        code: "sathiyamaano",
+        badge: "Is it true?",
+        title: "உண்மைதானா? (Sathiyamaano?)",
+        tamEnding: "உண்மைதானா / நிஜமா?",
+        stdSuffix: "சத்யமாணோ? (Sathiyamaano?)",
+        mlpSuffix: "நேராணோ? (Neraano?)",
+        scrStd: "സത്യമാണോ?",
+        scrMlp: "നേരാണോ?",
+        grammar: "உண்மையா என்று வினவ 'சத்யமாணோ?', மலப்புரத்தில் 'நேராணோ?'"
+      },
+      {
+        code: "pokaamo",
+        badge: "Shall we go?",
+        title: "போகலாமா? (Pokaamo?)",
+        tamEnding: "போகலாமா / செய்யலாமா?",
+        stdSuffix: "போகாமோ? (Pokaamo?)",
+        mlpSuffix: "போவாமோ? (Povaamo?)",
+        scrStd: "പോകാമോ?",
+        scrMlp: "പോവാമോ?",
+        grammar: "அனுமதி அல்லது விருப்பத்தை வினவ '-ஆமோ?' (-aamo?) சேர்ப்பர்."
+      }
+    ];
+
+    const POLAR_SUBJECTS = [
+      { tam: "நீ (You)", std: "நீ (Nee)", mlp: "இஜ்ஜ் (Ijj)", scrStd: "നീ", scrMlp: "ഇജ്ജ്" },
+      { tam: "நீங்கள் (You - Polite)", std: "நிங்கள் (Ningal)", mlp: "நிங்கள் (Ningal)", scrStd: "നിങ്ങൾ", scrMlp: "നിങ്ങൾ" },
+      { tam: "அவன் (He)", std: "அவன் (Avan)", mlp: "ஓன் (On)", scrStd: "അവൻ", scrMlp: "ഓൻ" },
+      { tam: "அவள் (She)", std: "அவள் (Aval)", mlp: "ஓள் (Oal)", scrStd: "അവൾ", scrMlp: "ഓള്" },
+      { tam: "அவர்கள் (They)", std: "அவர் (Avar)", mlp: "ஓரோள் (Orol)", scrStd: "അവർ", scrMlp: "ഓരോള്" },
+      { tam: "நாம் / நீங்கள் அனைவரும்", std: "நம்மள் (Nammal)", mlp: "ஞம்மள் (Njammal)", scrStd: "നമ്മൾ", scrMlp: "ഞമ്മള്" }
+    ];
+
+    const POLAR_CONTEXTS = [
+      { tam: "உணவு / பிரியாணி (Food)", std: "பக்ஷணம் / பிரியாணி (Bhakshanam / Biriyani)", mlp: "திண்டி / பிரியாணி (Biriyani)", scrStd: "ഭക്ഷണം / ബിരിയാണി", scrMlp: "ബിരിയാണി" },
+      { tam: "டீ / சாயா (Tea)", std: "சாயா (Chaaya)", mlp: "சாயா (Chaaya)", scrStd: "ചായ", scrMlp: "ചായ" },
+      { tam: "வேலை / காரியம் (Work)", std: "ஜோலி (Joli)", mlp: "ஜோலி (Joli)", scrStd: "ജോലി", scrMlp: "ജോലി" },
+      { tam: "மலையாளம் (Malayalam)", std: "மலையாளம் (Malayalam)", mlp: "மலையாளம் (Malayalam)", scrStd: "മലയാളം", scrMlp: "മലയാളം" },
+      { tam: "சினிமா (Cinema)", std: "சினிமா (Cinema)", mlp: "சினிமா (Cinema)", scrStd: "സിനിമ", scrMlp: "സിനിമ" },
+      { tam: "பணம் / பைசா (Money)", std: "பைசா / காசு (Paisa)", mlp: "காசு (Kaashu)", scrStd: "പൈസ", scrMlp: "കാശ്" },
+      { tam: "ஊருக்குப் பயணம் (Trip)", std: "நாட்டிலேக்கு (Naattilekku)", mlp: "நாட்டிலேக் (Naattilek)", scrStd: "നാട്ടിലേക്ക്", scrMlp: "നാട്ടിലേക്ക്" },
+      { tam: "உதவி (Help)", std: "சகாயம் (Sahaayam)", mlp: "ஹெல்ப் / சகாயம் (Sahaayam)", scrStd: "സഹായം", scrMlp: "സഹായം" },
+      { tam: "வீட்டுக்கு (Home)", std: "வீட்டில் (Veettil)", mlp: "போரேக் (Porek)", scrStd: "വീട്ടിൽ", scrMlp: "പോരേയ്ക്ക്" },
+      { tam: "ஓய்வு / தூக்கம் (Rest)", std: "உறக்கம் (Urakkam)", mlp: "ஒறக்கம் (Orakkam)", scrStd: "ഉറക്കം", scrMlp: "ഉറക്കം" }
+    ];
+
+    // =========================================================================
+    // 8C. DATASET: 3. DATIVE CASE STUDIO (எனக்கு / உனக்கு + தேவை & உணர்வுகள்)
+    // =========================================================================
+    const DATIVE_SUBJECTS = [
+      { tam: "எனக்கு (To me / I need)", std: "எனிக்கு (Enikku)", mlp: "எனிக்கு (Enikku)", scrStd: "എനിക്ക്", scrMlp: "എനിക്ക്" },
+      { tam: "உனக்கு (To you)", std: "நினக்கு (Ninakku)", mlp: "இஜக் / நினக்கு (Ijkku)", scrStd: "നിനക്ക്", scrMlp: "നിനക്ക്" },
+      { tam: "உங்களுக்கு (To you - polite)", std: "நிங்ஙள்க்கு (Ningalkku)", mlp: "நிங்ஙள்க்கு (Ningalkku)", scrStd: "നിങ്ങൾക്ക്", scrMlp: "നിങ്ങൾക്ക്" },
+      { tam: "அவனுக்கு (To him)", std: "அவனு (Avanu)", mlp: "ஓனு (Onu)", scrStd: "അവന്", scrMlp: "ഓന്" },
+      { tam: "அவளுக்கு (To her)", std: "அவள்க் (Avalkku)", mlp: "ஓள்க் (Oalkku)", scrStd: "അവൾക്ക്", scrMlp: "ഓൾക്ക്" },
+      { tam: "அவர்களுக்கு (To them)", std: "அவர்க் (Avarkku)", mlp: "ஓரோர்க் (Ororkku)", scrStd: "അവർക്ക്", scrMlp: "ഓരോർക്ക്" },
+      { tam: "நமக்கு / எங்களுக்கு (To us)", std: "நம்மள்க்கு (Nammalkku)", mlp: "ஞம்மள்க்கு (Njammalkku)", scrStd: "നമ്മൾക്ക്", scrMlp: "ഞമ്മൾക്ക്" },
+      { tam: "என் நண்பனுக்கு (To my friend)", std: "என்டெ கூட்டுகாரனு (Ente koottukaaranu)", mlp: "என்டெ பாவிக்கு (Ente baavikku)", scrStd: "എന്റെ കൂട്ടുകാരന്", scrMlp: "എന്റെ ബാവിക്ക്" }
+    ];
+
+    const DATIVE_OBJECTS = [
+      { tam: "நேரடி (பொருள் இல்லை)", tamWord: "", std: "", mlp: "", scrStd: "", scrMlp: "" },
+      { tam: "பிரியாணி (Biriyani)", tamWord: "பிரியாணி", std: "பிரியாணி (Biriyani)", mlp: "பிரியாணி (Biriyani)", scrStd: "ബിരിയാണി", scrMlp: "ബിരിയാണി" },
+      { tam: "தண்ணீர் (Water)", tamWord: "தண்ணீர்", std: "வெள்ளம் (Vellam)", mlp: "வெள்ளம் (Vellam)", scrStd: "വെള്ളം", scrMlp: "വെള്ളം" },
+      { tam: "டீ / சாயா (Tea)", tamWord: "சாயா", std: "சாயா (Chaaya)", mlp: "சாயா (Chaaya)", scrStd: "ചായ", scrMlp: "ചായ" },
+      { tam: "உதவி / காசு (Help / Money)", tamWord: "உதவி", std: "சகாயம் / பைசா (Sahaayam)", mlp: "காசு / உதவி (Kaashu)", scrStd: "സഹായം", scrMlp: "സഹായം" },
+      { tam: "மலையாளம் (Malayalam)", tamWord: "மலையாளம்", std: "மலையாளம் (Malayalam)", mlp: "மலையாளம் (Malayalam)", scrStd: "മലയാളം", scrMlp: "മലയാളം" },
+      { tam: "வீட்டுக்கு போக (To go home)", tamWord: "வீட்டுக்கு போக", std: "வீட்டில் போகான் (Veettil pokaan)", mlp: "போரேக் போகான் (Porek pokaan)", scrStd: "വീട്ടിൽ പോകാൻ", scrMlp: "പോരേയ്ക്ക് പോകാൻ" },
+      { tam: "ஓய்வு / தூக்கம் (Sleep / Rest)", tamWord: "தூக்கம்", std: "உறக்கம் (Urakkam)", mlp: "ஒறக்கம் (Orakkam)", scrStd: "ഉറക്കം", scrMlp: "ഉറക്കം" },
+      { tam: "நேரம் (Time)", tamWord: "நேரம்", std: "சமயம் (Samayam)", mlp: "சமயம் (Samayam)", scrStd: "സമയം", scrMlp: "സമയം" },
+      { tam: "இந்த விஷயம் (This matter)", tamWord: "இந்த விஷயம்", std: "ஈ காரியம் (Ee kaaryam)", mlp: "ஈ காரியம் (Ee kaaryam)", scrStd: "ഈ കാര്യം", scrMlp: "ഈ കാര്യം" }
+    ];
+
+    const DATIVE_PREDICATES = [
+      {
+        tam: "வேண்டும் (Need / Want)",
+        std: "வேணம் (Venam)",
+        mlp: "வேணம் (Venam)",
+        scrStd: "വേണം",
+        scrMlp: "വേണം",
+        tamSuffix: "வேண்டும்",
+        tag: "தேவை"
+      },
+      {
+        tam: "வேண்டாம் (Don't want)",
+        std: "வேண்டாம் (Venda)",
+        mlp: "வேண்டா (Vendaa)",
+        scrStd: "വേണ്ട",
+        scrMlp: "വേണ്ട",
+        tamSuffix: "வேண்டாம்",
+        tag: "மறுப்பு"
+      },
+      {
+        tam: "தெரியும் (Know / Familiar)",
+        std: "அறியாம் (Ariyam)",
+        mlp: "அறியாம் (Ariyam)",
+        scrStd: "അറിയാം",
+        scrMlp: "അറിയാം",
+        tamSuffix: "தெரியும்",
+        tag: "அறிவு"
+      },
+      {
+        tam: "தெரியாது (Don't know)",
+        std: "அறியில்ல (Ariyilla)",
+        mlp: "அறியில்ல (Ariyilla)",
+        scrStd: "അറിയില്ല",
+        scrMlp: "അറിയില്ല",
+        tamSuffix: "தெரியாது",
+        tag: "அறியாமை"
+      },
+      {
+        tam: "பிடிக்கும் (Like)",
+        std: "இஷ்டமாணு (Ishtamaanu)",
+        mlp: "இஷ்டா (Ishtaa)",
+        scrStd: "ഇഷ്ടമാണ്",
+        scrMlp: "ഇഷ്ടാണ്",
+        tamSuffix: "பிடிக்கும்",
+        tag: "விருப்பம்"
+      },
+      {
+        tam: "பிடிக்காது (Don't like)",
+        std: "இஷ்டமில்ல (Ishtamilla)",
+        mlp: "இஷ்டல்ல (Ishtalla)",
+        scrStd: "ഇഷ്ടമില്ല",
+        scrMlp: "ഇഷ്ടല്ല",
+        tamSuffix: "பிடிக்காது",
+        tag: "வெறுப்பு"
+      },
+      {
+        tam: "பசிக்கிறது (Hungry)",
+        std: "விஷக்குன்னு (Vishakkunnu)",
+        mlp: "விஷக்யணு (Vishakkanu)",
+        scrStd: "വിശക്കുന്നു",
+        scrMlp: "വിശക്കണ്",
+        tamSuffix: "பசிக்கிறது",
+        tag: "உணர்வு"
+      },
+      {
+        tam: "தாகமாக உள்ளது (Thirsty)",
+        std: "தாகிக்குன்னு (Dhaahikkunnu)",
+        mlp: "தாகிக்கணு (Dhaahikkanu)",
+        scrStd: "ദാഹിക്കുന്നു",
+        scrMlp: "ദാഹിക്കണ്",
+        tamSuffix: "தாகமாக உள்ளது",
+        tag: "உணர்வு"
+      },
+      {
+        tam: "முடியும் (Can / Possible)",
+        std: "பற்றும் (Pattum)",
+        mlp: "ஒக்கும் (Okkum)",
+        scrStd: "പറ്റും",
+        scrMlp: "ഒക്കും",
+        tamSuffix: "முடியும்",
+        tag: "இயலுமை"
+      },
+      {
+        tam: "முடியாது (Cannot / Impossible)",
+        std: "பற்றில்ல (Pattilla)",
+        mlp: "ஒக்கில (Okkila)",
+        scrStd: "പറ്റില്ല",
+        scrMlp: "ഒക്കില്ല",
+        tamSuffix: "முடியாது",
+        tag: "இயலாமை"
+      },
+      {
+        tam: "போக வேண்டும் (Must go)",
+        std: "போகணம் (Pokanam)",
+        mlp: "போணம் (Ponam)",
+        scrStd: "പോകണം",
+        scrMlp: "പോണം",
+        tamSuffix: "போக வேண்டும்",
+        tag: "கடமை"
+      },
+      {
+        tam: "புரிந்தது (Understood)",
+        std: "மனஸிலாயி (Manassilaayi)",
+        mlp: "திரின்ஞு (Thirinju)",
+        scrStd: "മനസ്സിലായി",
+        scrMlp: "തിരിഞ്ഞു",
+        tamSuffix: "புரிந்தது",
+        tag: "விளக்கம்"
+      },
+      {
+        tam: "புரியவில்லை (Didn't understand)",
+        std: "மனஸிலாயில்ல (Manassilaayilla)",
+        mlp: "திரின்ஞில்ல (Thirinjilla)",
+        scrStd: "മനസ്സിലായില്ല",
+        scrMlp: "തിരിഞ്ഞില്ല",
+        tamSuffix: "புரியவில்லை",
+        tag: "விளக்கம்"
+      },
+      {
+        tam: "வலிக்கிறது (Pain / Hurting)",
+        std: "வேதனயுண்டு (Vedhana yundu)",
+        mlp: "நோவுண்டு (Novundu)",
+        scrStd: "വേദനയുണ്ട്",
+        scrMlp: "നോവുണ്ട്",
+        tamSuffix: "வலிக்கிறது",
+        tag: "உணர்வு"
+      }
+    ];
+
+    // =========================================================================
+    // 8D. DATASET: 4. GENERAL LAB DATA (20 Verbs & 12 Tenses/Moods)
+    // =========================================================================
     const LAB_SUBJECTS = [
       { tam: "நான் (I)", tamPrefix: "நான்", std: "ஞான் (Njaan)", mlp: "ஞம்மள் (Njammal)", scrStd: "ഞാൻ", scrMlp: "ഞമ്മള്", tag: "1st Person" },
       { tam: "நீ (You)", tamPrefix: "நீ", std: "நீ (Nee)", mlp: "இஜ்ஜ் (Ijj)", scrStd: "നീ", scrMlp: "ഇജ്ജ്", tag: "2nd Person" },
@@ -2771,268 +3736,576 @@
         contTam: "போய்க் கொண்டிருக்கிறேன்", ifTam: "போனால்", quesTam: "போகிறாயா?", negTam: "போகவில்லை", forbidTam: "போகாதே",
         presStd: "போகுன்னு (pokunnu)", pastStd: "போயி (poyi)", futStd: "போகும் (pokum)",
         mustStd: "போகணம் (pokanam)", dontStd: "போகேண்டா (pokenda)", canStd: "போகான் பற்றும் (pokaan pattum)", cannotStd: "போகான் பற்றில்ல (pokaan pattilla)",
-        contStd: "போய்க்கொண்டிரிக்குன்னு (poyikkondirikkunnu)", ifStd: "போயால் (poyaal)", quesStd: "போகுமோ? (pokumo?)", negStd: "போயில்ல (poyilla)", forbidStd: "போகருது (pokaruthe)",
-        presMlp: "போணு (ponu)", pastMlp: "போயி (poyi)", futMlp: "போகும் (pokum)",
-        mustMlp: "போணம் (ponam)", dontMlp: "போவண்டா (povanda)", canMlp: "போவான் ஒக்கும் (povaan okkum)", cannotMlp: "போவான் ஒக்கில (povaan okkila)",
-        contMlp: "போயிண்டிருக்குணு (poyindirikkanu)", ifMlp: "போயாலோ (poyaalo)", quesMlp: "போணோ? (pono?)", negMlp: "போயில்ல (poyilla)", forbidMlp: "போகல்லே (pokalle)",
-        scrStd: "പോകുന്നു", scrMlp: "പോണ്"
+        contStd: "போய்க்கொண்டிரிக்குன்னு (poyikkondirikkunnu)", ifStd: "போயால் (poyaal)", quesStd: "போகுந்நோ? (pokunno?)", negStd: "போயில்ல (poyilla)", forbidStd: "போகருது (pokaruthe)",
+        presMlp: "போவுணு / போணது (povunu)", pastMlp: "போயி (poyi)", futMlp: "போவும் (povum)",
+        mustMlp: "போணம் (ponam)", dontMlp: "போவண்டா (povanda)", canMlp: "போகான் ஒக்கும் (pokaan okkum)", cannotMlp: "போகான் ஒக்கில (pokaan okkila)",
+        contMlp: "போயிண்டிருக்குணு (poyindirikkanu)", ifMlp: "போயாலோ (poyaalo)", quesMlp: "போணோ? (pono?)", negMlp: "போயில்ல (poyilla)", forbidMlp: "போவல்லே (povalle)",
+        scrStd: "പോകുന്നു", scrMlp: "പോവണ്"
       },
       {
         tamRoot: "சாப்பிடு (Eat)", cat: "food",
         presTam: "சாப்பிடுகிறேன்", pastTam: "சாப்பிட்டேன்", futTam: "சாப்பிடுவேன்",
         mustTam: "சாப்பிட வேண்டும்", dontTam: "சாப்பிட வேண்டாம்", canTam: "சாப்பிட முடியும்", cannotTam: "சாப்பிட முடியாது",
         contTam: "சாப்பிட்டுக் கொண்டிருக்கிறேன்", ifTam: "சாப்பிட்டால்", quesTam: "சாப்பிட்டாயா?", negTam: "சாப்பிடவில்லை", forbidTam: "சாப்பிடாதே",
-        presStd: "கழிக்குன்னு (kazhikkunnu)", pastStd: "கழிச்சு (kazhichu)", futStd: "கழிக்கும் (kazhikkum)",
+        presStd: "கழிக்கிறது (kazhikkunnu)", pastStd: "கழிச்சு (kazhichu)", futStd: "கழிக்கும் (kazhikkum)",
         mustStd: "கழிக்கணம் (kazhikkanam)", dontStd: "கழிக்கேண்டா (kazhikkenda)", canStd: "கழிக்கான் பற்றும் (kazhikkaan pattum)", cannotStd: "கழிக்கான் பற்றில்ல (kazhikkaan pattilla)",
         contStd: "கழிச்சுகொண்டிரிக்குன்னு (kazhichukondirikkunnu)", ifStd: "கழிச்சால் (kazhichaal)", quesStd: "கழிச்சோ? (kazhicho?)", negStd: "கழிச்சில்ல (kazhichilla)", forbidStd: "கழிக்கருது (kazhikkaruthe)",
-        presMlp: "தின்னுணு (thinnunu)", pastMlp: "தின்னு (thinnu)", futMlp: "தின்னும் (thinnum)",
-        mustMlp: "தின்னணம் (thinnanam)", dontMlp: "தின்னண்டா (thinnanda)", canMlp: "தின்னான் ஒக்கும் (thinnaan okkum)", cannotMlp: "தின்னான் ஒக்கில (thinnaan okkila)",
-        contMlp: "தின்நிண்டிருக்குணு (thinnindirikkanu)", ifMlp: "தின்னாலோ (thinnaalo)", quesMlp: "தின்னோ? (thinno?)", negMlp: "தின்னில்ல (thinnilla)", forbidMlp: "தின்னல்லே (thinnalle)",
-        scrStd: "കഴിക്കുന്നു", scrMlp: "തിന്നണ്"
+        presMlp: "தின்ணுணு (thinnunu)", pastMlp: "தின்னு (thinnu)", futMlp: "தின்னும் (thinnum)",
+        mustMlp: "தின்னணம் (thinnanam)", dontMlp: "திண்ணண்டா (thinnanda)", canMlp: "தின்னான் ஒக்கும் (thinnaan okkum)", cannotMlp: "தின்னான் ஒக்கில (thinnaan okkila)",
+        contMlp: "தின்னிண்டிருக்குணு (thinnindirikkanu)", ifMlp: "தின்னாலோ (thinnaalo)", quesMlp: "திண்ணோ? (thinno?)", negMlp: "தின்னில்ல (thinnilla)", forbidMlp: "திண்ணல்லே (thinnalle)",
+        scrStd: "കഴിക്കുന്നു", scrMlp: "തിന്നുന്നു"
       },
       {
         tamRoot: "குடி (Drink)", cat: "food",
         presTam: "குடிக்கிறேன்", pastTam: "குடித்தேன்", futTam: "குடிப்பேன்",
         mustTam: "குடிக்க வேண்டும்", dontTam: "குடிக்க வேண்டாம்", canTam: "குடிக்க முடியும்", cannotTam: "குடிக்க முடியாது",
-        contTam: "குடித்துக் கொண்டிருக்கிறேன்", ifTam: "குடித்தால்", quesTam: "குடிக்கிறாயா?", negTam: "குடிக்கவில்லை", forbidTam: "குடிக்காதே",
+        contTam: "குடித்துக் கொண்டிருக்கிறேன்", ifTam: "குடித்தால்", quesTam: "குடித்தாயா?", negTam: "குடிக்கவில்லை", forbidTam: "குடிக்காதே",
         presStd: "குடிக்குன்னு (kudikkunnu)", pastStd: "குடிச்சு (kudichu)", futStd: "குடிக்கும் (kudikkum)",
         mustStd: "குடிக்கணம் (kudikkanam)", dontStd: "குடிக்கேண்டா (kudikkenda)", canStd: "குடிக்கான் பற்றும் (kudikkaan pattum)", cannotStd: "குடிக்கான் பற்றில்ல (kudikkaan pattilla)",
         contStd: "குடிச்சுகொண்டிரிக்குன்னு (kudichukondirikkunnu)", ifStd: "குடிச்சால் (kudichaal)", quesStd: "குடிச்சோ? (kudicho?)", negStd: "குடிச்சில்ல (kudichilla)", forbidStd: "குடிக்கருது (kudikkaruthe)",
-        presMlp: "குடிக்குணு (kudikkunu)", pastMlp: "குடிச்சு (kudichu)", futMlp: "குடிக்கும் (kudikkum)",
+        presMlp: "குடிக்குணு (kudikkanu)", pastMlp: "குடிச்சு (kudichu)", futMlp: "குடிக்கும் (kudikkum)",
         mustMlp: "குடிக்கணம் (kudikkanam)", dontMlp: "குடிக்கண்டா (kudikkanda)", canMlp: "குடிக்கான் ஒக்கும் (kudikkaan okkum)", cannotMlp: "குடிக்கான் ஒக்கில (kudikkaan okkila)",
         contMlp: "குடிச்சிண்டிருக்குணு (kudichindirikkanu)", ifMlp: "குடிச்சாலோ (kudichaalo)", quesMlp: "குடிச்சோ? (kudicho?)", negMlp: "குடிச்சில்ல (kudichilla)", forbidMlp: "குடிக்கல்லே (kudikkalle)",
         scrStd: "കുടിക്കുന്നു", scrMlp: "കുടിക്കണ്"
       },
       {
-        tamRoot: "பேசு (Speak)", cat: "talk",
-        presTam: "பேசுகிறேன்", pastTam: "பேசினேன்", futTam: "பேசுவேன்",
-        mustTam: "பேச வேண்டும்", dontTam: "பேச வேண்டாம்", canTam: "பேச முடியும்", cannotTam: "பேச முடியாது",
-        contTam: "பேசிக் கொண்டிருக்கிறேன்", ifTam: "பேசினால்", quesTam: "பேசினாயா?", negTam: "பேசவில்லை", forbidTam: "பேசாதே",
-        presStd: "சம்சாரிக்குன்னு (samsaarikkunnu)", pastStd: "சம்சாரிச்சு (samsaarichu)", futStd: "சம்சாரிக்கும் (samsaarikkum)",
-        mustStd: "சம்சாரிக்கணம் (samsarikkanam)", dontStd: "சம்சாரிக்கேண்டா (samsarikkenda)", canStd: "சம்சாரிக்கான் பற்றும் (samsarikkaan pattum)", cannotStd: "சம்சாரிக்கான் பற்றில்ல (samsarikkaan pattilla)",
-        contStd: "சம்சாரிச்சுகொண்டிரிக்குன்னு (samsaarichukondirikkunnu)", ifStd: "சம்சாரிச்சால் (samsaarichaal)", quesStd: "சம்சாரிச்சோ?", negStd: "சம்சாரிச்சில்ல (samsaarichilla)", forbidStd: "சம்சாரிக்கருது (samsarikkaruthe)",
-        presMlp: "பறயுணு (parayunu)", pastMlp: "பறஞ்ஞு (paranju)", futMlp: "பறயும் (parayum)",
+        tamRoot: "சொல் (Say / Speak)", cat: "talk",
+        presTam: "சொல்கிறேன்", pastTam: "சொன்னேன்", futTam: "சொல்வேன்",
+        mustTam: "சொல்ல வேண்டும்", dontTam: "சொல்ல வேண்டாம்", canTam: "சொல்ல முடியும்", cannotTam: "சொல்ல முடியாது",
+        contTam: "சொல்லிக் கொண்டிருக்கிறேன்", ifTam: "சொன்னால்", quesTam: "சொல்வீர்களா?", negTam: "சொல்லவில்லை", forbidTam: "சொல்லாதே",
+        presStd: "பறயுன்னு (parayunnu)", pastStd: "பறஞ்ஞு (paranju)", futStd: "பறயும் (parayum)",
+        mustStd: "பறயணம் (parayanam)", dontStd: "பறயேண்டா (parayenda)", canStd: "பறயான் பற்றும் (parayaan pattum)", cannotStd: "பறயான் பற்றில்ல (parayaan pattilla)",
+        contStd: "பறஞ்ஞுகொண்டிரிக்குன்னு (paranjukondirikkunnu)", ifStd: "பறஞ்ஞால் (paranjaal)", quesStd: "பறயுமோ? (parayumo?)", negStd: "பறஞ்ஞில்ல (paranjilla)", forbidStd: "பறயருது (parayaruthe)",
+        presMlp: "பறயணு (parayanu)", pastMlp: "பறஞ்ஞு (paranju)", futMlp: "பறயும் (parayum)",
         mustMlp: "பறயணம் (parayanam)", dontMlp: "பறயண்டா (parayanda)", canMlp: "பறயான் ஒக்கும் (parayaan okkum)", cannotMlp: "பறயான் ஒக்கில (parayaan okkila)",
-        contMlp: "பறஞ்ஞிண்டிருக்குணு (paranjindirikkanu)", ifMlp: "பறஞ்ஞாலோ (paranjaalo)", quesMlp: "பறஞ்ஞோ?", negMlp: "பறஞ்ஞில்ல (paranjilla)", forbidMlp: "பறயல்லே (parayalle)",
-        scrStd: "സംസാരിക്കുന്നു", scrMlp: "പറയ്യണ്"
+        contMlp: "பறஞ்ஞிண்டிருக்குணு (paranjindirikkanu)", ifMlp: "பறஞ்ஞாலோ (paranjaalo)", quesMlp: "பறயணோ? (parayano?)", negMlp: "பறஞ்ஞில்ல (paranjilla)", forbidMlp: "பறயல்லே (parayalle)",
+        scrStd: "പറയുന്നു", scrMlp: "പറയണ്"
       },
       {
-        tamRoot: "பார் (Look)", cat: "action",
+        tamRoot: "செய் (Do)", cat: "action",
+        presTam: "செய்கிறேன்", pastTam: "செய்தேன்", futTam: "செய்வேன்",
+        mustTam: "செய்ய வேண்டும்", dontTam: "செய்ய வேண்டாம்", canTam: "செய்ய முடியும்", cannotTam: "செய்ய முடியாது",
+        contTam: "செய்து கொண்டிருக்கிறேன்", ifTam: "செய்தால்", quesTam: "செய்கிறாயா?", negTam: "செய்யவில்லை", forbidTam: "செய்யாதே",
+        presStd: "செய்யுன்னு (cheyyunnu)", pastStd: "செய்Warm: cheythu", pastStd: "செய்து (cheythu)", futStd: "செய்யும் (cheyyum)",
+        mustStd: "செய்யணம் (cheyyanam)", dontStd: "செய்யேண்டா (cheyyenda)", canStd: "செய்யான் பற்றும் (cheyyaan pattum)", cannotStd: "செய்யான் பற்றில்ல (cheyyaan pattilla)",
+        contStd: "செய்துகொண்டிரிக்குன்னு (cheythukondirikkunnu)", ifStd: "செய்தால் (cheythaal)", quesStd: "செய்யுந்நோ? (cheyyunno?)", negStd: "செய்தில்ல (cheythilla)", forbidStd: "செய்யருது (cheyyaruthe)",
+        presMlp: "ஒண்டாக்குணு (ondaakkunu)", pastMlp: "ஒண்டாக்கி (ondaakki)", futMlp: "ஒண்டாக்கும் (ondaakkum)",
+        mustMlp: "ஒண்டாக்கணம் (ondaakkanam)", dontMlp: "ஒண்டாக்கண்டா (ondaakkanda)", canMlp: "ஒண்டாக்கான் ஒக்கும் (ondaakkaan okkum)", cannotMlp: "ஒண்டாக்கான் ஒக்கில (ondaakkaan okkila)",
+        contMlp: "ஒண்டாக்கிண்டிருக்குணு (ondaakkindirikkanu)", ifMlp: "ஒண்டாக்கியாலோ (ondaakkiyaalo)", quesMlp: "ஒண்டாக்குணோ? (ondaakkuno?)", negMlp: "ஒண்டாக்கில்ல (ondaakkilla)", forbidMlp: "ஒண்டாக்கல்லே (ondaakkalle)",
+        scrStd: "ചെയ്യുന്നു", scrMlp: "ഉണ്ടാക്കുന്നു"
+      },
+      {
+        tamRoot: "பார் (See / Watch)", cat: "action",
         presTam: "பார்க்கிறேன்", pastTam: "பார்த்தேன்", futTam: "பார்ப்பேன்",
         mustTam: "பார்க்க வேண்டும்", dontTam: "பார்க்க வேண்டாம்", canTam: "பார்க்க முடியும்", cannotTam: "பார்க்க முடியாது",
         contTam: "பார்த்துக் கொண்டிருக்கிறேன்", ifTam: "பார்த்தால்", quesTam: "பார்த்தாயா?", negTam: "பார்க்கவில்லை", forbidTam: "பார்க்காதே",
-        presStd: "நோக்குன்னு (nokkunnu)", pastStd: "கண்டு (kandu)", futStd: "காணும் (kaanum)",
-        mustStd: "நோக்கணம் (nokkanam)", dontStd: "நோக்கேண்டா (nokkenda)", canStd: "காணான் பற்றும் (kaanaan pattum)", cannotStd: "காணான் பற்றில்ல (kaanaan pattilla)",
-        contStd: "நோக்கிக்கொண்டிரிக்குன்னு (nokkikkondirikkunnu)", ifStd: "கண்டால் (kandaal)", quesStd: "கண்டோ?", negStd: "கண்டில்ல (kandilla)", forbidStd: "நோக்கருது (nokkaruthe)",
-        presMlp: "நோக்குணு (nokkunu)", pastMlp: "கண்டு (kandu)", futMlp: "காணும் (kaanum)",
-        mustMlp: "நோக்கணம் (nokkanam)", dontMlp: "நோக்கண்டா (nokkanda)", canMlp: "காணான் ஒக்கும் (kaanaan okkum)", cannotMlp: "காணான் ஒக்கில (kaanaan okkila)",
-        contMlp: "நோக்கிண்டிருக்குணு (nokkindirikkanu)", ifMlp: "கண்டாலோ (kandaalo)", quesMlp: "கண்டோ?", negMlp: "கண்டில்ல (kandilla)", forbidMlp: "நோக்கல்லே (nokkalle)",
+        presStd: "நோக்குன்னு (nokkunnu)", pastStd: "நோக்கி (nokki)", futStd: "நோக்கும் (nokkum)",
+        mustStd: "நோக்கணம் (nokkanam)", dontStd: "நோக்கேண்டா (nokkenda)", canStd: "நோக்கான் பற்றும் (nokkaan pattum)", cannotStd: "நோக்கான் பற்றில்ல (nokkaan pattilla)",
+        contStd: "நோக்கிக்கொண்டிரிக்குன்னு (nokkikondirikkunnu)", ifStd: "நோக்கியால் (nokkiyaal)", quesStd: "நோக்கியோ? / கண்டோ? (nokkiyo?)", negStd: "நோக்கில்ல (nokkilla)", forbidStd: "நோக்கருது (nokkaruthe)",
+        presMlp: "நோக்குணு (nokkanu)", pastMlp: "நோக்கி (nokki)", futMlp: "நோக்கும் (nokkum)",
+        mustMlp: "நோக்கணம் (nokkanam)", dontMlp: "நோக்கண்டா (nokkanda)", canMlp: "நோக்கான் ஒக்கும் (nokkaan okkum)", cannotMlp: "நோக்கான் ஒக்கில (nokkaan okkila)",
+        contMlp: "நோக்கிண்டிருக்குணு (nokkindirikkanu)", ifMlp: "நோக்கியாலோ (nokkiyaalo)", quesMlp: "நோக்கியோ? (nokkiyo?)", negMlp: "நோக்கில்ல (nokkilla)", forbidMlp: "நோக்கல்லே (nokkalle)",
         scrStd: "നോക്കുന്നു", scrMlp: "നോക്കണ്"
       },
       {
-        tamRoot: "செய் / பண்ணு (Do)", cat: "action",
-        presTam: "செய்கிறேன்", pastTam: "செய்தேன்", futTam: "செய்வேன்",
-        mustTam: "செய்ய வேண்டும்", dontTam: "செய்ய வேண்டாம்", canTam: "செய்ய முடியும்", cannotTam: "செய்ய முடியாது",
-        contTam: "செய்து கொண்டிருக்கிறேன்", ifTam: "செய்தால்", quesTam: "செய்தாயா?", negTam: "செய்யவில்லை", forbidTam: "செய்யாதே",
-        presStd: "செய்யுன்னு (cheyyunnu)", pastStd: "செய்து (cheythu)", futStd: "செய்யும் (cheyyum)",
-        mustStd: "செய்யணம் (cheyyanam)", dontStd: "செய்யேண்டா (cheyyenda)", canStd: "செய்யான் பற்றும் (cheyyaan pattum)", cannotStd: "செய்யான் பற்றில்ல (cheyyaan pattilla)",
-        contStd: "செய்துகொண்டிரிக்குன்னு (cheythukondirikkunnu)", ifStd: "செய்தால் (cheythaal)", quesStd: "செய்தோ?", negStd: "செய்தில்ல (cheythilla)", forbidStd: "செய்யருது (cheyyaruthe)",
-        presMlp: "செய்யுணு (cheyyunu)", pastMlp: "செய்து (cheythu)", futMlp: "செய்யும் (cheyyum)",
-        mustMlp: "செய்யணம் (cheyyanam)", dontMlp: "செய்யண்டா (cheyyanda)", canMlp: "செய்யான் ஒக்கும் (cheyyaan okkum)", cannotMlp: "செய்யான் ஒக்கில (cheyyaan okkila)",
-        contMlp: "செய்திண்டிருக்குணு (cheythindirikkanu)", ifMlp: "செய்தாலோ (cheythaalo)", quesMlp: "செய்தோ?", negMlp: "செய்தில்ல (cheythilla)", forbidMlp: "செய்யல்லே (cheyyalle)",
-        scrStd: "ചെയ്യുന്നു", scrMlp: "ചെയ്യണ്"
-      },
-      {
-        tamRoot: "படி (Study)", cat: "action",
-        presTam: "படிக்கிறேன்", pastTam: "படித்தேன்", futTam: "படிப்பேன்",
-        mustTam: "படிக்க வேண்டும்", dontTam: "படிக்க வேண்டாம்", canTam: "படிக்க முடியும்", cannotTam: "படிக்க முடியாது",
-        contTam: "படித்துக் கொண்டிருக்கிறேன்", ifTam: "படித்தால்", quesTam: "படித்தாயா?", negTam: "படிக்கவில்லை", forbidTam: "படிக்காதே",
-        presStd: "படிக்குன்னு (padikkunnu)", pastStd: "படிச்சு (padichu)", futStd: "படிக்கும் (padikkum)",
-        mustStd: "படிக்கணம் (padikkanam)", dontStd: "படிக்கேண்டா (padikkenda)", canStd: "படிக்கான் பற்றும் (padikkaan pattum)", cannotStd: "படிக்கான் பற்றில்ல (padikkaan pattilla)",
-        contStd: "படிச்சுகொண்டிரிக்குன்னு (padichukondirikkunnu)", ifStd: "படிச்சால் (padichaal)", quesStd: "படிச்சோ?", negStd: "படிச்சில்ல (padichilla)", forbidStd: "படிக்கருது (padikkaruthe)",
-        presMlp: "படிக்குணு (padikkunu)", pastMlp: "படிச்சு (padichu)", futMlp: "படிக்கும் (padikkum)",
-        mustMlp: "படிக்கணம் (padikkanam)", dontMlp: "படிக்கண்டா (padikkanda)", canMlp: "படிக்கான் ஒக்கும் (padikkaan okkum)", cannotMlp: "படிக்கான் ஒக்கில (padikkaan okkila)",
-        contMlp: "படிச்சிண்டிருக்குணு (padichindirikkanu)", ifMlp: "படிச்சாலோ (padichaalo)", quesMlp: "படிச்சோ?", negMlp: "படிச்சில்ல (padichilla)", forbidMlp: "படிக்கல்லே (padikkalle)",
-        scrStd: "പഠിക്കുന്നു", scrMlp: "പഠിക്കണ്"
-      },
-      {
-        tamRoot: "கேள் (Ask)", cat: "talk",
+        tamRoot: "கேள் (Listen / Ask)", cat: "talk",
         presTam: "கேட்கிறேன்", pastTam: "கேட்டேன்", futTam: "கேட்பேன்",
         mustTam: "கேட்க வேண்டும்", dontTam: "கேட்க வேண்டாம்", canTam: "கேட்க முடியும்", cannotTam: "கேட்க முடியாது",
         contTam: "கேட்டுக் கொண்டிருக்கிறேன்", ifTam: "கேட்டால்", quesTam: "கேட்டாயா?", negTam: "கேட்கவில்லை", forbidTam: "கேட்காதே",
-        presStd: "சோதிக்குன்னு (chodikkunnu)", pastStd: "சோதிச்சு (chodichu)", futStd: "சோதிக்கும் (chodikkum)",
-        mustStd: "சோதிக்கணம் (chodikkanam)", dontStd: "சோதிக்கேண்டா (chodikkenda)", canStd: "சோதிக்கான் பற்றும் (chodikkaan pattum)", cannotStd: "சோதிக்கான் பற்றில்ல (chodikkaan pattilla)",
-        contStd: "சோதிச்சுகொண்டிரிக்குன்னு (chodichukondirikkunnu)", ifStd: "சோதிச்சால் (chodichaal)", quesStd: "சோதிச்சோ?", negStd: "சோதிச்சில்ல (chodichilla)", forbidStd: "சோதிக்கருது (chodikkaruthe)",
-        presMlp: "சோதிக்குணு (chodikkunu)", pastMlp: "சோதிச்சு (chodichu)", futMlp: "சோதிக்கும் (chodikkum)",
-        mustMlp: "சோதிக்கணம் (chodikkanam)", dontMlp: "சோதிக்கண்டா (chodikkanda)", canMlp: "சோதிக்கான் ஒக்கும் (chodikkaan okkum)", cannotMlp: "சோதிக்கான் ஒக்கில (chodikkaan okkila)",
-        contMlp: "சோதிச்சிண்டிருக்குணு (chodichindirikkanu)", ifMlp: "சோதிச்சாலோ (chodichaalo)", quesMlp: "சோதிச்சோ?", negMlp: "சோதிச்சில்ல (chodichilla)", forbidMlp: "சோதிக்கல்லே (chodikkalle)",
-        scrStd: "ചോദിക്കുന്നു", scrMlp: "ചോദിക്കണ്"
-      },
-      {
-        tamRoot: "கொடு (Give)", cat: "action",
-        presTam: "கொடுக்கிறேன்", pastTam: "கொடுத்தேன்", futTam: "கொடுப்பேன்",
-        mustTam: "கொடுக்க வேண்டும்", dontTam: "கொடுக்க வேண்டாம்", canTam: "கொடுக்க முடியும்", cannotTam: "கொடுக்க முடியாது",
-        contTam: "கொடுத்துக் கொண்டிருக்கிறேன்", ifTam: "கொடுத்தால்", quesTam: "கொடுத்தாயா?", negTam: "கொடுக்கவில்லை", forbidTam: "கொடுக்காதே",
-        presStd: "கொடுக்குன்னு (kodukkunnu)", pastStd: "கொடுத்து (koduthu)", futStd: "கொடுக்கும் (kodukkum)",
-        mustStd: "கொடுக்கணம் (kodukkanam)", dontStd: "கொடுக்கேண்டா (kodukkenda)", canStd: "கொடுக்கான் பற்றும் (kodukkaan pattum)", cannotStd: "கொடுக்கான் பற்றில்ல (kodukkaan pattilla)",
-        contStd: "கொடுத்துகொண்டிரிக்குன்னு (koduthukondirikkunnu)", ifStd: "கொடுத்தால் (koduthaal)", quesStd: "கொடுத்தோ?", negStd: "கொடுத்தில்ல (koduthilla)", forbidStd: "கொடுக்கருது (kodukkaruthe)",
-        presMlp: "கொடுக்குணு (kodukkunu)", pastMlp: "கொடுத்து (koduthu)", futMlp: "கொடுக்கும் (kodukkum)",
-        mustMlp: "கொடுக்கணம் (kodukkanam)", dontMlp: "கொடுக்கண்டா (kodukkanda)", canMlp: "கொடுக்கான் ஒக்கும் (kodukkaan okkum)", cannotMlp: "கொடுக்கான் ஒக்கில (kodukkaan okkila)",
-        contMlp: "கொடுத்திண்டிருக்குணு (koduthindirikkanu)", ifMlp: "கொடுத்தாலோ (koduthaalo)", quesMlp: "கொடுத்தோ?", negMlp: "கொடுத்தில்ல (koduthilla)", forbidMlp: "கொடுக்கல்லே (kodukkalle)",
-        scrStd: "കൊടുക്കുന്നു", scrMlp: "കൊടുക്കണ്"
+        presStd: "கேட்குன்னு (kelkkunnu)", pastStd: "கேட்டு (kettu)", futStd: "கேட்கும் (kelkkum)",
+        mustStd: "கேட்கணம் (kelkkanam)", dontStd: "கேட்கேண்டா (kelkkenda)", canStd: "கேட்கான் பற்றும் (kelkkaan pattum)", cannotStd: "கேட்கான் பற்றில்ல (kelkkaan pattilla)",
+        contStd: "கேட்டுகொண்டிரிக்குன்னு (kettukondirikkunnu)", ifStd: "கேட்டால் (kettaal)", quesStd: "கேட்டோ? (ketto?)", negStd: "கேட்டில்ல (kettilla)", forbidStd: "கேட்கருது (kelkkaruthe)",
+        presMlp: "கேக்குணு (kekkanu)", pastMlp: "கேட்டு (kettu)", futMlp: "கேக்கும் (kekkum)",
+        mustMlp: "கேக்கணம் (kekkanam)", dontMlp: "கேக்கண்டா (kekkanda)", canMlp: "கேக்கான் ஒக்கும் (kekkaan okkum)", cannotMlp: "கேக்கான் ஒக்கில (kekkaan okkila)",
+        contMlp: "கேட்டிண்டிருக்குணு (kettindirikkanu)", ifMlp: "கேட்டாலோ (kettaalo)", quesMlp: "கேட்டோ? (ketto?)", negMlp: "கேட்டில்ல (kettilla)", forbidMlp: "கேக்கல்லே (kekkalle)",
+        scrStd: "കേൾക്കുന്നു", scrMlp: "കേക്കണ്"
       },
       {
         tamRoot: "வாங்கு (Buy)", cat: "action",
         presTam: "வாங்குகிறேன்", pastTam: "வாங்கினேன்", futTam: "வாங்குவேன்",
         mustTam: "வாங்க வேண்டும்", dontTam: "வாங்க வேண்டாம்", canTam: "வாங்க முடியும்", cannotTam: "வாங்க முடியாது",
-        contTam: "வாங்கிக் கொண்டிருக்கிறேன்", ifTam: "வாங்கினால்", quesTam: "வாங்கினாயா?", negTam: "வாங்கவில்லை", forbidTam: "வாங்காதே",
-        presStd: "வாங்குன்னு (vaangunnu)", pastStd: "வாங்கி (vaangi)", futStd: "வாங்கும் (vaangum)",
-        mustStd: "வாங்கணம் (vaanganam)", dontStd: "வாங்கேண்டா (vaangenda)", canStd: "வாங்கான் பற்றும் (vaangaan pattum)", cannotStd: "வாங்கான் பற்றில்ல (vaangaan pattilla)",
-        contStd: "வாங்கிக்கொண்டிரிக்குன்னு (vaangikkondirikkunnu)", ifStd: "வாங்கினால் (vaangiyaal)", quesStd: "வாங்கியோ?", negStd: "வாங்கியில்ல (vaangiyilla)", forbidStd: "வாங்கருது (vaangaruthe)",
-        presMlp: "மேடிக்குணு (medikkunu)", pastMlp: "மேடிச்சு (medichu)", futMlp: "மேடிக்கும் (medikkum)",
-        mustMlp: "மேடிக்கணம் (medikkanam)", dontMlp: "மேடிக்கண்டா (medikkanda)", canMlp: "மேடிக்கான் ஒக்கும் (medikkaan okkum)", cannotMlp: "மேடிக்கான் ஒக்கில (medikkaan okkila)",
-        contMlp: "மேடிச்சிண்டிருக்குணு (medichindirikkanu)", ifMlp: "மேடிச்சாலோ (medichaalo)", quesMlp: "மேடிச்சோ?", negMlp: "மேடிச்சில்ல (medichilla)", forbidMlp: "மேடிக்கல்லே (medikkalle)",
-        scrStd: "വാങ്ങുന്നു", scrMlp: "മേടിക്കണ്"
+        contTam: "வாங்கிக் கொண்டிருக்கிறேன்", ifTam: "வாங்கினால்", quesTam: "வாங்குவாயா?", negTam: "வாங்கவில்லை", forbidTam: "வாங்காதே",
+        presStd: "வாங்ஙுன்னு (vaangunnu)", pastStd: "வாங்ஙி (vaangi)", futStd: "வாங்ஙும் (vaangum)",
+        mustStd: "வாங்ஙணம் (vaanganam)", dontStd: "வாங்ஙேண்டா (vaangenda)", canStd: "வாங்ஙான் பற்றும் (vaangaan pattum)", cannotStd: "வாங்ஙான் பற்றில்ல (vaangaan pattilla)",
+        contStd: "வாங்ஙிக்கொண்டிரிக்குன்னு (vaangikondirikkunnu)", ifStd: "வாங்ஙியால் (vaangiyaal)", quesStd: "வாங்ஙுமோ? (vaangumo?)", negStd: "வாங்ஙியில்ல (vaangiyilla)", forbidStd: "வாங்ஙருது (vaangaruthe)",
+        presMlp: "வாங்ஙணு (vaanganu)", pastMlp: "வாங்ஙி (vaangi)", futMlp: "வாங்ஙும் (vaangum)",
+        mustMlp: "வாங்ஙணம் (vaanganam)", dontMlp: "வாங்ஙண்டா (vaanganda)", canMlp: "வாங்ஙான் ஒக்கும் (vaangaan okkum)", cannotMlp: "வாங்ஙான் ஒக்கில (vaangaan okkila)",
+        contMlp: "வாங்ஙிண்டிருக்குணு (vaangindirikkanu)", ifMlp: "வாங்ஙியாலோ (vaangiyaalo)", quesMlp: "வாங்ஙணோ? (vaangano?)", negMlp: "வாங்ஙியில்ல (vaangiyilla)", forbidMlp: "வாங்ஙல்லே (vaangalle)",
+        scrStd: "വാങ്ങുന്നു", scrMlp: "വാങ്ങണ്"
       },
       {
-        tamRoot: "தூங்கு (Sleep)", cat: "action",
-        presTam: "தூங்குகிறேன்", pastTam: "தூங்கினேன்", futTam: "தூங்குவேன்",
-        mustTam: "தூங்க வேண்டும்", dontTam: "தூங்க வேண்டாம்", canTam: "தூங்க முடியும்", cannotTam: "தூங்க முடியாது",
-        contTam: "தூங்கிக் கொண்டிருக்கிறேன்", ifTam: "தூங்கினால்", quesTam: "தூங்கினாயா?", negTam: "தூங்கவில்லை", forbidTam: "தூங்காதே",
-        presStd: "உறங்குன்னு (urangunnu)", pastStd: "உறங்கி (urangi)", futStd: "உறங்கும் (urangum)",
-        mustStd: "உறங்கணம் (uranganam)", dontStd: "உறங்கேண்டா (urangenda)", canStd: "உறங்கான் பற்றும் (urangaan pattum)", cannotStd: "உறங்கான் பற்றில்ல (urangaan pattilla)",
-        contStd: "உறங்கிக்கொண்டிரிக்குன்னு (urangikkondirikkunnu)", ifStd: "உறங்கியால் (urangiyaal)", quesStd: "உறங்கியோ?", negStd: "உறங்கியில்ல (urangiyilla)", forbidStd: "உறங்கருது (urangaruthe)",
-        presMlp: "உறங்குணு (urangunu)", pastMlp: "உறங்கி (urangi)", futMlp: "உறங்கும் (urangum)",
-        mustMlp: "உறங்கணம் (uranganam)", dontMlp: "உறங்கண்டா (uranganda)", canMlp: "உறங்கான் ஒக்கும் (urangaan okkum)", cannotMlp: "உறங்கான் ஒக்கில (urangaan okkila)",
-        contMlp: "உறங்கிண்டிருக்குணு (urangindirikkanu)", ifMlp: "உறங்கியாலோ (urangiyaalo)", quesMlp: "உறங்கியோ?", negMlp: "உறங்கியில்ல (urangiyilla)", forbidMlp: "உறங்கல்லே (urangalle)",
-        scrStd: "ഉറങ്ങുന്നു", scrMlp: "ഉറങ്ങണ്"
-      },
-      {
-        tamRoot: "கூப்பிடு (Call)", cat: "talk",
-        presTam: "கூப்பிடுகிறேன்", pastTam: "கூப்பிட்டேன்", futTam: "கூப்பிடுவேன்",
-        mustTam: "கூப்பிட வேண்டும்", dontTam: "கூப்பிட வேண்டாம்", canTam: "கூப்பிட முடியும்", cannotTam: "கூப்பிட முடியாது",
-        contTam: "கூப்பிட்டுக் கொண்டிருக்கிறேன்", ifTam: "கூப்பிட்டால்", quesTam: "கூப்பிட்டாயா?", negTam: "கூப்பிடவில்லை", forbidTam: "கூப்பிடாதே",
-        presStd: "விளிக்குன்னு (vilikkunnu)", pastStd: "விளிச்சு (vilichu)", futStd: "விளிக்கும் (vilikkum)",
-        mustStd: "விளிக்கணம் (vilikkanam)", dontStd: "விளிக்கேண்டா (vilikkenda)", canStd: "விளிக்கான் பற்றும் (vilikkaan pattum)", cannotStd: "விளிக்கான் பற்றில்ல (vilikkaan pattilla)",
-        contStd: "விளிச்சுகொண்டிரிக்குன்னு (vilichukondirikkunnu)", ifStd: "விளிச்சால் (vilichaal)", quesStd: "விளிச்சோ?", negStd: "விளிச்சில்ல (vilichilla)", forbidStd: "விளிக்கருது (vilikkaruthe)",
-        presMlp: "விளிக்குணு (vilikkunu)", pastMlp: "விளிச்சு (vilichu)", futMlp: "விளிக்கும் (vilikkum)",
-        mustMlp: "விளிக்கணம் (vilikkanam)", dontMlp: "விளிக்கண்டா (vilikkanda)", canMlp: "விளிக்கான் ஒக்கும் (vilikkaan okkum)", cannotMlp: "விளிக்கான் ஒக்கில (vilikkaan okkila)",
-        contMlp: "விளிச்சிண்டிருக்குணு (vilichindirikkanu)", ifMlp: "விளிச்சாலோ (vilichaalo)", quesMlp: "விளிச்சோ?", negMlp: "விளிச்சில்ல (vilichilla)", forbidMlp: "விளிக்கல்லே (vilikkalle)",
-        scrStd: "വിളിക്കുന്നു", scrMlp: "വിളിക്കണ്"
-      },
-      {
-        tamRoot: "யோசி (Think)", cat: "action",
-        presTam: "யோசிக்கிறேன்", pastTam: "யோசித்தேன்", futTam: "யோசிப்பேன்",
-        mustTam: "யோசிக்க வேண்டும்", dontTam: "யோசிக்க வேண்டாம்", canTam: "யோசிக்க முடியும்", cannotTam: "யோசிக்க முடியாது",
-        contTam: "யோசித்துக் கொண்டிருக்கிறேன்", ifTam: "யோசித்தால்", quesTam: "யோசித்தாயா?", negTam: "யோசிக்கவில்லை", forbidTam: "யோசிக்காதே",
-        presStd: "விசாரிக்குன்னு (vichaarikkunnu)", pastStd: "விசாரிச்சு (vichaarichu)", futStd: "விசாரிக்கும் (vichaarikkum)",
-        mustStd: "விசாரிக்கணம் (vichaarikkanam)", dontStd: "விசாரிக்கேண்டா (vichaarikkenda)", canStd: "விசாரிக்கான் பற்றும் (vichaarikkaan pattum)", cannotStd: "விசாரிக்கான் பற்றில்ல (vichaarikkaan pattilla)",
-        contStd: "விசாரிச்சுகொண்டிரிக்குன்னு (vichaarichukondirikkunnu)", ifStd: "விசாரிச்சால் (vichaarichaal)", quesStd: "விசாரிச்சோ?", negStd: "விசாரிச்சில்ல (vichaarichilla)", forbidStd: "விசாரிக்கருது (vichaarikkaruthe)",
-        presMlp: "விசாரிக்குணு (vichaarikkunu)", pastMlp: "விசாரிச்சு (vichaarichu)", futMlp: "விசாரிக்கும் (vichaarikkum)",
-        mustMlp: "விசாரிக்கணம் (vichaarikkanam)", dontMlp: "விசாரிக்கண்டா (vichaarikkanda)", canMlp: "விசாரிக்கான் ஒக்கும் (vichaarikkaan okkum)", cannotMlp: "விசாரிக்கான் ஒக்கில (vichaarikkaan okkila)",
-        contMlp: "விசாரிச்சிண்டிருக்குணு (vichaarichindirikkanu)", ifMlp: "விசாரிச்சாலோ (vichaarichaalo)", quesMlp: "விசாரிச்சோ?", negMlp: "விசாரிச்சில்ல (vichaarichilla)", forbidMlp: "விசாரிக்கல்லே (vichaarikkalle)",
-        scrStd: "വിചാരിക്കുന്നു", scrMlp: "വിചാരിക്കണ്"
-      },
-      {
-        tamRoot: "சிரி (Smile / Laugh)", cat: "emotion",
-        presTam: "சிரிக்கிறேன்", pastTam: "சிரித்தேன்", futTam: "சிரிப்பேன்",
-        mustTam: "சிரிக்க வேண்டும்", dontTam: "சிரிக்க வேண்டாம்", canTam: "சிரிக்க முடியும்", cannotTam: "சிரிக்க முடியாது",
-        contTam: "சிரித்துக் கொண்டிருக்கிறேன்", ifTam: "சிரித்தால்", quesTam: "சிரித்தாயா?", negTam: "சிரிக்கவில்லை", forbidTam: "சிரிக்காதே",
-        presStd: "சிரிக்குன்னு (chirikkunnu)", pastStd: "சிரிச்சு (chirichu)", futStd: "சிரிக்கும் (chirikkum)",
-        mustStd: "சிரிக்கணம் (chirikkanam)", dontStd: "சிரிக்கேண்டா (chirikkenda)", canStd: "சிரிக்கான் பற்றும் (chirikkaan pattum)", cannotStd: "சிரிக்கான் பற்றில்ல (chirikkaan pattilla)",
-        contStd: "சிரிச்சுகொண்டிரிக்குன்னு (chirichukondirikkunnu)", ifStd: "சிரிச்சால் (chirichaal)", quesStd: "சிரிச்சோ?", negStd: "சிரிச்சில்ல (chirichilla)", forbidStd: "சிரிக்கருது (chirikkaruthe)",
-        presMlp: "சிரிக்குணு (chirikkunu)", pastMlp: "சிரிச்சு (chirichu)", futMlp: "சிரிக்கும் (chirikkum)",
-        mustMlp: "சிரிக்கணம் (chirikkanam)", dontMlp: "சிரிக்கண்டா (chirikkanda)", canMlp: "சிரிக்கான் ஒக்கும் (chirikkaan okkum)", cannotMlp: "சிரிக்கான் ஒக்கில (chirikkaan okkila)",
-        contMlp: "சிரிச்சிண்டிருக்குணு (chirichindirikkanu)", ifMlp: "சிரிச்சாலோ (chirichaalo)", quesMlp: "சிரிச்சோ?", negMlp: "சிரிச்சில்ல (chirichilla)", forbidMlp: "சிரிக்கல்லே (chirikkalle)",
-        scrStd: "ചിരിക്കുന്നു", scrMlp: "ചിരിക്കണ്"
-      },
-      {
-        tamRoot: "உட்காரு (Sit)", cat: "action",
-        presTam: "உட்காருகிறேன்", pastTam: "உட்கார்ந்தேன்", futTam: "உட்காருவேன்",
-        mustTam: "உட்கார வேண்டும்", dontTam: "உட்கார வேண்டாம்", canTam: "உட்கார முடியும்", cannotTam: "உட்கார முடியாது",
-        contTam: "உட்கார்ந்து கொண்டிருக்கிறேன்", ifTam: "உட்கார்ந்தால்", quesTam: "உட்காருகிறாயா?", negTam: "உட்காரவில்லை", forbidTam: "உட்காராதே",
-        presStd: "இரிக்குன்னு (irikkunnu)", pastStd: "இருன்னு (irunnu)", futStd: "இரிக்கும் (irikkum)",
-        mustStd: "இரிக்கணம் (irikkanam)", dontStd: "இரிக்கேண்டா (irikkenda)", canStd: "இரிக்கான் பற்றும் (irikkaan pattum)", cannotStd: "இரிக்கான் பற்றில்ல (irikkaan pattilla)",
-        contStd: "இருந்துகொண்டிரிக்குன்னு (irunthukondirikkunnu)", ifStd: "இருந்தால் (irunthaal)", quesStd: "இருன்னோ?", negStd: "இருன்னில்ல (irunnilla)", forbidStd: "இரிக்கருது (irikkaruthe)",
-        presMlp: "இரிக்குணு (irikkunu)", pastMlp: "இருன்னு (irunnu)", futMlp: "இரிக்கும் (irikkum)",
-        mustMlp: "இரிக்கணம் (irikkanam)", dontMlp: "இரிக்கண்டா (irikkanda)", canMlp: "இரிக்கான் ஒக்கும் (irikkaan okkum)", cannotMlp: "இரிக்கான் ஒக்கில (irikkaan okkila)",
-        contMlp: "இருந்திண்டிருக்குணு (irunthindirikkanu)", ifMlp: "இருந்தாலோ (irunthaalo)", quesMlp: "இருன்னோ?", negMlp: "இருன்னில்ல (irunnilla)", forbidMlp: "இரிக்கல்லே (irikkalle)",
-        scrStd: "ഇരിക്കുന്നു", scrMlp: "ഇരിക്കണ്"
-      },
-      {
-        tamRoot: "எழும்பு (Wake up / Stand)", cat: "action",
-        presTam: "எழும்புகிறேன்", pastTam: "எழுந்தேன்", futTam: "எழும்புவேன்",
-        mustTam: "எழும்ப வேண்டும்", dontTam: "எழும்ப வேண்டாம்", canTam: "எழும்ப முடியும்", cannotTam: "எழும்ப முடியாது",
-        contTam: "எழுந்து கொண்டிருக்கிறேன்", ifTam: "எழுந்தால்", quesTam: "எழுந்தாயா?", negTam: "எழும்பவில்லை", forbidTam: "எழும்பாதே",
-        presStd: "எழுந்நேற்குன்னு (ezhunnelkkunnu)", pastStd: "எழுந்நேற்று (ezhunnettu)", futStd: "எழுந்நேற்கும் (ezhunnelkkum)",
-        mustStd: "எழுந்நேற்கணம் (ezhunnelkkanam)", dontStd: "எழுந்நேற்கேண்டா (ezhunnelkkenda)", canStd: "எழுந்நேற்கான் பற்றும் (ezhunnelkkaan pattum)", cannotStd: "எழுந்நேற்கான் பற்றில்ல (ezhunnelkkaan pattilla)",
-        contStd: "எழுந்நேற்றுகொண்டிரிக்குன்னு (ezhunnettukondirikkunnu)", ifStd: "எழுந்நேற்றால் (ezhunnettaal)", quesStd: "எழுந்நேற்றோ?", negStd: "எழுந்நேற்றில்ல (ezhunnettilla)", forbidStd: "எழுந்நேற்கருது (ezhunnelkkaruthe)",
-        presMlp: "எழுந்நேற்குணு (ezhunnelkkunu)", pastMlp: "எழுந்நேற்று (ezhunnettu)", futMlp: "எழுந்நேற்கும் (ezhunnelkkum)",
-        mustMlp: "எழுந்நேற்கணம் (ezhunnelkkanam)", dontMlp: "எழுந்நேற்கண்டா (ezhunnelkkanda)", canMlp: "எழுந்நேற்கான் ஒக்கும் (ezhunnelkkaan okkum)", cannotMlp: "எழுந்நேற்கான் ஒக்கில (ezhunnelkkaan okkila)",
-        contMlp: "எழுந்நேற்றிண்டிருக்குணு (ezhunnettindirikkanu)", ifMlp: "எழுந்நேற்றாலோ (ezhunnettaalo)", quesMlp: "எழுந்நேற்றோ?", negMlp: "எழுந்நேற்றில்ல (ezhunnettilla)", forbidMlp: "எழுந்நேற்கல்லே (ezhunnelkkalle)",
-        scrStd: "എഴുന്നേൽക്കുന്നു", scrMlp: "എഴുന്നേൽക്കണ്"
-      },
-      {
-        tamRoot: "ஓடு (Run)", cat: "travel",
-        presTam: "ஓடுகிறேன்", pastTam: "ஓடினேன்", futTam: "ஓடுவேன்",
-        mustTam: "ஓட வேண்டும்", dontTam: "ஓட வேண்டாம்", canTam: "ஓட முடியும்", cannotTam: "ஓட முடியாது",
-        contTam: "ஓடிக் கொண்டிருக்கிறேன்", ifTam: "ஓடினால்", quesTam: "ஓடினாயா?", negTam: "ஓடவில்லை", forbidTam: "ஓடாதே",
-        presStd: "ஓடுன்னு (oodunnu)", pastStd: "ஓடி (oodi)", futStd: "ஓடும் (oodum)",
-        mustStd: "ஓடணம் (oodanam)", dontStd: "ஓடேண்டா (oodenda)", canStd: "ஓடான் பற்றும் (oodaan pattum)", cannotStd: "ஓடான் பற்றில்ல (oodaan pattilla)",
-        contStd: "ஓடிக்கொண்டிரிக்குன்னு (oodikkondirikkunnu)", ifStd: "ஓடியால் (oodiyaal)", quesStd: "ஓடியோ?", negStd: "ஓடியில்ல (oodiyilla)", forbidStd: "ஓடருது (oodaruthe)",
-        presMlp: "ஓடுணு (oodunu)", pastMlp: "ஓடி (oodi)", futMlp: "ஓடும் (oodum)",
-        mustMlp: "ஓடணம் (oodanam)", dontMlp: "ஓடண்டா (oodanda)", canMlp: "ஓடான் ஒக்கும் (oodaan okkum)", cannotMlp: "ஓடான் ஒக்கில (oodaan okkila)",
-        contMlp: "ஓடிண்டிருக்குணு (oodindirikkanu)", ifMlp: "ஓடியாலோ (oodiyaalo)", quesMlp: "ஓடியோ?", negMlp: "ஓடியில்ல (oodiyilla)", forbidMlp: "ஓடல்லே (oodalle)",
-        scrStd: "ഓടുന്നു", scrMlp: "ഓടണ്"
+        tamRoot: "கொடு (Give)", cat: "action",
+        presTam: "கொடுக்கிறேன்", pastTam: "கொடுத்தேன்", futTam: "கொடுப்பேன்",
+        mustTam: "கொடுக்க வேண்டும்", dontTam: "கொடுக்க வேண்டாம்", canTam: "கொடுக்க முடியும்", cannotTam: "கொடுக்க முடியாது",
+        contTam: "கொடுத்துக் கொண்டிருக்கிறேன்", ifTam: "கொடுத்தால்", quesTam: "கொடுப்பீர்களா?", negTam: "கொடுக்கவில்லை", forbidTam: "கொடுக்காதே",
+        presStd: "கொடுக்குன்னு (kodukkunnu)", pastStd: "கொடுத்து (koduthu)", futStd: "கொடுக்கும் (kodukkum)",
+        mustStd: "கொடுக்கணம் (kodukkanam)", dontStd: "கொடுக்கேண்டா (kodukkenda)", canStd: "கொடுக்கான் பற்றும் (kodukkaan pattum)", cannotStd: "கொடுக்கான் பற்றில்ல (kodukkaan pattilla)",
+        contStd: "கொடுத்துகொண்டிரிக்குன்னு (koduthukondirikkunnu)", ifStd: "கொடுத்தால் (koduthaal)", quesStd: "கொடுக்குமோ? (kodukkumo?)", negStd: "கொடுத்தில்ல (koduthilla)", forbidStd: "கொடுக்கருது (kodukkaruthe)",
+        presMlp: "கொடுக்குணு (kodukkanu)", pastMlp: "கொடுத்து (koduthu)", futMlp: "கொடுக்கும் (kodukkum)",
+        mustMlp: "கொடுக்கணம் (kodukkanam)", dontMlp: "கொடுக்கண்டா (kodukkanda)", canMlp: "கொடுக்கான் ஒக்கும் (kodukkaan okkum)", cannotMlp: "கொடுக்கான் ஒக்கில (kodukkaan okkila)",
+        contMlp: "கொடுத்திண்டிருக்குணு (koduthindirikkanu)", ifMlp: "கொடுத்தாலோ (koduthaalo)", quesMlp: "கொடுக்குணோ? (kodukkuno?)", negMlp: "கொடுத்தில்ல (koduthilla)", forbidMlp: "கொடுக்கல்லே (kodukkalle)",
+        scrStd: "കൊടുക്കുന്നു", scrMlp: "കൊടുക്കണ്"
       }
     ];
 
     const LAB_MOODS = [
-      { key: 'pres', label: '⏳ நிகழ்காலம் (Present)', badge: '-unnu / -anu', desc: 'நிகழும் செயல்' },
-      { key: 'past', label: '⏮️ இறந்தகாலம் (Past)', badge: '-i / -chu', desc: 'முடிந்த செயல்' },
-      { key: 'fut',  label: '⏭️ எதிர்காலம் (Future)', badge: '-um', desc: 'எதிர்காலச் செயல்' },
-      { key: 'must', label: '⚡ வேண்டும் (Must / Want)', badge: '-anam (வேணம்)', desc: 'கட்டாயம் / விருப்பம்' },
-      { key: 'dont', label: '🚫 வேண்டாம் (Don\'t Want)', badge: '-enda (வேண்டாம்)', desc: 'மறுப்பு' },
-      { key: 'can',  label: '💪 முடியும் (Can / Able)', badge: '-aan pattum / okkum', desc: 'இயலும் திறன்' },
-      { key: 'cannot', label: '🛑 முடியாது (Cannot)', badge: '-aan pattilla / okkila', desc: 'இயலாமை' },
-      { key: 'cont', label: '🔄 தொடர்காலம் (Continuous)', badge: '-kondi- / -indirikkanu', desc: 'நடந்து கொண்டிருக்கிறது' },
-      { key: 'if',   label: '🔀 செய்தால் (Conditional If)', badge: '-aal (ஆல்)', desc: 'நிபந்தனை' },
-      { key: 'ques', label: '❓ கேள்வி (May I?)', badge: '-aamo? / -o?', desc: 'பணிவான கேள்வி' },
-      { key: 'neg',  label: '❌ இல்லை (Negative)', badge: '-illa (இல்லை)', desc: 'செயல் நிகழவில்லை' },
-      { key: 'forbid', label: '⚠️ செய்யாதே (Don\'t Do!)', badge: '-aruthe / -alle', desc: 'விலக்குதல்' }
+      { key: 'pres',   label: '🕒 நிகழ்காலம் (Present)', badge: '-unnu / -anu', desc: 'இப்போது நடக்கும் செயல்' },
+      { key: 'past',   label: '⏪ இறந்தகாலம் (Past)', badge: '-i / -thu / -nu', desc: 'நடந்து முடிந்த செயல்' },
+      { key: 'fut',    label: '⏩ எதிர்காலம் (Future)', badge: '-um (செய்வேன்)', desc: 'இனி நடக்கவிருக்கும் செயல்' },
+      { key: 'must',   label: '⚡ வேண்டும் (Must / Obligation)', badge: '-anam / -onam', desc: 'கட்டாயம் செய்ய வேண்டும்' },
+      { key: 'dont',   label: '🚫 வேண்டாம் (Don\'t)', badge: '-enda / -anda', desc: 'செய்யத் தேவையில்லை' },
+      { key: 'can',    label: '💪 முடியும் (Can / Able)', badge: 'pattum / okkum', desc: 'திறன் அல்லது சாத்தியம்' },
+      { key: 'cannot', label: '🛑 முடியாது (Cannot)', badge: 'pattilla / okkila', desc: 'இயலாமை அல்லது தடை' },
+      { key: 'cont',   label: '⏳ தொடர் காலம் (Continuous)', badge: '-kondirikkunnu', desc: 'தொடர்ந்து நடைபெறும் செயல்' },
+      { key: 'if',     label: '🌿 நிபந்தனை (If Condition)', badge: '-aal / -aalo', desc: 'செய்தால், போனால்' },
+      { key: 'ques',   label: '❓ வினா (Question / -o?)', badge: '-o? / -umo?', desc: 'செய்தாயா? வருவாயா?' },
+      { key: 'neg',    label: '❌ இல்லை (Negative)', badge: '-illa (இல்லை)', desc: 'செயல் நிகழவில்லை' },
+      { key: 'forbid', label: '⚠️ செய்யாதே (Don\'t Do!)', badge: '-aruthe / -alle', desc: 'விலக்குதல் / எச்சரிக்கை' }
     ];
 
+    // =========================================================================
+    // 8E. DATASET: 5. CONVERSATIONAL VAULT (50+ Real Sentences)
+    // =========================================================================
+    const CONVERSATIONAL_TEMPLATES = [
+      // 1. வினாக்கள் (Questions)
+      {
+        cat: 'ques',
+        badge: '❓ வினா',
+        tam: "நீ எங்கே போகிறாய்?",
+        std: "நீ எவிடெ போகிறது? (Nee evide pokunnathu?)",
+        mlp: "இஜ்ஜ் எவடெ போணது? (Ijj eveda ponathu?)",
+        scrStd: "നീ എവിടെ പോകുന്നത്?",
+        scrMlp: "ഇജ്ജ് എവിടെ പോണത്?",
+        notes: "மலப்புரத்தில் 'நீ' என்பது 'இஜ்ஜ்' (Ijj) ஆகவும், 'எவிடெ' என்பது 'எவடெ' (Eveda) ஆகவும் மாறும்."
+      },
+      {
+        cat: 'ques',
+        badge: '❓ வினா',
+        tam: "சாப்பிட்டாயா? (உணவு அருந்தினாயா?)",
+        std: "பக்ஷணம் கழிச்சோ? (Bhakshanam kazhicho?)",
+        mlp: "திண்ணோ? / சோறு கழிச்சோ? (Thinno?)",
+        scrStd: "ഭക്ഷണം കഴിച്ചോ?",
+        scrMlp: "തിന്നോ? ചോറ് കഴിച്ചോ?",
+        notes: "நண்பர்களிடம் பேசும்போது 'திண்ணோ?' (Thinno?) என்று அன்பாகக் கேட்பர்."
+      },
+      {
+        cat: 'ques',
+        badge: '❓ வினா',
+        tam: "என்ன விசேஷம்? (என்ன செய்தி?)",
+        std: "எந்துண்டு விசேஷம்? (Enthundu vishesham?)",
+        mlp: "எந்தா விசேஷம் சங்கதி? (Entha vishesham changaathi?)",
+        scrStd: "എന്തുണ്ട് വിശേഷം?",
+        scrMlp: "എന്താ വിശേഷം ചങ്ങാതി?",
+        notes: "கேரளாவில் சந்தித்தவுடன் கேட்கும் முதல் வாக்கியம் 'எந்துண்டு விசேஷம்?'"
+      },
+      {
+        cat: 'ques',
+        badge: '❓ வினா',
+        tam: "உனக்கு மலையாளம் தெரியுமா?",
+        std: "நினக்கு மலையாளம் அறியுமோ? (Ninakku malayalam ariyumo?)",
+        mlp: "இஜக் மலையாளம் அறியோ? (Ijkku malayalam ariyo?)",
+        scrStd: "നിനക്ക് മലയാളം അറിയുമോ?",
+        scrMlp: "നിനക്ക് മലയാളം അറിയോ?",
+        notes: "உனக்கு = நினக்கு (Dative). கேள்விக்கான விகுதி '-அறியுமோ?'"
+      },
+      {
+        cat: 'ques',
+        badge: '❓ வினா',
+        tam: "இதன் விலை எவ்வளவு?",
+        std: "இதினு எத்ரயாணு வில? (Ithinu ethrayaanu vila?)",
+        mlp: "இதினு எத்ரா காசு? (Ithinu ethraa kaashu?)",
+        scrStd: "ഇതിന് എത്രയാണ് വില?",
+        scrMlp: "ഇതിന് എത്രാ കാശ്?",
+        notes: "கடைக்காரரிடம் கேட்கும்போது 'இதினு எத்ரா?' (Ithinu ethra?) என்று கேட்டாலே போதும்."
+      },
+      {
+        cat: 'ques',
+        badge: '❓ வினா',
+        tam: "எப்போது வருவாய்?",
+        std: "எப்பொள் வரும்? (Eppol varum?)",
+        mlp: "எப்பம் வரும்? (Eppam varum?)",
+        scrStd: "എപ്പോൾ വരും?",
+        scrMlp: "എപ്പം വരും?",
+        notes: "மலப்புரத்தில் 'எப்பொள்' என்பது சுருங்கி 'எப்பம்' (Eppam) என்று ஒலிக்கும்."
+      },
+      {
+        cat: 'ques',
+        badge: '❓ வினா',
+        tam: "உனக்கு என்ன வேண்டும்?",
+        std: "நினக்கு எந்தாணு வேண்டிது? (Ninakku enthaanu vendathu?)",
+        mlp: "இஜக் எந்தா வேணோ? (Ijkku enthaa veno?)",
+        scrStd: "നിനക്ക് എന്താണ് വേണ്ടത്?",
+        scrMlp: "നിനക്ക് എന്താ വേണോ?",
+        notes: "தேவைகளைக் கேட்கும்போது 'நினக்கு எந்தா வேணோ?' என்பர்."
+      },
+      {
+        cat: 'ques',
+        badge: '❓ வினா',
+        tam: "உதவி செய்ய முடியுமா?",
+        std: "ஒரு சகாயம் செய்யான் பற்றுமோ? (Oru sahaayam cheyyaan pattumo?)",
+        mlp: "ஒரு சகாயம் செய்யான் ஒக்குமோ? (Oru sahaayam cheyyaan okkumo?)",
+        scrStd: "ഒരു സഹായം ചെയ്യാൻ പറ്റുമോ?",
+        scrMlp: "ഒരു സഹായം ചെയ്യാൻ ഒക്കുമോ?",
+        notes: "மலப்புரத்தில் 'பற்றுமோ' என்பதற்குப் பதிலாக 'ஒக்குமோ' (Okkumo) என்பது மிகப் பிரபலம்."
+      },
+      {
+        cat: 'ques',
+        badge: '❓ வினா',
+        tam: "நான் உள்ளே வரலாமா?",
+        std: "ஞான் அகத்தேக்கு வரட்டே? (Njaan akaththekku varatte?)",
+        mlp: "ஞம்மள் உள்ளில் வரட்டே? (Njammal ullil varatte?)",
+        scrStd: "ഞാൻ അകത്തേക്ക് വരട്ടെ?",
+        scrMlp: "ഞമ്മള് ഉള്ളിൽ വരട്ടെ?",
+        notes: "அனுமதி கேட்க '-அட்டே?' (-atte?) விகுதி பயன்படும்."
+      },
+      {
+        cat: 'ques',
+        badge: '❓ வினா',
+        tam: "நீ ஏன் வரவில்லை?",
+        std: "நீ எந்தா வராஞ்ஞது? (Nee enthaa varaanjathu?)",
+        mlp: "இஜ்ஜ் எந்தீனா வராஞ்ஞே? (Ijj entheena varaanjé?)",
+        scrStd: "നീ എന്താ വരാഞ്ഞത്?",
+        scrMlp: "ഇജ്ജ് എന്തിനാ വരാഞ്ഞേ?",
+        notes: "எதிர்மறை வினாவாக 'வராஞ்ஞது?' (வரவில்லை என்ற செயல்) அமையும்."
+      },
+
+      // 2. தேவைகள் & உணர்வுகள் (Dative Needs)
+      {
+        cat: 'dative',
+        badge: '⚡ தேவை',
+        tam: "எனக்கு ஒரு சாயா வேண்டும்.",
+        std: "எனிக்கு ஒரு சாயா வேணம். (Enikku oru chaaya venam.)",
+        mlp: "எனிக்கு ஒரு சாயா வேணம். (Enikku oru chaaya venam.)",
+        scrStd: "എനിക്ക് ഒരു ചായ വേണം.",
+        scrMlp: "എനിക്ക് ഒരു ചായ വേണം.",
+        notes: "டீக்கடையில் 'ஒரு சாயா வேணம் சேட்டா!' என்று உரிமையுடன் கேளுங்கள்."
+      },
+      {
+        cat: 'dative',
+        badge: '⚡ உணர்வு',
+        tam: "எனக்கு மிகவும் பசிக்கிறது.",
+        std: "எனிக்கு நல்ல விஷப்புண்டு. (Enikku nalla vishappundu.)",
+        mlp: "எனிக்கு நல்ல விஷக்யணு. (Enikku nalla vishakkanu.)",
+        scrStd: "എനിക്ക് നല്ല വിശപ്പുണ്ട്.",
+        scrMlp: "എനിക്ക് നല്ല വിശക്കണ്.",
+        notes: "பசியை உணர்த்த 'விஷப்புண்டு' அல்லது 'விஷக்குன்னு' என்பர்."
+      },
+      {
+        cat: 'dative',
+        badge: '⚡ தேவை',
+        tam: "எனக்கு இப்போது போக வேண்டும்.",
+        std: "எனிக்கு இப்போள் போகணம். (Enikku ippol pokanam.)",
+        mlp: "எனிக்கு இப்பம் போணம். (Enikku ippam ponam.)",
+        scrStd: "എനിക്ക് ഇപ്പോൾ പോകണം.",
+        scrMlp: "എനിക്ക് ഇപ്പം പോണം.",
+        notes: "மலப்புரத்தில் 'போகணம்' என்பது 'போணம்' (Ponam) என வேகமாய் மாறும்."
+      },
+      {
+        cat: 'dative',
+        badge: '⚡ விருப்பம்',
+        tam: "எனக்கு மலபார் பிரியாணி பிடிக்கும்.",
+        std: "எனிக்கு மலபார் பிரியாணி இஷ்டமாணு. (Enikku Malabar biriyani ishtamaanu.)",
+        mlp: "எனிக்கு மலபார் பிரியாணி இஷ்டா! (Enikku Malabar biriyani ishtaa!)",
+        scrStd: "എനിക്ക് മലബാർ ബിരിയാണി ഇഷ്ടമാണ്.",
+        scrMlp: "എനിക്ക് മലബാർ ബിരിയാണി ഇഷ്ടാണ്!",
+        notes: "பிடித்தத்தைக் கூற 'இஷ்டமாணு' என்பர்."
+      },
+      {
+        cat: 'dative',
+        badge: '⚡ மறுப்பு',
+        tam: "எனக்கு இனி வேண்டாம், வயிறு நிறைந்தது.",
+        std: "எனிக்கு இனி வேண்டாம், வயறு நிறஞ்ஞு. (Enikku ini venda, vayaru niranju.)",
+        mlp: "எனிக்கு இனி வேண்டா, வயறு நிறஞ்சு. (Enikku ini vendaa.)",
+        scrStd: "എനിക്ക് ഇനി വേണ്ട, വയറ് നിറഞ്ഞു.",
+        scrMlp: "എനിക്ക് ഇനി വേണ്ട, വയറ് നിറഞ്ഞു.",
+        notes: "உணவு போதும் என மறுக்க 'இனி வேண்டா' என்று கூறலாம்."
+      },
+      {
+        cat: 'dative',
+        badge: '⚡ இயலாமை',
+        tam: "எனக்கு இன்று வர முடியாது.",
+        std: "எனிக்கு இன்று வரான் பற்றில்ல. (Enikku innu varaan pattilla.)",
+        mlp: "எனிக்கு இன்று வரான் ஒக்கில. (Enikku innu varaan okkila.)",
+        scrStd: "എനിക്ക് ഇന്ന് വരാൻ പറ്റില്ല.",
+        scrMlp: "എനിക്ക് ഇന്ന് വരാൻ ഒക്കില്ല.",
+        notes: "இயலாமையைத் தெரிவிக்க 'பற்றில்ல' (Standard) அல்லது 'ஒக்கில' (மலப்புரம்)."
+      },
+      {
+        cat: 'dative',
+        badge: '⚡ அறிவு',
+        tam: "எனக்கு அந்த வழி தெரியாது.",
+        std: "எனிக்கு ஆ வழி அறியில்ல. (Enikku aa vazhi ariyilla.)",
+        mlp: "எனிக்கு ஆ வழி அறியில்ல. (Enikku aa vazhi ariyilla.)",
+        scrStd: "എനിക്ക് ആ വഴി അറിയില്ല.",
+        scrMlp: "എനിക്ക് ആ വഴി അറിയില്ല.",
+        notes: "தெரியாது என்பதற்கு 'அறியில்ல' (Ariyilla)."
+      },
+      {
+        cat: 'dative',
+        badge: '⚡ உணர்வு',
+        tam: "எனக்கு மிகவும் தாகமாக இருக்கிறது.",
+        std: "எனிக்கு நல்ல தாகமுண்டு. (Enikku nalla dhaahamundu.)",
+        mlp: "எனிக்கு தொண்ட வரண்டு, வெள்ளம் வேணம்! (Enikku vellam venam!)",
+        scrStd: "എനിക്ക് നല്ല ദാഹമുണ്ട്.",
+        scrMlp: "എനിക്ക് തൊണ്ട വരണ്ട്, വെള്ളം വേണം!",
+        notes: "வெள்ளம் = மலையாளத்தில் குடிதண்ணீர்! (தமிழில் வெள்ளை நிறம் அல்ல)."
+      },
+
+      // 3. நலம் விசாரிப்பு & பொது உரையாடல் (Greetings & Small Talk)
+      {
+        cat: 'greeting',
+        badge: '🤝 நலம்',
+        tam: "எல்லாம் சௌக்கியமா? சுகமா இருக்கிறீர்களா?",
+        std: "எல்லாம் சுகந்தன்னெயல்லே? (Ellaam sugam thanneyalle?)",
+        mlp: "எல்லாம் குசலமல்லே பாவி? (Ellaam kusalamaalle baavi?)",
+        scrStd: "എല്ലാം സുഖം തന്നെയല്ലേ?",
+        scrMlp: "എല്ലാം കുശലമല്ലേ ബാവി?",
+        notes: "பாவி (Baavi) = மலப்புரத்தில் 'நண்பா / மச்சான்' என அன்போடு அழைக்கும் சொல்!"
+      },
+      {
+        cat: 'greeting',
+        badge: '🤝 நலம்',
+        tam: "ரொம்ப நாளாச்சு உங்களைப் பார்த்து!",
+        std: "ஒருபாடு நாளாயி கண்டுமுட்டிட்டு! (Orupaadu naalaayi kandumuttittu!)",
+        mlp: "கொரே நாளாயல்லோ பாவி கண்டுட்டு! (Kore naalaayallo baavi kandittu!)",
+        scrStd: "ഒരുപാട് നാളായി കണ്ടുമുട്ടിയിട്ട്!",
+        scrMlp: "കൊറേ നാളായല്ലോ ബാവി കണ്ടിട്ട്!",
+        notes: "கொரே நாளு = நீண்ட காலம்."
+      },
+      {
+        cat: 'greeting',
+        badge: '🤝 நலம்',
+        tam: "வீட்டில் எல்லோரும் சௌக்கியமா?",
+        std: "வீட்டில் எல்லாவர்க்கும் சுகமாணோ? (Veettil ellaavarkkum sugamaano?)",
+        mlp: "போரேல் எல்லாரும் உஷாரல்லே? (Porel ellaarum ushaaralle?)",
+        scrStd: "വീട്ടിൽ എല്ലാവർക്കും സുഖമാണോ?",
+        scrMlp: "പോരേൽ എല്ലാരും ഉഷാറല്ലേ?",
+        notes: "போரேல் (Porel) = மலப்புரத்தில் 'வீட்டில்' என்று பொருள்."
+      },
+      {
+        cat: 'greeting',
+        badge: '🤝 நலம்',
+        tam: "கவலைப்படாதே, எல்லாம் சரியாகிவிடும்.",
+        std: "விஷமிக்கேண்டா, எல்லாம் சரியாகும். (Vishamikkenda, ellaam shariyaakum.)",
+        mlp: "பேடிக்கண்டா பாவி, குழப்பமில்ல! (Pedikkanda baavi, kuzhappamilla!)",
+        scrStd: "വിഷമിക്കേണ്ട, എല്ലാം ശരിയാകും.",
+        scrMlp: "പേടിക്കണ്ട ബാവി, കുഴപ്പമില്ല!",
+        notes: "குழப்பமில்ல (Kuzhappamilla) = 'எந்த பிரச்சனையும் இல்லை' என ஆறுதல் சொல்லும் சொல்."
+      },
+
+      // 4. உணவு & கடை (Food & Shopping)
+      {
+        cat: 'food',
+        badge: '🍛 உணவு',
+        tam: "சேட்டா, சூடா ஒரு ஸ்ட்ராங் சாயாவும் ஒரு பழம்பொரியும்!",
+        std: "சேட்டா, சூடாய ஒரு சாயயும் பழம்பொரியும்! (Chetta, choodaaya chaayayum pazhamporiyum!)",
+        mlp: "சேட்டா, ஒரு கட்டன் சாயயும் நன்னா பொரிஞ்ச பழம்பொரியும்! (Kattan chaaya)",
+        scrStd: "ചേട്ടാ, ചൂടായ ഒരു ചായയും പഴംപൊരിയും!",
+        scrMlp: "ചേട്ടാ, ഒരു കട്ടൻ ചായയും നന്നായി പൊരിഞ്ഞ പഴംപൊരിയും!",
+        notes: "பழம்பொரி (Pazhampori) = வாழைப்பழ பஜ்ஜி, கேரளாவின் டாப் மாலை நேர சிற்றுண்டி."
+      },
+      {
+        cat: 'food',
+        badge: '🍛 உணவு',
+        tam: "பிரியாணி மிகவும் சுவையாக இருக்கிறது!",
+        std: "பிரியாணி நல்ல ருசியுண்டு! (Biriyani nalla ruchiyundu!)",
+        mlp: "பிரியாணி ஒடுக்கத்த டேஸ்ட்! மொஞ்சாயிட்டுண்டு! (Odukkathe taste!)",
+        scrStd: "ബിരിയാണി നല്ല രുചിയുണ്ട്!",
+        scrMlp: "ബിരിയാണി ഒടുക്കത്തെ ടേസ്റ്റ്! മൊഞ്ചായിട്ടുണ്ട്!",
+        notes: "மொஞ்சு (Monju) = அழகு / சூப்பர் என்று மலபாரில் வியந்து பாராட்டுவர்."
+      },
+      {
+        cat: 'food',
+        badge: '🍛 கடை',
+        tam: "பில் கொண்டு வாருங்கள்.",
+        std: "பில் எடுத்தோண்டு வரூ. (Bill eduthondu varoo.)",
+        mlp: "சேட்டா, பில்லு எத்ரான்னு பறஞ்ஞூ? (Bill ethraanu?)",
+        scrStd: "ബിൽ എടുത്തുകൊണ്ട് വരൂ.",
+        scrMlp: "ചേട്ടാ, ബില്ല് എത്രയാണെന്ന് പറഞ്ഞ് തരുമോ?",
+        notes: "சாப்பிட்டு முடித்த பின் பில் கேட்கப் பயன்படும்."
+      },
+
+      // 5. பயணம் & வழி (Travel & Directions)
+      {
+        cat: 'travel',
+        badge: '🚖 பயணம்',
+        tam: "ரயில்வே ஸ்டேஷனுக்கு எப்படி போக வேண்டும்?",
+        std: "ரயில்வே ஸ்டேஷனிலேக்கு எங்கனெ போகணம்? (Railway stationilekku engane pokanam?)",
+        mlp: "ஸ்டேஷனிலேக் ஏது வழியா போணது? (Stationilek eathu vazhiyaa ponathu?)",
+        scrStd: "റെയിൽവേ സ്റ്റേഷനിലേക്ക് എങ്ങനെ പോകണം?",
+        scrMlp: "സ്റ്റേഷനിലേക്ക് ഏത് വഴിയാ പോണത്?",
+        notes: "வழி கேட்கும்போது 'ஏது வழியா போணது?' என்று கேட்கலாம்."
+      },
+      {
+        cat: 'travel',
+        badge: '🚖 பயணம்',
+        tam: "நேராகப் போய் வலது பக்கம் திரும்புங்கள்.",
+        std: "நேரே போயி வலத்தோட்டு திரியூ. (Nere poyi valathottu thiriyoo.)",
+        mlp: "நேரே போயி வலது பாக்கத்தோட்டு திரியூ. (Valathu bhaagathottu)",
+        scrStd: "നേരെ പോയി വലത്തോട്ട് തിരിയൂ.",
+        scrMlp: "നേരെ പോയി വലത് ഭാഗത്തോട്ട് തിരിയൂ.",
+        notes: "வலத்தோட்டு = வலது பக்கம்; இடத்தோட்டு = இடது பக்கம்."
+      },
+      {
+        cat: 'travel',
+        badge: '🚖 பயணம்',
+        tam: "அடுத்த பஸ் எப்போது வரும்?",
+        std: "அடுத்த பஸ் எப்பொள் வரும்? (Adutha bus eppol varum?)",
+        mlp: "அடுத்த வண்டி எப்பம் வரும்? (Adutha vandi eppam varum?)",
+        scrStd: "അടുത്ത ബസ് എപ്പോൾ വരും?",
+        scrMlp: "അടുത്ത വണ്ടി എപ്പം വരും?",
+        notes: "கேரளாவில் பஸ்ஸை 'வண்டி' (Vandi) என்றும் குறிப்பிடுவர்."
+      }
+    ];
+
+    // =========================================================================
+    // 8F. UI RENDERING & BUILDER LOGIC
+    // =========================================================================
+
     function initSentenceLabUI() {
-      // 1. Render Subject Chips
-      const subjBox = document.getElementById('lab-subj-chips');
-      if (subjBox) {
-        subjBox.innerHTML = LAB_SUBJECTS.map((s, idx) => `
+      // 1. Wh-Question Chips
+      renderWhQuestionChips();
+
+      // 2. Polar Question Chips
+      renderPolarQuestionChips();
+
+      // 3. Dative Chips
+      renderDativeChips();
+
+      // 4. General Lab Chips
+      renderGeneralLabChips();
+
+      // 5. Conversational Vault Templates
+      renderConversationalTemplates();
+
+      // Update mode switcher active state
+      setLabMode(state.labMode || 'ques');
+    }
+
+    function renderWhQuestionChips() {
+      const qBox = document.getElementById('lab-wh-ques-chips');
+      if (qBox) {
+        qBox.innerHTML = LAB_QUESTIONS.map((q, idx) => `
+          <button class="segment-chip ${idx === state.labWhQues ? 'active' : ''}" onclick="setLabWhQues(${idx}, this)">
+            ${q.tam}
+          </button>
+        `).join('');
+      }
+
+      const sBox = document.getElementById('lab-wh-subj-chips');
+      if (sBox) {
+        sBox.innerHTML = LAB_WH_SUBJECTS.map((s, idx) => `
+          <button class="segment-chip ${idx === state.labWhSubj ? 'active' : ''}" onclick="setLabWhSubj(${idx}, this)">
+            ${s.tam}
+          </button>
+        `).join('');
+      }
+
+      const cBox = document.getElementById('lab-wh-context-chips');
+      if (cBox) {
+        cBox.innerHTML = LAB_WH_CONTEXTS.map((c, idx) => `
+          <button class="segment-chip ${idx === state.labWhContext ? 'active' : ''}" onclick="setLabWhContext(${idx}, this)">
+            ${c.tam}
+          </button>
+        `).join('');
+      }
+
+      const vBox = document.getElementById('lab-wh-verb-chips');
+      if (vBox) {
+        vBox.innerHTML = LAB_WH_VERBS.map((v, idx) => `
+          <button class="segment-chip verb-chip ${idx === state.labWhVerb ? 'active' : ''}" onclick="setLabWhVerb(${idx}, this)">
+            ${v.tam}
+          </button>
+        `).join('');
+      }
+    }
+
+    function renderPolarQuestionChips() {
+      const pBox = document.getElementById('lab-polar-ques-chips');
+      if (pBox) {
+        pBox.innerHTML = POLAR_QUESTIONS.map((p, idx) => `
+          <div class="polar-card ${idx === state.labPolarQues ? 'active' : ''}" onclick="setLabPolarQues(${idx}, this)">
+            <span class="polar-badge">${p.badge}</span>
+            <div class="polar-title">${p.title}</div>
+            <div class="polar-desc">${p.tamEnding}</div>
+          </div>
+        `).join('');
+      }
+
+      const sBox = document.getElementById('lab-polar-subj-chips');
+      if (sBox) {
+        sBox.innerHTML = POLAR_SUBJECTS.map((s, idx) => `
+          <button class="segment-chip ${idx === state.labPolarSubj ? 'active' : ''}" onclick="setLabPolarSubj(${idx}, this)">
+            ${s.tam}
+          </button>
+        `).join('');
+      }
+
+      const cBox = document.getElementById('lab-polar-context-chips');
+      if (cBox) {
+        cBox.innerHTML = POLAR_CONTEXTS.map((c, idx) => `
+          <button class="segment-chip obj-chip ${idx === state.labPolarContext ? 'active' : ''}" onclick="setLabPolarContext(${idx}, this)">
+            ${c.tam}
+          </button>
+        `).join('');
+      }
+    }
+
+    function renderDativeChips() {
+      const sBox = document.getElementById('lab-dative-subj-chips');
+      if (sBox) {
+        sBox.innerHTML = DATIVE_SUBJECTS.map((s, idx) => `
+          <button class="segment-chip ${idx === state.labDativeSubj ? 'active' : ''}" onclick="setLabDativeSubj(${idx}, this)">
+            ${s.tam}
+          </button>
+        `).join('');
+      }
+
+      const oBox = document.getElementById('lab-dative-obj-chips');
+      if (oBox) {
+        oBox.innerHTML = DATIVE_OBJECTS.map((o, idx) => `
+          <button class="segment-chip obj-chip ${idx === state.labDativeObj ? 'active' : ''}" onclick="setLabDativeObj(${idx}, this)">
+            ${o.tam}
+          </button>
+        `).join('');
+      }
+
+      const pBox = document.getElementById('lab-dative-pred-chips');
+      if (pBox) {
+        pBox.innerHTML = DATIVE_PREDICATES.map((p, idx) => `
+          <button class="segment-chip mood-chip ${idx === state.labDativePred ? 'active' : ''}" onclick="setLabDativePred(${idx}, this)">
+            ${p.tam}
+          </button>
+        `).join('');
+      }
+    }
+
+    function renderGeneralLabChips() {
+      const sBox = document.getElementById('lab-subj-chips');
+      if (sBox) {
+        sBox.innerHTML = LAB_SUBJECTS.map((s, idx) => `
           <button class="segment-chip ${idx === state.labSubj ? 'active' : ''}" onclick="setLabSubject(${idx}, this)">
             ${s.tam}
           </button>
         `).join('');
       }
 
-      // 2. Render Adjective Chips
       renderAdjectiveChips();
 
-      // 3. Render Object Chips
-      const objBox = document.getElementById('lab-obj-chips');
-      if (objBox) {
-        objBox.innerHTML = LAB_OBJECTS.map((o, idx) => `
+      const oBox = document.getElementById('lab-obj-chips');
+      if (oBox) {
+        oBox.innerHTML = LAB_OBJECTS.map((o, idx) => `
           <button class="segment-chip obj-chip ${idx === state.labObj ? 'active' : ''}" onclick="setLabObject(${idx}, this)">
             ${o.tam}
           </button>
         `).join('');
       }
 
-      // 4. Render Verb Chips
       renderVerbChips();
 
-      // 5. Render Mood / Tense Chips
-      const tenseBox = document.getElementById('lab-tense-chips');
-      if (tenseBox) {
-        tenseBox.innerHTML = LAB_MOODS.map(m => `
+      const tBox = document.getElementById('lab-tense-chips');
+      if (tBox) {
+        tBox.innerHTML = LAB_MOODS.map(m => `
           <button class="segment-chip mood-chip ${m.key === state.labTense ? 'active' : ''}" onclick="setLabTense('${m.key}', this)">
             ${m.label}
           </button>
@@ -3057,7 +4330,7 @@
       soundClick();
       state.adjFilter = cat;
       document.querySelectorAll('#adj-filter-row .lab-filter-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
+      if (btn) btn.classList.add('active');
       renderAdjectiveChips();
     }
 
@@ -3078,17 +4351,132 @@
       soundClick();
       state.verbFilter = cat;
       document.querySelectorAll('#verb-filter-row .lab-filter-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
+      if (btn) btn.classList.add('active');
       renderVerbChips();
     }
 
+    // --- Wh-Question Chip Setters ---
+    function setLabWhQues(index, btn) {
+      soundClick();
+      state.labWhQues = index;
+      document.querySelectorAll('#lab-wh-ques-chips .segment-chip').forEach(c => c.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      const q = LAB_QUESTIONS[index];
+      const preview = document.getElementById('lab-wh-ques-preview');
+      if (preview) preview.textContent = q.tam.split(' ')[0];
+      runSentenceLab();
+    }
+
+    function setLabWhSubj(index, btn) {
+      soundClick();
+      state.labWhSubj = index;
+      document.querySelectorAll('#lab-wh-subj-chips .segment-chip').forEach(c => c.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      const s = LAB_WH_SUBJECTS[index];
+      const preview = document.getElementById('lab-wh-subj-preview');
+      if (preview) preview.textContent = s.tam.split(' ')[0];
+      runSentenceLab();
+    }
+
+    function setLabWhContext(index, btn) {
+      soundClick();
+      state.labWhContext = index;
+      document.querySelectorAll('#lab-wh-context-chips .segment-chip').forEach(c => c.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      const c = LAB_WH_CONTEXTS[index];
+      const preview = document.getElementById('lab-wh-context-preview');
+      if (preview) preview.textContent = c.tam.split(' ')[0];
+      runSentenceLab();
+    }
+
+    function setLabWhVerb(index, btn) {
+      soundClick();
+      state.labWhVerb = index;
+      document.querySelectorAll('#lab-wh-verb-chips .segment-chip').forEach(c => c.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      const v = LAB_WH_VERBS[index];
+      const preview = document.getElementById('lab-wh-verb-preview');
+      if (preview) preview.textContent = v.tamAction || v.tam;
+      runSentenceLab();
+    }
+
+    // --- Polar Question Chip Setters ---
+    function setLabPolarQues(index, card) {
+      soundClick();
+      state.labPolarQues = index;
+      document.querySelectorAll('#lab-polar-ques-chips .polar-card').forEach(c => c.classList.remove('active'));
+      if (card) card.classList.add('active');
+      const p = POLAR_QUESTIONS[index];
+      const preview = document.getElementById('lab-polar-ques-preview');
+      if (preview) preview.textContent = p.badge;
+      runSentenceLab();
+    }
+
+    function setLabPolarSubj(index, btn) {
+      soundClick();
+      state.labPolarSubj = index;
+      document.querySelectorAll('#lab-polar-subj-chips .segment-chip').forEach(c => c.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      const s = POLAR_SUBJECTS[index];
+      const preview = document.getElementById('lab-polar-subj-preview');
+      if (preview) preview.textContent = s.tam.split(' ')[0];
+      runSentenceLab();
+    }
+
+    function setLabPolarContext(index, btn) {
+      soundClick();
+      state.labPolarContext = index;
+      document.querySelectorAll('#lab-polar-context-chips .segment-chip').forEach(c => c.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      const c = POLAR_CONTEXTS[index];
+      const preview = document.getElementById('lab-polar-context-preview');
+      if (preview) preview.textContent = c.tam.split(' ')[0];
+      runSentenceLab();
+    }
+
+    // --- Dative Chip Setters ---
+    function setLabDativeSubj(index, btn) {
+      soundClick();
+      state.labDativeSubj = index;
+      document.querySelectorAll('#lab-dative-subj-chips .segment-chip').forEach(c => c.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      const s = DATIVE_SUBJECTS[index];
+      const preview = document.getElementById('lab-dative-subj-preview');
+      if (preview) preview.textContent = s.tam.split(' ')[0];
+      runSentenceLab();
+    }
+
+    function setLabDativeObj(index, btn) {
+      soundClick();
+      state.labDativeObj = index;
+      document.querySelectorAll('#lab-dative-obj-chips .segment-chip').forEach(c => c.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      const o = DATIVE_OBJECTS[index];
+      const preview = document.getElementById('lab-dative-obj-preview');
+      if (preview) preview.textContent = o.tamWord ? o.tamWord : '(நேரடி)';
+      runSentenceLab();
+    }
+
+    function setLabDativePred(index, btn) {
+      soundClick();
+      state.labDativePred = index;
+      document.querySelectorAll('#lab-dative-pred-chips .segment-chip').forEach(c => c.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      const p = DATIVE_PREDICATES[index];
+      const preview = document.getElementById('lab-dative-pred-preview');
+      if (preview) preview.textContent = p.tamSuffix;
+      runSentenceLab();
+    }
+
+    // --- General Lab Chip Setters ---
     function setLabSubject(index, btn) {
       soundClick();
       state.labSubj = index;
       document.querySelectorAll('#lab-subj-chips .segment-chip').forEach(c => c.classList.remove('active'));
       if (btn) btn.classList.add('active');
       const s = LAB_SUBJECTS[index];
-      document.getElementById('lab-subj-preview').textContent = s.tam.split(' ')[0];
+      const preview = document.getElementById('lab-subj-preview');
+      if (preview) preview.textContent = s.tam.split(' ')[0];
       runSentenceLab();
     }
 
@@ -3098,7 +4486,8 @@
       document.querySelectorAll('#lab-adj-chips .segment-chip').forEach(c => c.classList.remove('active'));
       if (btn) btn.classList.add('active');
       const a = LAB_ADJECTIVES[index];
-      document.getElementById('lab-adj-preview').textContent = a.tamWord ? a.tamWord : '(நேரடி)';
+      const preview = document.getElementById('lab-adj-preview');
+      if (preview) preview.textContent = a.tamWord ? a.tamWord : '(நேரடி)';
       runSentenceLab();
     }
 
@@ -3108,7 +4497,8 @@
       document.querySelectorAll('#lab-obj-chips .segment-chip').forEach(c => c.classList.remove('active'));
       if (btn) btn.classList.add('active');
       const o = LAB_OBJECTS[index];
-      document.getElementById('lab-obj-preview').textContent = o.tamWord ? o.tamWord : '(நேரடி)';
+      const preview = document.getElementById('lab-obj-preview');
+      if (preview) preview.textContent = o.tamWord ? o.tamWord : '(நேரடி)';
       runSentenceLab();
     }
 
@@ -3118,7 +4508,8 @@
       document.querySelectorAll('#lab-verb-chips .segment-chip').forEach(c => c.classList.remove('active'));
       if (btn) btn.classList.add('active');
       const v = LAB_VERBS[index];
-      document.getElementById('lab-verb-preview').textContent = v.tamRoot.split(' ')[0];
+      const preview = document.getElementById('lab-verb-preview');
+      if (preview) preview.textContent = v.tamRoot.split(' ')[0];
       runSentenceLab();
     }
 
@@ -3128,161 +4519,449 @@
       document.querySelectorAll('#lab-tense-chips .segment-chip').forEach(c => c.classList.remove('active'));
       if (btn) btn.classList.add('active');
       const m = LAB_MOODS.find(item => item.key === tenseKey);
-      document.getElementById('lab-tense-preview').textContent = m ? m.label.split(' ')[1] : tenseKey;
+      const preview = document.getElementById('lab-tense-preview');
+      if (preview) preview.textContent = m ? m.label.split(' ')[1] : tenseKey;
       runSentenceLab();
+    }
+
+    // --- Conversational Vault Filtering & Rendering ---
+    function renderConversationalTemplates() {
+      const box = document.getElementById('template-list-box');
+      if (!box) return;
+
+      const filtered = CONVERSATIONAL_TEMPLATES.filter(item => {
+        if (state.templateFilter === 'all') return true;
+        return item.cat === state.templateFilter;
+      });
+
+      box.innerHTML = filtered.map((t, idx) => `
+        <div class="template-card">
+          <div class="template-card-header">
+            <span class="template-badge">${t.badge}</span>
+            <div style="display:flex; gap:6px;">
+              <button class="voice-btn-mini" title="Play Malayalam" onclick="playWithAnimation(this, '${escapeQuotes(t.std.split('(')[0].trim())}', 'std')">🔊 Standard</button>
+              <button class="voice-btn-mini" style="background:var(--amber-subtle); color:var(--amber); border-color:rgba(245,158,11,0.3);" title="Play Malabar" onclick="playWithAnimation(this, '${escapeQuotes(t.mlp.split('(')[0].trim())}', 'mlp')">🌴 Malabar</button>
+            </div>
+          </div>
+          <div class="template-tam">${t.tam}</div>
+          <div class="template-std">
+            <span class="lang-tag">Standard</span>
+            <strong>${t.scrStd}</strong> — ${t.std}
+          </div>
+          <div class="template-mlp">
+            <span class="lang-tag" style="background:rgba(245,158,11,0.15); color:var(--amber);">Malabar</span>
+            <strong>${t.scrMlp}</strong> — ${t.mlp}
+          </div>
+          ${t.notes ? `<div class="template-note">💡 ${t.notes}</div>` : ''}
+          <div class="template-actions">
+            <button class="copy-pill" style="font-size:0.75rem; padding:6px 10px;" onclick="copyLabOutput('${escapeQuotes(t.std)}', '${escapeQuotes(t.tam)}')">📋 நகல் (Copy)</button>
+            <button class="copy-pill" style="font-size:0.75rem; padding:6px 10px; background:var(--teal-subtle); color:var(--teal); border-color:rgba(13,148,136,0.3);" onclick="loadTemplateToStudio('${escapeQuotes(t.std)}', '${escapeQuotes(t.mlp)}', '${escapeQuotes(t.scrStd)}', '${escapeQuotes(t.scrMlp)}', '${escapeQuotes(t.tam)}', '${escapeQuotes(t.notes || '')}')">🎯 Studio-வில் காட்டு</button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function filterTemplates(cat, btn) {
+      soundClick();
+      state.templateFilter = cat;
+      document.querySelectorAll('#vault-filter-row .lab-filter-btn').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      renderConversationalTemplates();
+    }
+
+    function loadTemplateToStudio(std, mlp, scrStd, scrMlp, tam, notes) {
+      soundClick();
+      renderLabOutputUI({
+        modeLabel: "📚 நிஜ உரையாடல் வாக்கியம் (Conversational Vault)",
+        fullTamil: tam,
+        fullStdScript: scrStd,
+        fullStdRoman: std,
+        fullMlpScript: scrMlp,
+        fullMlpRoman: mlp,
+        tags: [
+          `<span class="grammar-tag">உரையாடல் வங்கி</span>`,
+          `<span class="grammar-tag grammar-tag-ques">வாக்கிய மாதிரி</span>`
+        ],
+        notes: notes || "கேரளாவில் இயல்பான உரையாடல்களில் நேரடியாகப் பயன்படுத்தப்படும் வாக்கியம்."
+      });
+      // Scroll to result box smoothly
+      const res = document.getElementById('lab-result-box');
+      if (res) res.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      showToast('🎯', 'வாக்கியம் காட்சிப்படுத்தப்பட்டது!');
+    }
+
+    // =========================================================================
+    // 8G. SENTENCE SYNTHESIS & RUNNER DISPATCH
+    // =========================================================================
+
+    function runSentenceLab() {
+      const mode = state.labMode || 'ques';
+      if (mode === 'ques') {
+        if (state.labQuesSubMode === 'polar') {
+          runPolarQuestionLab();
+        } else {
+          runWhQuestionLab();
+        }
+      } else if (mode === 'dative') {
+        runDativeLab();
+      } else if (mode === 'vault') {
+        // Vault is a grid of pre-built cards; keep result box showing current item or first template
+        if (!document.getElementById('lab-result-box').innerHTML) {
+          const t = CONVERSATIONAL_TEMPLATES[0];
+          loadTemplateToStudio(t.std, t.mlp, t.scrStd, t.scrMlp, t.tam, t.notes);
+        }
+      } else {
+        runGeneralLab();
+      }
+    }
+
+    // --- 1. Synthesize Wh-Questions ---
+    function runWhQuestionLab() {
+      const q = LAB_QUESTIONS[state.labWhQues] || LAB_QUESTIONS[0];
+      const s = LAB_WH_SUBJECTS[state.labWhSubj] || LAB_WH_SUBJECTS[0];
+      const c = LAB_WH_CONTEXTS[state.labWhContext] || LAB_WH_CONTEXTS[0];
+      const v = LAB_WH_VERBS[state.labWhVerb] || LAB_WH_VERBS[0];
+
+      // Tamil Sentence Construction: [Subject] [Context] [Wh-Question] [Verb]?
+      // e.g. "நீ இப்போது எங்கே போகிறாய்?"
+      const tamParts = [];
+      if (s.tam) tamParts.push(s.tam.split(' ')[0]);
+      if (c.tam && !c.tam.startsWith('நேரடி')) tamParts.push(c.tam.split(' ')[0]);
+      tamParts.push(q.tamPrefix);
+      tamParts.push(v.tamAction ? v.tamAction + '?' : v.tam);
+      const fullTamil = tamParts.join(' ');
+
+      // Standard Malayalam: Subject + Context + Question + Verb
+      // e.g. "Nee ippol evideyaanu pokunnathu?"
+      const stdSubj = s.std.split(' ')[0];
+      const stdContext = c.std ? c.std.split(' ')[0] : '';
+      const stdQues = q.std.split(' ')[0];
+      const stdVerb = v.std.split(' ')[0];
+
+      const scrSubj = s.scrStd;
+      const scrContext = c.scrStd;
+      const scrQues = q.scrStd;
+      const scrVerb = v.scrStd;
+
+      const stdRomanParts = [stdSubj, stdContext, stdQues, stdVerb].filter(Boolean);
+      const stdScriptParts = [scrSubj, scrContext, scrQues, scrVerb].filter(Boolean);
+
+      // Malappuram Dialect: Ijj + ippam + eveda + ponathu?
+      const mlpSubj = s.mlp.split(' ')[0];
+      const mlpContext = c.mlp ? c.mlp.split(' ')[0] : '';
+      const mlpQues = q.mlp.split(' ')[0];
+      const mlpVerb = v.mlp.split(' ')[0];
+
+      const scrMlpSubj = s.scrMlp;
+      const scrMlpContext = c.scrMlp;
+      const scrMlpQues = q.scrMlp;
+      const scrMlpVerb = v.scrMlp;
+
+      const mlpRomanParts = [mlpSubj, mlpContext, mlpQues, mlpVerb].filter(Boolean);
+      const mlpScriptParts = [scrMlpSubj, scrMlpContext, scrMlpQues, scrMlpVerb].filter(Boolean);
+
+      renderLabOutputUI({
+        modeLabel: `❓ Wh-வினா ஆய்வுக்கூடம் (${q.badge})`,
+        fullTamil,
+        fullStdScript: stdScriptParts.join(' '),
+        fullStdRoman: stdRomanParts.join(' '),
+        fullMlpScript: mlpScriptParts.join(' '),
+        fullMlpRoman: mlpRomanParts.join(' '),
+        tags: [
+          `<span class="grammar-tag grammar-tag-ques">${q.badge} வினா</span>`,
+          `<span class="grammar-tag">எழுவாய்: ${s.tam.split(' ')[0]}</span>`,
+          `<span class="grammar-tag">செயல்: ${v.tamAction || v.tam}</span>`
+        ],
+        notes: `${q.meaning}. மலையாளத்தில் வாக்கியத்தின் இறுதியில் கேள்விக்குரிய வினையைக் கூட்டி வினவுவது நயமான வழக்கம்.`
+      });
+    }
+
+    // --- 2. Synthesize Polar Questions ---
+    function runPolarQuestionLab() {
+      const p = POLAR_QUESTIONS[state.labPolarQues] || POLAR_QUESTIONS[0];
+      const s = POLAR_SUBJECTS[state.labPolarSubj] || POLAR_SUBJECTS[0];
+      const c = POLAR_CONTEXTS[state.labPolarContext] || POLAR_CONTEXTS[0];
+
+      // Tamil: நீ [பொருள்] [கேள்வி]?
+      const sTam = s.tam.split(' ')[0];
+      const cTam = c.tam.split(' ')[0];
+      const fullTamil = `${sTam} ${cTam} ${p.tamEnding}`;
+
+      // Standard Malayalam:
+      const sStd = s.std.split(' ')[0];
+      const cStd = c.std.split(' ')[0];
+      const pStd = p.stdSuffix.split(' ')[0];
+
+      const scrSubj = s.scrStd;
+      const scrContext = c.scrStd.split(' ')[0];
+      const scrSuffix = p.scrStd;
+
+      const fullStdRoman = `${sStd} ${cStd} ${pStd}`;
+      const fullStdScript = `${scrSubj} ${scrContext} ${scrSuffix}`;
+
+      // Malabar Dialect:
+      const sMlp = s.mlp.split(' ')[0];
+      const cMlp = c.mlp.split(' ')[0];
+      const pMlp = p.mlpSuffix.split(' ')[0];
+
+      const scrMlpSubj = s.scrMlp;
+      const scrMlpContext = c.scrMlp.split(' ')[0];
+      const scrMlpSuffix = p.scrMlp;
+
+      const fullMlpRoman = `${sMlp} ${cMlp} ${pMlp}`;
+      const fullMlpScript = `${scrMlpSubj} ${scrMlpContext} ${scrMlpSuffix}`;
+
+      renderLabOutputUI({
+        modeLabel: `⚡ Yes/No வினா ஆய்வுக்கூடம் (${p.badge})`,
+        fullTamil,
+        fullStdScript,
+        fullStdRoman,
+        fullMlpScript,
+        fullMlpRoman,
+        tags: [
+          `<span class="grammar-tag grammar-tag-ques">${p.badge}</span>`,
+          `<span class="grammar-tag">வினா விகுதி</span>`,
+          `<span class="grammar-tag">சூழல்: ${cTam}</span>`
+        ],
+        notes: p.grammar
+      });
+    }
+
+    // --- 3. Synthesize Dative Case Sentences ---
+    function runDativeLab() {
+      const s = DATIVE_SUBJECTS[state.labDativeSubj] || DATIVE_SUBJECTS[0];
+      const o = DATIVE_OBJECTS[state.labDativeObj] || DATIVE_OBJECTS[0];
+      const p = DATIVE_PREDICATES[state.labDativePred] || DATIVE_PREDICATES[0];
+
+      // Tamil: எனக்கு [பொருள்] [வேண்டும்/தெரியும்...]
+      const sTam = s.tam.split(' ')[0];
+      const oTam = o.tamWord ? o.tamWord : '';
+      const pTam = p.tamSuffix;
+      const fullTamil = [sTam, oTam, pTam].filter(Boolean).join(' ');
+
+      // Standard Malayalam: Enikku + Biriyani + venam
+      const sStd = s.std.split(' ')[0];
+      const oStd = o.std ? o.std.split(' ')[0] : '';
+      const pStd = p.std.split(' ')[0];
+
+      const scrSubj = s.scrStd;
+      const scrObj = o.scrStd;
+      const scrPred = p.scrStd;
+
+      const fullStdRoman = [sStd, oStd, pStd].filter(Boolean).join(' ');
+      const fullStdScript = [scrSubj, scrObj, scrPred].filter(Boolean).join(' ');
+
+      // Malabar Dialect:
+      const sMlp = s.mlp.split(' ')[0];
+      const oMlp = o.mlp ? o.mlp.split(' ')[0] : '';
+      const pMlp = p.mlp.split(' ')[0];
+
+      const scrMlpSubj = s.scrMlp;
+      const scrMlpObj = o.scrMlp;
+      const scrMlpPred = p.scrMlp;
+
+      const fullMlpRoman = [sMlp, oMlp, pMlp].filter(Boolean).join(' ');
+      const fullMlpScript = [scrMlpSubj, scrMlpObj, scrMlpPred].filter(Boolean).join(' ');
+
+      renderLabOutputUI({
+        modeLabel: `⚡ Dative Case தேவை & உணர்வு ஆய்வகம் (${p.tag})`,
+        fullTamil,
+        fullStdScript,
+        fullStdRoman,
+        fullMlpScript,
+        fullMlpRoman,
+        tags: [
+          `<span class="grammar-tag grammar-tag-dative">Dative (-kku)</span>`,
+          `<span class="grammar-tag">${p.tag}</span>`,
+          `<span class="grammar-tag">${sTam}</span>`
+        ],
+        notes: `மலையாளத்தில் "நான் வேண்டும்" என்று சொல்ல மாட்டார்கள். தமிழில் "எனக்கு வேண்டும்" என்பது போலவே மலையாளத்தில் <strong>"எனிக்கு வேணம்" (Enikku venam)</strong>, <strong>"எனிக்கு அறியாம்" (Enikku ariyam)</strong> என Dative Case-ல் அமையும்.`
+      });
+    }
+
+    // --- 4. Synthesize General Sentences ---
+    function runGeneralLab() {
+      const s = LAB_SUBJECTS[state.labSubj] || LAB_SUBJECTS[0];
+      const a = LAB_ADJECTIVES[state.labAdj] || LAB_ADJECTIVES[0];
+      const o = LAB_OBJECTS[state.labObj] || LAB_OBJECTS[0];
+      const v = LAB_VERBS[state.labVerb] || LAB_VERBS[0];
+      const t = state.labTense || 'pres';
+      const m = LAB_MOODS.find(item => item.key === t) || LAB_MOODS[0];
+
+      // Tamil Sentence Construction
+      const tamParts = [];
+      tamParts.push(s.tamPrefix);
+      if (a.tamWord) tamParts.push(a.tamWord);
+      if (o.tamWord) tamParts.push(o.tamWord);
+      const verbTamKey = `${t}Tam`;
+      tamParts.push(v[verbTamKey] || v.presTam);
+      const fullTamil = tamParts.join(' ');
+
+      // Standard Malayalam
+      const stdSubj = s.std.split(' ')[0];
+      const stdAdj = a.std ? a.std.split(' ')[0] : '';
+      const stdObj = o.std ? o.std.split(' ')[0] : '';
+      const stdVerb = (v[`${t}Std`] || v.presStd).split(' ')[0];
+
+      const scrSubj = s.scrStd;
+      const scrAdj = a.scrStd;
+      const scrObj = o.scrStd;
+      const scrVerb = v.scrStd;
+
+      const stdRomanParts = [stdSubj, stdAdj, stdObj, stdVerb].filter(Boolean);
+      const stdScriptParts = [scrSubj, scrAdj, scrObj, scrVerb].filter(Boolean);
+
+      // Malappuram Dialect
+      const mlpSubj = s.mlp.split(' ')[0];
+      const mlpAdj = a.mlp ? a.mlp.split(' ')[0] : (a.std ? a.std.split(' ')[0] : '');
+      const mlpObj = o.mlp ? o.mlp.split(' ')[0] : (o.std ? o.std.split(' ')[0] : '');
+      const mlpVerb = (v[`${t}Mlp`] || v.presMlp).split(' ')[0];
+
+      const scrMlpSubj = s.scrMlp;
+      const scrMlpAdj = a.scrMlp || a.scrStd;
+      const scrMlpObj = o.scrMlp || o.scrStd;
+      const scrMlpVerb = v.scrMlp;
+
+      const mlpRomanParts = [mlpSubj, mlpAdj, mlpObj, mlpVerb].filter(Boolean);
+      const mlpScriptParts = [scrMlpSubj, scrMlpAdj, scrMlpObj, scrMlpVerb].filter(Boolean);
+
+      renderLabOutputUI({
+        modeLabel: `🎯 பொது வாக்கிய ஆய்வகம் (${m.label.split(' ')[1]})`,
+        fullTamil,
+        fullStdScript: stdScriptParts.join(' '),
+        fullStdRoman: stdRomanParts.join(' '),
+        fullMlpScript: mlpScriptParts.join(' '),
+        fullMlpRoman: mlpRomanParts.join(' '),
+        tags: [
+          `<span class="grammar-tag">${s.tag}</span>`,
+          `<span class="grammar-tag">${m.label.split(' ')[1]}</span>`,
+          `<span class="grammar-tag">${m.badge}</span>`
+        ],
+        notes: `${m.desc}. எழுவாய், வினை, மற்றும் கால மாற்றங்கள் இயல்பான மலையாளத்தில் இணைக்கப்பட்டுள்ளன.`
+      });
+    }
+
+    // --- Render Shared Output Box UI ---
+    function renderLabOutputUI(data) {
+      const box = document.getElementById('lab-result-box');
+      if (!box) return;
+
+      box.innerHTML = `
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; flex-wrap:wrap; gap:8px;">
+          <span style="font-size:0.75rem; text-transform:uppercase; letter-spacing:1px; color:var(--primary); font-weight:800;">
+            ${data.modeLabel}
+          </span>
+          <div style="display:flex; gap:6px; flex-wrap:wrap;">
+            ${data.tags.join('')}
+          </div>
+        </div>
+
+        <!-- Tamil Meaning -->
+        <div style="font-size:1.05rem; font-weight:700; color:var(--text-main); margin-bottom:14px; border-bottom:1px dashed var(--surface-border); padding-bottom:10px;" class="tamil-txt">
+          🇮🇳 தமிழ் பொருள்: "${data.fullTamil}"
+        </div>
+
+        <!-- Standard Malayalam Display -->
+        <div style="background:var(--surface-subtle); padding:12px 14px; border-radius:var(--radius-md); border-left:4px solid var(--primary); margin-bottom:12px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+            <span style="font-size:0.75rem; font-weight:800; color:var(--primary); text-transform:uppercase;">
+              1. Standard Malayalam (செந்தமிழ் போன்ற பொது நடை)
+            </span>
+            <button class="voice-btn-mini" title="Listen Standard Malayalam" onclick="playWithAnimation(this, '${escapeQuotes(data.fullStdRoman)}', 'std')">
+              🔊 பேசு (Listen)
+            </button>
+          </div>
+          <div style="font-size:1.35rem; font-weight:800; color:var(--text-main); margin-bottom:4px; letter-spacing:0.3px;">
+            ${data.fullStdScript}
+          </div>
+          <div style="font-size:0.95rem; font-weight:700; color:var(--primary); font-family:monospace;">
+            ${data.fullStdRoman}
+          </div>
+        </div>
+
+        <!-- Malappuram / Malabar Slang Display -->
+        <div style="background:rgba(245, 158, 11, 0.08); padding:12px 14px; border-radius:var(--radius-md); border-left:4px solid var(--amber); margin-bottom:14px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+            <span style="font-size:0.75rem; font-weight:800; color:var(--amber); text-transform:uppercase;">
+              2. Malappuram / Malabar Slang (உள்ளூர் பேச்சு வழக்கு)
+            </span>
+            <button class="voice-btn-mini" style="background:var(--amber-subtle); color:var(--amber); border-color:rgba(245,158,11,0.3);" title="Listen Malabar Slang" onclick="playWithAnimation(this, '${escapeQuotes(data.fullMlpRoman)}', 'mlp')">
+              🌴 மலபார் ஒலி (Listen)
+            </button>
+          </div>
+          <div style="font-size:1.35rem; font-weight:800; color:var(--text-main); margin-bottom:4px; letter-spacing:0.3px;">
+            ${data.fullMlpScript}
+          </div>
+          <div style="font-size:0.95rem; font-weight:700; color:var(--amber); font-family:monospace;">
+            ${data.fullMlpRoman}
+          </div>
+        </div>
+
+        <!-- Grammar & Context Note -->
+        ${data.notes ? `
+          <div style="font-size:0.83rem; color:var(--text-muted); line-height:1.5; margin-bottom:14px; background:var(--surface-card); padding:8px 12px; border-radius:var(--radius-sm); border:1px solid var(--surface-border);">
+            💡 <strong>இலக்கணக் குறிப்பு:</strong> ${data.notes}
+          </div>
+        ` : ''}
+
+        <!-- Output Action Buttons -->
+        <div style="display:flex; gap:10px; flex-wrap:wrap;">
+          <button class="copy-pill" style="flex:1; justify-content:center;" onclick="copyLabOutput('${escapeQuotes(data.fullStdRoman)}', '${escapeQuotes(data.fullTamil)}')">
+            📋 Standard நகலெடு
+          </button>
+          <button class="copy-pill" style="flex:1; justify-content:center; background:var(--amber-subtle); color:var(--amber); border-color:rgba(245,158,11,0.3);" onclick="copyLabOutput('${escapeQuotes(data.fullMlpRoman)}', '${escapeQuotes(data.fullTamil)}')">
+            🌴 மலபார் நகலெடு
+          </button>
+          <button class="copy-pill" style="flex:1; justify-content:center; background:var(--purple-subtle); color:var(--purple); border-color:rgba(124,58,237,0.3);" onclick="saveLabSentenceToVault('${escapeQuotes(data.fullMlpRoman)}', '${escapeQuotes(data.fullTamil)}')">
+            ⭐ Vault-ல் சேமி
+          </button>
+        </div>
+      `;
     }
 
     function randomizeSentenceLab() {
       soundClick();
-      state.labSubj = Math.floor(Math.random() * LAB_SUBJECTS.length);
-      state.labAdj = Math.floor(Math.random() * LAB_ADJECTIVES.length);
-      state.labObj = Math.floor(Math.random() * LAB_OBJECTS.length);
-      state.labVerb = Math.floor(Math.random() * LAB_VERBS.length);
-      
-      const moodKeys = LAB_MOODS.map(m => m.key);
-      state.labTense = moodKeys[Math.floor(Math.random() * moodKeys.length)];
+      const mode = state.labMode || 'ques';
 
-      initSentenceLabUI();
-      
-      const s = LAB_SUBJECTS[state.labSubj];
-      const a = LAB_ADJECTIVES[state.labAdj];
-      const o = LAB_OBJECTS[state.labObj];
-      const v = LAB_VERBS[state.labVerb];
-      const m = LAB_MOODS.find(item => item.key === state.labTense);
-
-      document.getElementById('lab-subj-preview').textContent = s.tam.split(' ')[0];
-      document.getElementById('lab-adj-preview').textContent = a.tamWord ? a.tamWord : '(நேரடி)';
-      document.getElementById('lab-obj-preview').textContent = o.tamWord ? o.tamWord : '(நேரடி)';
-      document.getElementById('lab-verb-preview').textContent = v.tamRoot.split(' ')[0];
-      document.getElementById('lab-tense-preview').textContent = m ? m.label.split(' ')[1] : state.labTense;
+      if (mode === 'ques') {
+        if (state.labQuesSubMode === 'polar') {
+          state.labPolarQues = Math.floor(Math.random() * POLAR_QUESTIONS.length);
+          state.labPolarSubj = Math.floor(Math.random() * POLAR_SUBJECTS.length);
+          state.labPolarContext = Math.floor(Math.random() * POLAR_CONTEXTS.length);
+          renderPolarQuestionChips();
+        } else {
+          state.labWhQues = Math.floor(Math.random() * LAB_QUESTIONS.length);
+          state.labWhSubj = Math.floor(Math.random() * LAB_WH_SUBJECTS.length);
+          state.labWhContext = Math.floor(Math.random() * LAB_WH_CONTEXTS.length);
+          state.labWhVerb = Math.floor(Math.random() * LAB_WH_VERBS.length);
+          renderWhQuestionChips();
+        }
+      } else if (mode === 'dative') {
+        state.labDativeSubj = Math.floor(Math.random() * DATIVE_SUBJECTS.length);
+        state.labDativeObj = Math.floor(Math.random() * DATIVE_OBJECTS.length);
+        state.labDativePred = Math.floor(Math.random() * DATIVE_PREDICATES.length);
+        renderDativeChips();
+      } else {
+        state.labSubj = Math.floor(Math.random() * LAB_SUBJECTS.length);
+        state.labAdj = Math.floor(Math.random() * LAB_ADJECTIVES.length);
+        state.labObj = Math.floor(Math.random() * LAB_OBJECTS.length);
+        state.labVerb = Math.floor(Math.random() * LAB_VERBS.length);
+        const moodKeys = LAB_MOODS.map(m => m.key);
+        state.labTense = moodKeys[Math.floor(Math.random() * moodKeys.length)];
+        renderGeneralLabChips();
+      }
 
       runSentenceLab();
       showToast('🎲', 'புதிய வாக்கியம் உருவானது!');
     }
 
-    function runSentenceLab() {
-      const s = LAB_SUBJECTS[state.labSubj];
-      const a = LAB_ADJECTIVES[state.labAdj];
-      const o = LAB_OBJECTS[state.labObj];
-      const v = LAB_VERBS[state.labVerb];
-      const t = state.labTense;
-      const m = LAB_MOODS.find(item => item.key === t) || LAB_MOODS[0];
-
-      // Form parts for Tamil
-      let tamVerb = v[`${t}Tam`] || v.presTam;
-      const fullTamil = `${s.tamPrefix} ${a.tamWord ? a.tamWord + ' ' : ''}${o.tamWord ? o.tamWord + ' ' : ''}${tamVerb}`;
-
-      // Form parts for Standard Malayalam
-      let stdVerbText = v[`${t}Std`] || v.presStd;
-      let mlpVerbText = v[`${t}Mlp`] || v.presMlp;
-
-      // Extract raw words for synthesis and display
-      let stdAdjWord = a.std ? a.std.split(' ')[0] : '';
-      let mlpAdjWord = a.mlp ? a.mlp.split(' ')[0] : '';
-      let stdObjWord = o.std ? o.std.split(' ')[0] : '';
-      let mlpObjWord = o.mlp ? o.mlp.split(' ')[0] : '';
-
-      let stdVerbClean = stdVerbText.split(' ')[0];
-      let mlpVerbClean = mlpVerbText.split(' ')[0];
-
-      let fullStdSpeech = `${s.scrStd} ${a.scrStd ? a.scrStd + ' ' : ''}${o.scrStd ? o.scrStd + ' ' : ''}${stdVerbClean}`;
-      let fullMlpSpeech = `${s.scrMlp} ${a.scrMlp ? a.scrMlp + ' ' : ''}${o.scrMlp ? o.scrMlp + ' ' : ''}${mlpVerbClean}`;
-
-      let fullStdRoman = `${s.std} ${a.std ? a.std + ' ' : ''}${o.std ? o.std + ' ' : ''}${stdVerbText}`;
-      let fullMlpRoman = `${s.mlp} ${a.mlp ? a.mlp + ' ' : ''}${o.mlp ? o.mlp + ' ' : ''}${mlpVerbText}`;
-
-      // Grammar rule insight
-      let grammarTip = "";
-      if (t === 'pres') grammarTip = "நிகழ்காலத்தில் '-உன்னு' (-unnu) சேரும். மலப்புரத்தில் '-அணு' (-anu) என சுருங்கி ஒலிக்கும்.";
-      else if (t === 'past') grammarTip = "இறந்தகாலத்தில் வினைக்கு ஏற்ப '-இ', '-ச்சு', '-து' சேரும்.";
-      else if (t === 'fut') grammarTip = "எதிர்காலத்தில் அனைத்து வினைச்சொற்களுக்கும் '-உம்' (-um) விகுதி சேரும்.";
-      else if (t === 'must') grammarTip = "கட்டாயம் / விருப்பத்திற்கு '-ணம்' (-anam / வேணம்) சேரும். (எ.கா: வரணம் / தின்னணம்).";
-      else if (t === 'dont') grammarTip = "மறுப்பிற்கு '-வேண்டா' (-enda) சேரும். (எ.கா: வரேண்டா / போவண்டா).";
-      else if (t === 'can') grammarTip = "முடியும் என்ற இயல்புக்கு சாதாரணமாக '-பற்றும்', மலப்புரத்தில் '-ஒக்கும்' சேரும்.";
-      else if (t === 'cannot') grammarTip = "இயலாமைக்கு சாதாரணமாக '-பற்றில்ல', மலப்புரத்தில் '-ஒக்கில' சேரும்.";
-      else if (t === 'cont') grammarTip = "தொடர்காலத்திற்கு '-கொண்டிரிக்குன்னு' அல்லது மலப்புரத்தில் '-இண்டிருக்குணு' சேரும்.";
-      else if (t === 'if') grammarTip = "நிபந்தனைக்கு '-ஆல்' (-aal) சேரும். (வந்தால் = வன்னால் / போயால்).";
-      else if (t === 'ques') grammarTip = "பணிவான கேள்விக்கு '-ஆமோ?' அல்லது மலப்புரத்தில் '-ஓ?' சேரும்.";
-      else if (t === 'forbid') grammarTip = "செய்யாதே என்று தடுக்க '-அருது' (Std) அல்லது மலப்புரத்தில் '-அல்லே' சேரும்.";
-      else if (t === 'neg') grammarTip = "செயல் நிகழாமைக்கு இறந்தகாலத்துடன் '-இல்ல' (-illa) சேரும்.";
-
-      const box = document.getElementById('lab-result-box');
-      if (!box) return;
-
-      box.innerHTML = `
-        <div style="font-size:0.75rem; font-weight:800; color:var(--text-muted); margin-bottom:8px; display:flex; justify-content:space-between; align-items:center;">
-          <span>📐 இலக்கண சூத்திரம் (Grammar Formula)</span>
-          <span style="color:var(--primary); font-size:0.72rem; letter-spacing:0.5px;">LIVE ENGINE</span>
-        </div>
-
-        <!-- Visual Grammar Formula Pills -->
-        <div class="grammar-formula-bar">
-          <span class="grammar-tag grammar-tag-subj">👤 ${s.tamPrefix}</span>
-          ${a.tamWord ? `<span class="grammar-tag grammar-tag-adj">✨ ${a.tamWord}</span>` : ''}
-          ${o.tamWord ? `<span class="grammar-tag grammar-tag-obj">📍 ${o.tamWord}</span>` : ''}
-          <span class="grammar-tag grammar-tag-verb">⚡ ${v.tamRoot.split(' ')[0]}</span>
-          <span class="grammar-tag grammar-tag-mood">⏳ ${m.badge}</span>
-        </div>
-
-        <!-- Tamil Meaning -->
-        <div style="background:var(--surface-subtle); border:1px solid var(--surface-border); border-radius:var(--radius-md); padding:10px 12px; margin-bottom:12px;">
-          <div style="font-size:0.72rem; font-weight:700; color:var(--text-muted); margin-bottom:2px;">🇮🇳 தமிழ் அர்த்தம்:</div>
-          <div style="font-size:1.05rem; font-weight:800; color:var(--amber);" class="tamil-txt">"${fullTamil}"</div>
-        </div>
-
-        <div class="lab-output-box">
-          <!-- 1. Standard Malayalam Result -->
-          <div class="lab-output-std">
-            <div style="flex:1;">
-              <div style="font-size:0.7rem; font-weight:800; color:var(--primary); text-transform:uppercase;">📘 சாதாரண மலையாளம் (Standard):</div>
-              <div style="font-size:1.02rem; font-weight:800; color:var(--text); margin-top:2px;">
-                ${s.std} ${a.std ? a.std + ' ' : ''}${o.std ? o.std + ' ' : ''}${stdVerbText}
-              </div>
-            </div>
-            <button class="audio-btn" style="width:36px; height:36px;" onclick="playWithAnimation(this, '${escapeQuotes(fullStdSpeech)}', '${escapeQuotes(fullStdRoman)}')">
-              <span class="speaker-icon" style="font-size:0.9rem;">🔊</span>
-              <div class="wave-bars">
-                <div class="wave-bar"></div>
-                <div class="wave-bar"></div>
-                <div class="wave-bar"></div>
-              </div>
-            </button>
-          </div>
-
-          <!-- 2. Malappuram / Malabar Slang Result -->
-          <div class="lab-output-mlp">
-            <div style="flex:1;">
-              <div style="font-size:0.7rem; font-weight:800; color:var(--purple); text-transform:uppercase;">🕌 மலப்புரம் / மலபார் வழக்கு:</div>
-              <div style="font-size:1.15rem; font-weight:900; color:var(--purple); margin-top:2px;">
-                ${s.mlp} ${a.mlp ? a.mlp + ' ' : ''}${o.mlp ? o.mlp + ' ' : ''}${mlpVerbText}
-              </div>
-            </div>
-            <button class="audio-btn slang-btn" style="width:36px; height:36px;" onclick="playWithAnimation(this, '${escapeQuotes(fullMlpSpeech)}', '${escapeQuotes(fullMlpRoman)}')">
-              <span class="speaker-icon" style="font-size:0.9rem;">🔊</span>
-              <div class="wave-bars">
-                <div class="wave-bar"></div>
-                <div class="wave-bar"></div>
-                <div class="wave-bar"></div>
-              </div>
-            </button>
-          </div>
-        </div>
-
-        <!-- Linguistic Explanation Tip -->
-        <div style="margin-top:12px; font-size:0.78rem; line-height:1.45; color:var(--text-secondary); background:rgba(13,148,136,0.08); border-left:3px solid var(--primary); padding:8px 12px; border-radius:0 var(--radius-sm) var(--radius-sm) 0;">
-          💡 <strong>இலக்கணக் குறிப்பு:</strong> ${grammarTip}
-        </div>
-
-        <!-- Action Buttons -->
-        <div style="display:flex; gap:8px; margin-top:12px;">
-          <button class="copy-pill" style="flex:1; justify-content:center;" onclick="copyText('${escapeQuotes(fullMlpRoman)}')">
-            📋 Slang நகலெடு
-          </button>
-          <button class="copy-pill" style="flex:1; justify-content:center; background:var(--purple-subtle); color:var(--purple); border-color:rgba(124,58,237,0.3);" onclick="saveLabSentenceToVault('${escapeQuotes(fullMlpRoman)}', '${escapeQuotes(fullTamil)}')">
-            ⭐ Vault-ல் சேமி
-          </button>
-        </div>
-      `;
+    function copyLabOutput(text, tam) {
+      soundClick();
+      navigator.clipboard.writeText(`${text} (${tam})`).then(() => {
+        showToast('📋', 'வாக்கியம் நகலெடுக்கப்பட்டது!');
+      }).catch(() => {
+        showToast('⚠️', 'நகலெடுக்க முடியவில்லை');
+      });
     }
 
     function saveLabSentenceToVault(mal, tam) {
@@ -3297,6 +4976,7 @@
         showToast('ℹ️', 'ஏற்கனவே Vault-ல் உள்ளது');
       }
     }
+
 
     // ==================== 9. TAB 3: 3D SRS FLASHCARDS ====================
     let currentSRSCard = null;
