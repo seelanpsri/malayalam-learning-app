@@ -1,7 +1,8 @@
-const CACHE_NAME = 'malayalam-pro-v3';
+const CACHE_NAME = 'malayalam-pro-v4';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
+  './connectors-data.js',
   './manifest.json',
   './icon-192.png',
   './icon-512.png',

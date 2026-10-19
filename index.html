@@ -152,10 +152,10 @@
       z-index: 9999;
     }
 
-    /* Mobile Shell Architecture */
+    /* Modern Responsive App Shell Architecture */
     .mobile-shell {
       width: 100%;
-      max-width: 440px;
+      max-width: 920px;
       height: 100%;
       height: 100dvh;
       background: var(--bg);
@@ -163,35 +163,24 @@
       display: flex;
       flex-direction: column;
       overflow: hidden;
-      box-shadow: 0 0 50px rgba(0,0,0,0.1);
+      box-shadow: 0 0 50px rgba(0,0,0,0.25);
+      margin: 0 auto;
     }
 
-    /* Desktop View: iPhone / Modern Mobile Presentation Frame */
-    @media (min-width: 540px) {
+    /* Desktop View: Clean, Spacious, Perfectly Aligned Presentation */
+    @media (min-width: 768px) {
       body {
-        background: radial-gradient(circle at 15% 15%, rgba(13, 148, 136, 0.14), transparent 45%),
-                    radial-gradient(circle at 85% 85%, rgba(124, 58, 237, 0.14), transparent 45%),
-                    #0b1120;
+        background: radial-gradient(circle at 15% 15%, rgba(13, 148, 136, 0.12), transparent 45%),
+                    radial-gradient(circle at 85% 85%, rgba(124, 58, 237, 0.12), transparent 45%),
+                    #080d1a;
+        padding: 12px 0;
       }
       .mobile-shell {
-        height: 94vh;
-        max-height: 890px;
-        border-radius: 46px;
-        border: 9px solid #1e293b;
-        box-shadow: 0 30px 80px -15px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.1);
-      }
-      .mobile-shell::before {
-        content: '';
-        position: absolute;
-        top: 9px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 90px;
-        height: 18px;
-        background: #090d16;
-        border-radius: 20px;
-        z-index: 300;
-        box-shadow: 0 0 2px rgba(255,255,255,0.1);
+        height: calc(100vh - 24px);
+        max-height: 940px;
+        border-radius: 24px;
+        border: 1px solid var(--surface-border);
+        box-shadow: 0 25px 70px -15px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.05);
       }
     }
 
@@ -205,12 +194,6 @@
       border-bottom: 1px solid var(--surface-border);
       padding: calc(12px + env(safe-area-inset-top, 0px)) 16px 10px;
       transition: all 0.2s ease;
-    }
-
-    @media (min-width: 540px) {
-      .app-header {
-        padding-top: 26px; /* Space for the dynamic notch */
-      }
     }
 
     .header-top {
@@ -362,7 +345,7 @@
       overflow-y: auto;
       overflow-x: hidden;
       -webkit-overflow-scrolling: touch;
-      padding: 16px 16px calc(92px + env(safe-area-inset-bottom, 0px)) 16px;
+      padding: 16px 16px calc(115px + env(safe-area-inset-bottom, 0px)) 16px;
     }
 
     .view-content::-webkit-scrollbar {
@@ -1465,7 +1448,7 @@
       left: 50%;
       transform: translateX(-50%);
       width: calc(100% - 24px);
-      max-width: 412px;
+      max-width: 820px;
       background: var(--surface-glass);
       backdrop-filter: blur(24px);
       -webkit-backdrop-filter: blur(24px);
@@ -1535,6 +1518,275 @@
     .nav-btn.active .nav-indicator {
       opacity: 1;
       width: 20px;
+    }
+
+    
+    /* ==================== CONNECTORS TAB ARCHITECTURE ==================== */
+    .connectors-cat-nav {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 8px;
+      margin: 12px 0 10px;
+    }
+    .con-cat-btn {
+      background: var(--surface-glass);
+      border: 1px solid var(--surface-border);
+      border-radius: 14px;
+      padding: 10px 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      cursor: pointer;
+      color: var(--text-body);
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+    }
+    .con-cat-btn:hover {
+      border-color: rgba(245, 158, 11, 0.4);
+      transform: translateY(-2px);
+    }
+    .con-cat-btn.active {
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(217, 70, 239, 0.15));
+      border-color: #f59e0b;
+      color: var(--text-heading);
+      box-shadow: 0 4px 14px rgba(245, 158, 11, 0.2);
+    }
+    .con-cat-icon {
+      font-size: 1.3rem;
+      line-height: 1;
+    }
+    .con-cat-title {
+      font-size: 0.74rem;
+      font-weight: 700;
+      text-align: center;
+      line-height: 1.2;
+    }
+    .con-cat-count {
+      font-size: 0.65rem;
+      font-weight: 800;
+      padding: 2px 7px;
+      border-radius: 999px;
+      background: rgba(245, 158, 11, 0.15);
+      color: #fbbf24;
+      border: 1px solid rgba(245, 158, 11, 0.3);
+    }
+    .con-cat-btn.active .con-cat-count {
+      background: #f59e0b;
+      color: #0f172a;
+    }
+
+    /* Formula Banner */
+    .connector-formula-card {
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.8), rgba(30, 41, 59, 0.7));
+      border: 1px solid rgba(245, 158, 11, 0.35);
+      border-radius: 16px;
+      padding: 14px 16px;
+      margin: 10px 0 12px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    }
+    .formula-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    .formula-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: #fbbf24;
+      background: rgba(245, 158, 11, 0.15);
+      padding: 3px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(245, 158, 11, 0.3);
+    }
+    .formula-main-eq {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: #38bdf8;
+      letter-spacing: -0.3px;
+      margin-bottom: 6px;
+    }
+    .formula-desc-txt {
+      font-size: 0.82rem;
+      color: var(--text-body);
+      line-height: 1.45;
+    }
+    .formula-slang-tip {
+      margin-top: 8px;
+      padding-top: 8px;
+      border-top: 1px dashed rgba(255, 255, 255, 0.1);
+      font-size: 0.78rem;
+      color: #34d399;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Sub-Filter Chips */
+    .connector-sub-chips-wrap {
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      padding-bottom: 6px;
+      margin-bottom: 10px;
+      scrollbar-width: thin;
+    }
+    .connector-sub-chips-wrap::-webkit-scrollbar {
+      height: 4px;
+    }
+    .connector-sub-chips-wrap::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 4px;
+    }
+    .con-chip {
+      background: var(--surface-glass);
+      border: 1px solid var(--surface-border);
+      border-radius: 999px;
+      padding: 6px 14px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      white-space: nowrap;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.15s ease;
+      flex-shrink: 0;
+    }
+    .con-chip:hover {
+      color: var(--text-heading);
+      border-color: rgba(245, 158, 11, 0.4);
+    }
+    .con-chip.active {
+      background: rgba(245, 158, 11, 0.18);
+      border-color: #f59e0b;
+      color: #fbbf24;
+      font-weight: 700;
+    }
+
+    /* Sentence Cards Grid */
+    .connector-sentence-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 12px;
+      margin-top: 8px;
+    }
+    .con-card {
+      background: var(--surface-glass);
+      border: 1px solid var(--surface-border);
+      border-radius: 16px;
+      padding: 14px 15px;
+      transition: all 0.2s ease;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .con-card:hover {
+      border-color: rgba(245, 158, 11, 0.35);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    }
+    .con-card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 6px;
+    }
+    .con-card-pill {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #fbbf24;
+      background: rgba(245, 158, 11, 0.12);
+      border: 1px solid rgba(245, 158, 11, 0.25);
+      padding: 2px 8px;
+      border-radius: 999px;
+    }
+    .con-card-actions {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .con-action-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--surface-border);
+      border-radius: 8px;
+      color: var(--text-muted);
+      cursor: pointer;
+      padding: 4px 8px;
+      font-size: 0.78rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: all 0.15s ease;
+    }
+    .con-action-btn:hover {
+      background: rgba(245, 158, 11, 0.15);
+      color: var(--text-heading);
+      border-color: rgba(245, 158, 11, 0.3);
+    }
+    .con-tamil-box {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-heading);
+      line-height: 1.4;
+      background: rgba(255, 255, 255, 0.02);
+      padding: 8px 10px;
+      border-radius: 10px;
+      border-left: 3px solid #f59e0b;
+    }
+    .con-highlight {
+      color: #fbbf24;
+      background: rgba(245, 158, 11, 0.15);
+      padding: 1px 4px;
+      border-radius: 4px;
+      font-weight: 800;
+    }
+    .con-lang-block {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .con-lang-row {
+      background: rgba(15, 23, 42, 0.45);
+      border: 1px solid var(--surface-border);
+      border-radius: 10px;
+      padding: 8px 10px;
+    }
+    .con-row-lbl {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.68rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      margin-bottom: 4px;
+    }
+    .con-lbl-std { color: #38bdf8; }
+    .con-lbl-mlp { color: #34d399; }
+    .con-text-primary {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--text-heading);
+      line-height: 1.35;
+    }
+    .con-text-script {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 3px;
+      font-family: 'Noto Sans Malayalam', sans-serif;
+    }
+    .con-formula-note {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding-top: 4px;
+      border-top: 1px dashed rgba(255, 255, 255, 0.08);
     }
 
     /* Toast Notification */
@@ -1780,6 +2032,146 @@
             நண்பர்களிடையே மலப்புரம் வழக்கு எப்படிப் பேசப்படுகிறது என்பதைப் பாருங்கள்:
           </p>
           <div class="chat-container" id="malappuram-chat-bubbles"></div>
+        </div>
+      </section>
+
+      <!-- ==================== TAB: STRUCTURAL GLUE & ADVANCED CONNECTORS (1,054 SENTENCES) ==================== -->
+      <section id="view-connectors" class="view">
+        <div class="hero-card amber-theme" style="background: linear-gradient(135deg, rgba(245, 158, 11, 0.16), rgba(217, 70, 239, 0.12)); border: 1px solid rgba(245, 158, 11, 0.3);">
+          <div class="hero-tag" style="background: rgba(245, 158, 11, 0.2); color: #fbbf24;">🧩 ADVANCED STRUCTURAL GLUE • 1,054 SENTENCES</div>
+          <h2 class="hero-title tamil-txt">வாக்கிய இணைப்பு மாஸ்டர் (Connectors & Structure)</h2>
+          <p class="hero-desc tamil-txt">
+            ஆயிரக்கணக்கான சொற்களை மனப்பாடம் செய்யத் தேவையில்லை! தமிழ் & மலையாள வாக்கிய அமைப்பு (SOV) ஒன்றே. தமிழ் விகுதிகளை மாற்றி மலையாளப் பிணைப்புச் சொற்களைப் (Connectors & Suffixes) போட்டால் எந்த உயர்நிலை வாக்கியத்தையும் உடனே பேசலாம்.
+          </p>
+          <div class="hero-stats-row" style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px;">
+            <span class="badge" style="background: rgba(245, 158, 11, 0.2); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.3); font-size: 0.75rem; padding: 4px 10px; border-radius: 999px;">📚 5 முதன்மை வகைகள்</span>
+            <span class="badge" style="background: rgba(16, 185, 129, 0.2); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); font-size: 0.75rem; padding: 4px 10px; border-radius: 999px;">✅ ஒவ்வொன்றிலும் 200+ வாக்கியங்கள்</span>
+            <span class="badge" style="background: rgba(124, 58, 237, 0.2); color: #c084fc; border: 1px solid rgba(124, 58, 237, 0.3); font-size: 0.75rem; padding: 4px 10px; border-radius: 999px;">🕌 Standard & Malappuram Slang</span>
+            <span class="badge" style="background: rgba(59, 130, 246, 0.2); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.3); font-size: 0.75rem; padding: 4px 10px; border-radius: 999px;">🔊 இரட்டை ஆடியோ குரல்</span>
+          </div>
+        </div>
+
+        <!-- 5 Master Category Switcher Buttons -->
+        <div class="connectors-cat-nav" id="connector-cat-nav">
+          <button class="con-cat-btn active" onclick="setConnectorCategory('ques', this)" data-cat="ques">
+            <span class="con-cat-icon">❓</span>
+            <span class="con-cat-title">கேள்வி வார்த்தைகள்</span>
+            <span class="con-cat-count">209</span>
+          </button>
+          <button class="con-cat-btn" onclick="setConnectorCategory('hypo', this)" data-cat="hypo">
+            <span class="con-cat-icon">⚡</span>
+            <span class="con-cat-title">நிபந்தனை (If/Even If)</span>
+            <span class="con-cat-count">210</span>
+          </button>
+          <button class="con-cat-btn" onclick="setConnectorCategory('time', this)" data-cat="time">
+            <span class="con-cat-icon">⏳</span>
+            <span class="con-cat-title">கால வரிசை (Time)</span>
+            <span class="con-cat-count">210</span>
+          </button>
+          <button class="con-cat-btn" onclick="setConnectorCategory('cause', this)" data-cat="cause">
+            <span class="con-cat-icon">🎯</span>
+            <span class="con-cat-title">காரணம் & கருத்து</span>
+            <span class="con-cat-count">210</span>
+          </button>
+          <button class="con-cat-btn" onclick="setConnectorCategory('modals', this)" data-cat="modals">
+            <span class="con-cat-icon">🛡️</span>
+            <span class="con-cat-title">மாடல் வினைகள் (Must/Can)</span>
+            <span class="con-cat-count">215</span>
+          </button>
+        </div>
+
+        <!-- Dynamic Rule & Blueprint Card -->
+        <div class="connector-formula-card" id="connector-formula-banner">
+          <!-- Populated by JS dynamically based on active category and subfilter -->
+        </div>
+
+        <!-- Sub-filter chips row -->
+        <div class="connector-sub-chips-wrap" id="connector-sub-chips">
+          <!-- Populated by JS dynamically -->
+        </div>
+
+        <!-- Search Bar and Count Row -->
+        <div class="connector-search-bar" style="margin: 12px 0 8px; display: flex; gap: 8px; align-items: center;">
+          <div style="position: relative; flex: 1;">
+            <input type="text" id="connector-search-input" class="search-input" style="width: 100%; padding: 10px 14px 10px 38px; border-radius: 12px; background: var(--surface-glass); border: 1px solid var(--surface-border); color: var(--text-heading); font-size: 0.9rem;" placeholder="தமிழ், மலையாளம் அல்லது ஆங்கிலத்தில் தேடுக..." oninput="filterConnectorsSearch(this.value)">
+            <span style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); opacity: 0.6;">🔍</span>
+          </div>
+          <span id="connector-total-badge" class="badge" style="background: var(--surface-glass); border: 1px solid var(--surface-border); color: var(--text-muted); font-size: 0.8rem; padding: 8px 12px; border-radius: 12px; white-space: nowrap;">
+            209 / 1,054
+          </span>
+        </div>
+
+        <!-- Interactive Sentence Playground Accordion -->
+        <div class="app-card" style="margin-bottom: 14px; padding: 14px; background: var(--surface-glass); border: 1px dashed rgba(245, 158, 11, 0.4);">
+          <div style="display: flex; justify-content: space-between; align-items: center; cursor: pointer;" onclick="toggleConnectorPlayground()">
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span style="font-size: 1.2rem;">🛠️</span>
+              <strong style="color: var(--text-heading); font-size: 0.95rem;">நேரடி வாக்கியப் பயிற்சி (Live Interactive Assembler)</strong>
+            </div>
+            <span id="playground-chevron" style="font-size: 0.85rem; color: var(--text-muted);">▼ விரி</span>
+          </div>
+          <div id="connector-playground-body" style="display: none; margin-top: 12px; border-top: 1px solid var(--surface-border); padding-top: 12px;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 8px; margin-bottom: 12px;">
+              <div>
+                <label style="font-size: 0.75rem; color: var(--text-muted); font-weight: 700; display: block; margin-bottom: 4px;">1. எழுவாய் (Subject):</label>
+                <select id="play-subject" class="select-dropdown" style="width: 100%;" onchange="runConnectorPlayground()">
+                  <option value="Njaan">ஞான் (நான்)</option>
+                  <option value="Ijj" selected>இஜ்ஜ் / நீ (நீ)</option>
+                  <option value="On">ஓன் / அவன் (அவன்)</option>
+                  <option value="Ol">ஓள் / அவள் (அவள்)</option>
+                  <option value="Gnamal">ஞம்மள் / நம்மள் (நாம்)</option>
+                </select>
+              </div>
+              <div>
+                <label style="font-size: 0.75rem; color: var(--text-muted); font-weight: 700; display: block; margin-bottom: 4px;">2. வினை (Verb):</label>
+                <select id="play-verb" class="select-dropdown" style="width: 100%;" onchange="runConnectorPlayground()">
+                  <option value="var" selected>வா / வன்னு (வருதல்)</option>
+                  <option value="pok">போ / போயி (போகுதல்)</option>
+                  <option value="kazi">கழி / தின்னு (சாப்பிடுதல்)</option>
+                  <option value="paray">பறஞ்ஞு (சொல்லுதல்)</option>
+                  <option value="kand">கண்டு / நோக்கி (பார்த்தல்)</option>
+                </select>
+              </div>
+              <div>
+                <label style="font-size: 0.75rem; color: var(--text-muted); font-weight: 700; display: block; margin-bottom: 4px;">3. இணைப்பு (Connector):</label>
+                <select id="play-connector" class="select-dropdown" style="width: 100%;" onchange="runConnectorPlayground()">
+                  <option value="question_o" selected>-ஓ? (Yes/No வினாக்குறி)</option>
+                  <option value="if_aal">-ஆல் / -எங்கில் (செய்தால்)</option>
+                  <option value="if_not">அல்லெங்கில் (இல்லையென்றால்)</option>
+                  <option value="even_if">-ஆலும் (செய்தாலும்)</option>
+                  <option value="while">-உம்போள் / -ம்போ (செய்யும்போது)</option>
+                  <option value="after_ittu">-இட்டு (செய்துவிட்டு)</option>
+                  <option value="after_kazhinju">கழிஞ்ஞிட்டு (செய்த பிறகு)</option>
+                  <option value="before_mumbu">முன்பு / முன்னெ (செய்வதற்கு முன்)</option>
+                  <option value="as_soon">உடனே / -ப்பாடெ (செய்த உடனே)</option>
+                  <option value="but">பக்ஷே (ஆனால்)</option>
+                  <option value="so">அதுகொண்டு (அதனால்)</option>
+                  <option value="because">கார்ணம் (ஏனென்றால்)</option>
+                  <option value="must">-அணம் / வேணம் (செய்ய வேண்டும்)</option>
+                  <option value="dont">-ஏண்டா / -அண்டா (செய்ய வேண்டாம்)</option>
+                  <option value="must_not">-பாடில்ல (செய்யக் கூடாது)</option>
+                  <option value="can">பற்றும் / ஒக்கும் (செய்ய முடியும்)</option>
+                  <option value="lets">-ஆம் (செய்யலாம்)</option>
+                </select>
+              </div>
+            </div>
+            <!-- Playground Result Box -->
+            <div id="playground-output-box" style="background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 12px; padding: 12px;">
+              <!-- Dynamic assembled sentence output -->
+            </div>
+          </div>
+        </div>
+
+        <!-- 1,054 Sentence Cards Grid -->
+        <div class="connector-sentence-grid" id="connector-sentences-container">
+          <!-- Populated by JS -->
+        </div>
+
+        <!-- Load More Button -->
+        <div style="text-align: center; margin: 20px 0 80px;" id="connector-load-more-wrap">
+          <button class="btn btn-primary" onclick="loadMoreConnectors()" id="btn-load-more-connectors" style="padding: 10px 24px; font-weight: 700; border-radius: 999px;">
+            மேலும் 24 வாக்கியங்களைக் காட்டு (Load More) ▾
+          </button>
         </div>
       </section>
 
@@ -2266,6 +2658,12 @@
         <div class="nav-indicator"></div>
       </button>
 
+      <button class="nav-btn" onclick="switchNavTab('view-connectors', this)">
+        <div class="nav-icon-wrap">🧩</div>
+        <span class="nav-label">இணைப்பு</span>
+        <div class="nav-indicator"></div>
+      </button>
+
       <button class="nav-btn" onclick="switchNavTab('view-lab', this)">
         <div class="nav-icon-wrap">♾️</div>
         <span class="nav-label">Sentence Lab</span>
@@ -2340,6 +2738,7 @@
 
   </div>
 
+  <script src="connectors-data.js"></script>
   <script>
     // ==================== 1. COMPREHENSIVE REGIONAL SLANG DATABASE ====================
     const SLANG_DB = {
@@ -2972,6 +3371,7 @@
       initSRS();
       renderGlobalSearch();
       updateHeaderUI();
+      initConnectorsTab();
     }
 
     function toggleTheme() {
@@ -5603,6 +6003,463 @@
       } else {
         showToast('ℹ️', 'கீழே கொடுக்கப்பட்டுள்ள வழிகாட்டுதலைப் பின்பற்றவும்');
       }
+    }
+
+    // ==================== 14. STRUCTURAL GLUE & CONNECTORS ENGINE (1,054 SENTENCES) ====================
+    let conActiveCat = 'ques';
+    let conActiveSub = 'all';
+    let conSearchQuery = '';
+    let conPageSize = 24;
+    let conDisplayedCount = 24;
+
+    const CON_RULES = {
+      ques: {
+        badge: "கேள்வி வார்த்தைகள் & ஆம்/இல்லை (-ஓ வினாக்குறி)",
+        formula: "WH-சொற்கள்: எ- / ஆ- (Entha, Evide, Eppol, Engane, Enthina, Aara, Aarude, Aarkku, Ethra, Etha) + வினாக்குறி: '-ஓ' (-o)",
+        desc: "மலையாளத்தில் பெரும்பாலான கேள்வி வார்த்தைகள் தமிழைப் போலவே 'எ-' அல்லது 'ஆ-' என்று தொடங்கும். மேலும், தமிழில் '-ஆ' (வந்தாயா?, சாப்பிட்டாயா?) என்று வினா முடிவதற்குப் பதிலாக, மலையாளத்தில் '-ஓ' (-o) சேர்த்தால் போதும்: வன்னோ? கழிச்சோ? மனஸிலாயோ? ஆணோ?",
+        tip: "🕌 மலப்புரம் வழக்கில்: 'எவிடெ' ➡️ 'எவடெ?', 'எப்போள்' ➡️ 'எப்போ?', 'எங்ஙனெ' ➡️ 'எங்ஙனயா?', 'ஆருடெ' ➡️ 'ஆர்டெ?' என்று சுருங்கிப் பேசப்படும்."
+      },
+      hypo: {
+        badge: "நிபந்தனை வாக்கியங்கள் (Hypothetical & Conditionals)",
+        formula: "Simple If: Past Verb + -ஆல் (-aal) / -எங்கில் (-enkil) | If Not: அல்லெங்கில் / இல்லெங்கில் | Even If: -ஆலும் (-aalum)",
+        desc: "செய்தால் = Past Verb + -ஆல் (வன்னால், பறஞ்ஞால்) அல்லது Verb + -எங்கில் (மழ உண்டெங்கில்). செய்தாலும் = Past Verb + -ஆலும் (வன்னாலும், எந்து பறஞ்ஞாலும்). இல்லையென்றால் = அல்லெங்கில் / இல்லெங்கில். போல/மாதிரி = போலெ (Pole). ஒருவேளை = ஒருவேள ... ஆணெங்கில்?",
+        tip: "🕌 கடந்த கால ஊகம் (Counterfactual): 'நீ வந்திருந்தால் பார்த்திருக்கலாம்' = இஜ்ஜ் வன்னிருன்னெங்கில் நம்மக்கு காணாமாயிருன்னு (-irunnenkil... -ene)."
+      },
+      time: {
+        badge: "கால வரிசை இணைப்பிகள் (Time & Sequence Connectors)",
+        formula: "செய்யும்போது: Verb + -உம்போள் (-umpol) | செய்தபோது: Past Verb + -ப்போள் (-ppol) | செய்துவிட்டு: Past Verb + -இட்டு (-ittu) | செய்த பிறகு: கழிஞ்ஞு / சேஷம்",
+        desc: "இரு செயல்களை அடுத்தடுத்து இணைக்க வினைச்சொல்லின் இறுதியில் இவற்றை ஒட்டுங்கள்: வரும்போள் (வரும்போது), வன்னப்போள் (வந்தபோது), கழிச்சிட்டு வா (சாப்பிட்டுவிட்டு வா), அது கழிஞ்ஞிட்டு (அது முடிந்த பிறகு), போகுன்னதினு மும்பு (போவதற்கு முன்பு), வன்ன உடன் (வந்த உடனே).",
+        tip: "🕌 மலப்புரம் வழக்கில்: 'வரும்போள்' ➡️ 'வரம்போ', 'வன்னப்போள்' ➡️ 'வன்னப்போ', 'மும்பு' ➡️ 'முன்னெ', 'உடன்' ➡️ 'வன்னப்பாடெ' என உச்சரிக்கப்படும்."
+      },
+      cause: {
+        badge: "காரணம், மாறுபாடு & கருத்துச் சொற்கள் (Cause, Contrast & Opinion)",
+        formula: "ஆனால்: பக்ஷே (Pakshe) | அதனால்: அதுகொண்டு (Athukondu) | ஏனென்றால்: கார்ணம் / எந்தான்னுவெச்சால் | இருந்தாலும்: என்னாலும் (Ennaalum)",
+        desc: "உரையாடலை நீட்டிக்கவும் விவாதிக்கவும் உதவும் சொற்கள்: பக்ஷே (ஆனால்), அதுகொண்டு (அதனால்), கார்ணம் / எந்தான்னுவெச்சால் (ஏனென்றால்), என்னாலும் (இருந்தாலும்), அதல்லாதெ (அதுமட்டுமில்லாமல்), சத்யத்தில் (உண்மையில்), தோன்னுன்னு (தோன்றுகிறது), என்னு பறஞ்ஞு (என்று சொன்னான்), மதியாகும் (போதும்), குழப்பமில்ல / சாரமில்ல (பிரச்சனை இல்லை).",
+        tip: "🕌 மலப்புரம் பாஷையில்: 'சாரமில்ல' அல்லது 'குழப்பமில்ல பாவி' என்பது மிகவும் பரவலாக புழங்கும் நட்புச் சொல்."
+      },
+      modals: {
+        badge: "மாடல் வினைகள் & வேற்றுமை விதிகள் (Modals & Dative Shift)",
+        formula: "செய்ய வேண்டும்: Verb-அணம் (-anam) / வேணம் | செய்ய வேண்டாம்: Verb-ஏண்டா (-enda) | செய்யக் கூடாது: Verb-ஆன் + பாடில்ல | முடியும்: பற்றும் / ஒக்கும்",
+        desc: "Dative Rule: ஞான் ➡️ எனிக்கு (எனக்கு), இஜ்ஜ் ➡️ இனக்கு (உனக்கு), அவன் ➡️ அவனு/ஓனு (அவனுக்கு). செய்ய வேண்டும் = எனிக்கு போகணம். செய்ய வேண்டாம் = வரேண்டா / பேடிக்கேண்டா. செய்யக் கூடாது = போகான் பாடில்ல. செய்ய முடியும் = எனிக்கு பற்றும் / ஒக்கும். செய்யலாம் = நம்மக்கு சாயா குடிக்காம் (-aam).",
+        tip: "🕌 மலப்புரத்தில்: 'பற்றும்/பற்றில்ல' என்பதற்குப் பதிலாக 'ஒக்கும்/ஒக்கீல்ல' மற்றும் 'கழியும்/கழியில்ல' என்ற சொல்லாடல்கள் அதிகம் பயன்படுத்தப்படும்."
+      }
+    };
+
+    function initConnectorsTab() {
+      if (!window.CONNECTORS_DATA || !window.CONNECTORS_DATA.length) {
+        console.warn("Connectors DB not loaded yet, retrying...");
+        setTimeout(initConnectorsTab, 300);
+        return;
+      }
+      renderConnectorsBanner();
+      renderConnectorSubChips();
+      renderConnectorCards();
+      runConnectorPlayground();
+    }
+
+    function setConnectorCategory(cat, btn) {
+      soundClick();
+      conActiveCat = cat;
+      conActiveSub = 'all';
+      conDisplayedCount = conPageSize;
+
+      document.querySelectorAll('.con-cat-btn').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      else {
+        const found = document.querySelector(`.con-cat-btn[data-cat="${cat}"]`);
+        if (found) found.classList.add('active');
+      }
+
+      renderConnectorsBanner();
+      renderConnectorSubChips();
+      renderConnectorCards();
+    }
+
+    function renderConnectorsBanner() {
+      const banner = document.getElementById('connector-formula-banner');
+      if (!banner) return;
+      const r = CON_RULES[conActiveCat] || CON_RULES.ques;
+      banner.innerHTML = `
+        <div class="formula-header-row">
+          <span class="formula-badge">📐 இலக்கண சூத்திரம் & மலப்புரம் சூட்சுமம்</span>
+          <span style="font-size:0.75rem; color:#f59e0b; font-weight:700;">${r.badge}</span>
+        </div>
+        <div class="formula-main-eq">${r.formula}</div>
+        <div class="formula-desc-txt">${r.desc}</div>
+        <div class="formula-slang-tip">${r.tip}</div>
+      `;
+    }
+
+    function renderConnectorSubChips() {
+      const wrap = document.getElementById('connector-sub-chips');
+      if (!wrap || !window.CONNECTORS_DATA) return;
+
+      const catItems = window.CONNECTORS_DATA.filter(it => it.cat === conActiveCat);
+      const subMap = {};
+      catItems.forEach(it => {
+        const s = it.sub || 'other';
+        const lbl = it.subLabel || s;
+        if (!subMap[s]) subMap[s] = { sub: s, label: lbl, count: 0 };
+        subMap[s].count++;
+      });
+
+      let html = `<button class="con-chip ${conActiveSub === 'all' ? 'active' : ''}" onclick="setConnectorSubFilter('all', this)">அனைத்தும் (${catItems.length})</button>`;
+      Object.values(subMap).forEach(subObj => {
+        html += `<button class="con-chip ${conActiveSub === subObj.sub ? 'active' : ''}" onclick="setConnectorSubFilter('${subObj.sub}', this)">${subObj.label} (${subObj.count})</button>`;
+      });
+      wrap.innerHTML = html;
+    }
+
+    function setConnectorSubFilter(sub, btn) {
+      soundClick();
+      conActiveSub = sub;
+      conDisplayedCount = conPageSize;
+      document.querySelectorAll('.con-chip').forEach(c => c.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      renderConnectorCards();
+    }
+
+    function filterConnectorsSearch(query) {
+      conSearchQuery = (query || '').toLowerCase().trim();
+      conDisplayedCount = conPageSize;
+      renderConnectorCards();
+    }
+
+    function getFilteredConnectors() {
+      if (!window.CONNECTORS_DATA) return [];
+      let items = window.CONNECTORS_DATA.filter(it => it.cat === conActiveCat);
+      if (conActiveSub !== 'all') {
+        items = items.filter(it => it.sub === conActiveSub);
+      }
+      if (conSearchQuery) {
+        items = items.filter(it => {
+          const t = (it.tam || '').toLowerCase();
+          const s = (it.std || '').toLowerCase();
+          const m = (it.mlp || '').toLowerCase();
+          const ss = (it.scrStd || '').toLowerCase();
+          const sm = (it.scrMlp || '').toLowerCase();
+          const sl = (it.subLabel || '').toLowerCase();
+          return t.includes(conSearchQuery) || s.includes(conSearchQuery) || m.includes(conSearchQuery) || ss.includes(conSearchQuery) || sm.includes(conSearchQuery) || sl.includes(conSearchQuery);
+        });
+      }
+      return items;
+    }
+
+    function renderConnectorCards() {
+      const container = document.getElementById('connector-sentences-container');
+      const badge = document.getElementById('connector-total-badge');
+      const loadMoreBtnWrap = document.getElementById('connector-load-more-wrap');
+      if (!container || !window.CONNECTORS_DATA) return;
+
+      const filtered = getFilteredConnectors();
+      if (badge) {
+        badge.textContent = `${filtered.length} / ${window.CONNECTORS_DATA.length}`;
+      }
+
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div style="grid-column: 1 / -1; text-align: center; padding: 40px 20px; background: var(--surface-glass); border-radius: 16px; border: 1px dashed var(--surface-border);">
+            <div style="font-size: 2.2rem; margin-bottom: 8px;">🔍</div>
+            <strong style="color: var(--text-heading); font-size: 1.05rem;">வாக்கியங்கள் எதுவும் பொருந்தவில்லை</strong>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 4px;">தேடல் சொல்லை மாற்றி அல்லது வேறு துணைப் பிரிவை முயற்சித்துப் பாருங்கள்.</p>
+          </div>
+        `;
+        if (loadMoreBtnWrap) loadMoreBtnWrap.style.display = 'none';
+        return;
+      }
+
+      const visible = filtered.slice(0, conDisplayedCount);
+      let html = '';
+
+      visible.forEach(it => {
+        const isVault = state.customVault && state.customVault.some(c => c.mal === it.mlp || c.mal === it.std);
+        const starIcon = isVault ? '⭐️' : '☆';
+
+        html += `
+          <div class="con-card">
+            <div class="con-card-top">
+              <span class="con-card-pill">${escapeQuotes(it.subLabel || it.sub)}</span>
+              <div class="con-card-actions">
+                <button class="con-action-btn" title="Standard உச்சரிப்பு கேட்க" onclick="event.stopPropagation(); speak('${escapeQuotes(it.scrStd || it.std)}', '${escapeQuotes(it.std)}')">
+                  🔊 Std
+                </button>
+                <button class="con-action-btn" style="color:#34d399;" title="🕌 Malappuram Slang உச்சரிப்பு கேட்க" onclick="event.stopPropagation(); speak('${escapeQuotes(it.scrMlp || it.mlp)}', '${escapeQuotes(it.mlp)}')">
+                  🕌 Slang
+                </button>
+                <button class="con-action-btn" title="நகலெடு (Copy)" onclick="event.stopPropagation(); copyConnectorText('${escapeQuotes(it.mlp)} | ${escapeQuotes(it.tam)}')">
+                  📋
+                </button>
+                <button class="con-action-btn" title="Vault-ல் சேமிக்க" onclick="event.stopPropagation(); toggleConnectorVault(this, '${escapeQuotes(it.mlp)}', '${escapeQuotes(it.tam)}')">
+                  ${starIcon}
+                </button>
+              </div>
+            </div>
+
+            <div class="con-tamil-box">
+              ${escapeQuotes(it.tam)}
+            </div>
+
+            <div class="con-lang-block">
+              <div class="con-lang-row">
+                <div class="con-row-lbl">
+                  <span class="con-lbl-std">Standard Malayalam</span>
+                  <span style="font-size:0.65rem; color:var(--text-muted);">கேரளா பொது வழக்கு</span>
+                </div>
+                <div class="con-text-primary">${escapeQuotes(it.std)}</div>
+                ${it.scrStd ? `<div class="con-text-script">${escapeQuotes(it.scrStd)}</div>` : ''}
+              </div>
+
+              <div class="con-lang-row" style="background: rgba(16, 185, 129, 0.08); border-color: rgba(16, 185, 129, 0.25);">
+                <div class="con-row-lbl">
+                  <span class="con-lbl-mlp">🕌 Malappuram / Malabar Slang</span>
+                  <span style="font-size:0.65rem; color:#34d399;">உள்ளூர் நட்புப் பாஷை</span>
+                </div>
+                <div class="con-text-primary" style="color: #6ee7b7;">${escapeQuotes(it.mlp)}</div>
+                ${it.scrMlp ? `<div class="con-text-script" style="color: rgba(110, 231, 183, 0.8);">${escapeQuotes(it.scrMlp)}</div>` : ''}
+              </div>
+            </div>
+
+            ${it.formula ? `
+              <div class="con-formula-note">
+                <span style="color:#f59e0b;">⚡ சூத்திரம்:</span>
+                <span>${escapeQuotes(it.formula)}</span>
+              </div>
+            ` : ''}
+          </div>
+        `;
+      });
+
+      container.innerHTML = html;
+
+      if (loadMoreBtnWrap) {
+        if (conDisplayedCount < filtered.length) {
+          loadMoreBtnWrap.style.display = 'block';
+          const btn = document.getElementById('btn-load-more-connectors');
+          if (btn) btn.textContent = `மேலும் ${(filtered.length - conDisplayedCount > 24) ? 24 : filtered.length - conDisplayedCount} வாக்கியங்களைக் காட்டு (Load More) ▾`;
+        } else {
+          loadMoreBtnWrap.style.display = 'none';
+        }
+      }
+    }
+
+    function loadMoreConnectors() {
+      soundClick();
+      conDisplayedCount += conPageSize;
+      renderConnectorCards();
+    }
+
+    function copyConnectorText(txt) {
+      soundClick();
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(txt).then(() => {
+          showToast('📋', 'வாக்கியம் நகலெடுக்கப்பட்டது!');
+        });
+      } else {
+        showToast('📋', txt);
+      }
+    }
+
+    function toggleConnectorVault(btn, mal, tam) {
+      soundClick();
+      if (!state.customVault) state.customVault = [];
+      const idx = state.customVault.findIndex(c => c.mal === mal);
+      if (idx >= 0) {
+        state.customVault.splice(idx, 1);
+        btn.textContent = '☆';
+        showToast('🗑️', 'Vault-லிருந்து நீக்கப்பட்டது');
+      } else {
+        state.customVault.unshift({ mal, tam, region: 'malappuram' });
+        btn.textContent = '⭐️';
+        showToast('⭐️', 'Vault-ல் சேமிக்கப்பட்டது!');
+        addXP(10);
+      }
+      saveState();
+      renderVaultView();
+    }
+
+    function toggleConnectorPlayground() {
+      soundClick();
+      const body = document.getElementById('connector-playground-body');
+      const chev = document.getElementById('playground-chevron');
+      if (!body) return;
+      const isHidden = body.style.display === 'none';
+      body.style.display = isHidden ? 'block' : 'none';
+      if (chev) chev.textContent = isHidden ? '▲ சுருக்கு' : '▼ விரி';
+    }
+
+    function runConnectorPlayground() {
+      const subj = document.getElementById('play-subject') ? document.getElementById('play-subject').value : 'Ijj';
+      const verb = document.getElementById('play-verb') ? document.getElementById('play-verb').value : 'var';
+      const conn = document.getElementById('play-connector') ? document.getElementById('play-connector').value : 'question_o';
+      const out = document.getElementById('playground-output-box');
+      if (!out) return;
+
+      // Dynamic sentence building map
+      const templates = {
+        question_o: {
+          tam: "நீ வந்தாயா? / நீ சாப்பிட்டாயா?",
+          std: "நீ வன்னோ? (Nee vanno?)",
+          mlp: "இஜ்ஜ் வன்னோ பாவி? (Ijj vanno baavi?)",
+          scrStd: "നീ വന്നോ?",
+          scrMlp: "ഇജ്ജ് വന്നോ ബാവി?",
+          rule: "தமிழில் '-ஆ' (வந்தாயா) ➡️ மலையாளத்தில் '-ஓ' (வன்னோ?)"
+        },
+        if_aal: {
+          tam: "நீ வந்தால் நாம் போகலாம்.",
+          std: "நீ வன்னால் நம்மக்கு போகாம். (Nee vannaal namukku pokaam.)",
+          mlp: "இஜ்ஜ் வன்னால் ஞம்மக்கு போவாம் பாவி.",
+          scrStd: "നീ വന്നാൽ നമുക്ക് പോകാം.",
+          scrMlp: "ഇജ്ജ് വന്നാൽ ഞമ്മക്ക് പോവാം ബാവി.",
+          rule: "Past Verb + -ஆல் (-aal) = நிபந்தனை (If)"
+        },
+        if_not: {
+          tam: "வேகம் வா, இல்லையென்றால் பஸ் போய்விடும்.",
+          std: "வேகம் வா, அல்லெங்கில் பஸ் போகும். (Allenkil bus pokum.)",
+          mlp: "வேகத்தில் வா, இல்லெங்கில் வண்டி போவும் பாவி.",
+          scrStd: "വേഗം വാ, അല്ലെങ്കിൽ ബസ് പോകും.",
+          scrMlp: "വേഗത്തിൽ വാ, ഇല്ലെങ്കിൽ വണ്ടി പോവും ബാവി.",
+          rule: "அல்லெங்கில் / இல்லெங்கில் = இல்லையென்றால் (Otherwise)"
+        },
+        even_if: {
+          tam: "நீ வந்தாலும் நான் வரமாட்டேன்.",
+          std: "நீ வன்னாலும் ஞான் வரில்ல. (Nee vannaalum njaan varilla.)",
+          mlp: "இஜ்ஜ் வன்னாலும் ஞம்மள் வரில பாவி.",
+          scrStd: "നീ വന്നാലും ഞാൻ വരില്ല.",
+          scrMlp: "ഇജ്ജ് വന്നാലും ഞമ്മള് വരില്ല ബാവി.",
+          rule: "Past Verb + -ஆலும் (-aalum) = செய்தாலும் (Even if)"
+        },
+        while: {
+          tam: "வரும்போது டீ வாங்கிட்டு வா.",
+          std: "வரும்போள் சாயா வாங்ஙி வா. (Varumpol chaaya vaangi vaa.)",
+          mlp: "வரம்போ ஒரு சாயா வாங்ஙி வா பாவி.",
+          scrStd: "വരുമ്പോൾ ചായ വാങ്ങി വാ.",
+          scrMlp: "വരമ്പോ ഒരു ചായ വാങ്ങി വാ ബാവി.",
+          rule: "Verb + -umpol / மலப்புரத்தில்: வரம்போ (While coming)"
+        },
+        after_ittu: {
+          tam: "சாப்பிட்டுவிட்டு வா.",
+          std: "கழிச்சிட்டு வா. (Kazhichittu vaa.)",
+          mlp: "தின்னிட்டு வா பாவி. (Thinnittu vaa baavi.)",
+          scrStd: "കഴിച്ചിട്ട് വാ.",
+          scrMlp: "തിന്നിട്ട് വാ ബാവി.",
+          rule: "Past Verb + -ittu = செய்துவிட்டு (After doing)"
+        },
+        after_kazhinju: {
+          tam: "சாப்பாடு முடிந்த பிறகு சாயா குடிக்கலாம்.",
+          std: "ஊணு கழிஞ்ஞிட்டு சாயா குடிக்காம். (Kazhinjittu chaaya kudikkaam.)",
+          mlp: "திண்டி கழிஞ்ஞிட்டு சாயா அடிக்காம் பாவி.",
+          scrStd: "ഊണ് കഴിഞ്ഞിട്ട് ചായ കുടിക്കാം.",
+          scrMlp: "തിണ്ടി കഴിഞ്ഞിട്ട് ചായ അടിക്കാം ബാവി.",
+          rule: "கழிஞ்ஞிட்டு / சேஷம் = முடிந்த பிறகு (After)"
+        },
+        before_mumbu: {
+          tam: "போவதற்கு முன்பு கூப்பிடு.",
+          std: "போகுன்னதினு மும்பு விளிக்கணம். (Pokunnathinu mumbu vilikkanam.)",
+          mlp: "போவணதினு முன்னெ விளி பாவி.",
+          scrStd: "പോകുന്നതിന് മുമ്പ് വിളിക്കണം.",
+          scrMlp: "പോവണതിന് മുന്നേ വിളി ബാവി.",
+          rule: "வினை-தினு + முன்பு / முன்னெ = செய்வதற்கு முன் (Before)"
+        },
+        as_soon: {
+          tam: "வந்த உடனே சொல்.",
+          std: "வன்ன உடன் பறயணம். (Vanna udan parayanam.)",
+          mlp: "வன்னப்பாடெ பற பாவி.",
+          scrStd: "വന്ന ഉടൻ പറയണം.",
+          scrMlp: "വന്നപ്പാടെ പറ ബാവി.",
+          rule: "Past Verb + உடன் / மலப்புரத்தில்: -ப்பாடெ (As soon as)"
+        },
+        but: {
+          tam: "நான் கூப்பிட்டேன், ஆனால் அவன் எடுக்கவில்லை.",
+          std: "ஞான் விளிச்சு, பக்ஷே அவன் எடுத்தில்ல. (Pakshe avan eduthilla.)",
+          mlp: "ஞம்மள் விளிச்சே, பக்ஷே ஓன் கால் எடுத்தில்ல பாவி.",
+          scrStd: "ഞാൻ വിളിച്ചു, പക്ഷേ അവൻ എടുത്തില്ല.",
+          scrMlp: "ഞമ്മള് വിളിച്ചേ, പക്ഷേ ഓൻ കോൾ എടുത്തില്ല ബാവി.",
+          rule: "பக்ஷே (Pakshe) = ஆனால் (But)"
+        },
+        so: {
+          tam: "மழை உண்டு, அதனால் நான் வரவில்லை.",
+          std: "மழ உண்டு, அதுகொண்டு ஞான் வந்நில்ல. (Athukondu njaan vannilla.)",
+          mlp: "மழ ஒண்டே, அதுகொண்டு ஞம்மள் வந்நில்ல பாவி.",
+          scrStd: "മഴയുണ്ട്, അതുകൊണ്ട് ഞാൻ വന്നില്ല.",
+          scrMlp: "മഴ ഉണ്ടേ, അതുകൊണ്ട് ഞമ്മള് വന്നില്ല ബാവി.",
+          rule: "அதுகொண்டு (Athukondu) = அதனால் (Therefore / So)"
+        },
+        because: {
+          tam: "வரவில்லை, ஏனென்றால் எனக்கு நேரமில்லை.",
+          std: "வந்நில்ல, கார்ணம் எனிக்கு சமயமில்ல. (Kaaranam enikku samayamilla.)",
+          mlp: "வந்நில்ல, கார்ணம் எனிக்கு நேரமில்ல பாவி.",
+          scrStd: "വന്നില്ല, കാരണം എനിക്ക് സമയമില്ല.",
+          scrMlp: "വന്നില്ല, കാരണം എനിക്ക് നേരമില്ല ബാവി.",
+          rule: "கார்ணம் / எந்தான்னுவெச்சால் = ஏனென்றால் (Because)"
+        },
+        must: {
+          tam: "எனக்கு போக வேண்டும்.",
+          std: "எனிக்கு போகணம். (Enikku pokanam.)",
+          mlp: "ஞம்மக்கு போவணோ பாவி.",
+          scrStd: "എനിക്ക് പോകണം.",
+          scrMlp: "ഞമ്മക്ക് പോവണോ ബാവി.",
+          rule: "Verb-அணம் (-anam) / வேணம் = செய்ய வேண்டும் (Must)"
+        },
+        dont: {
+          tam: "நீ வர வேண்டாம் / பயப்பட வேண்டாம்.",
+          std: "நீ வரேண்டா / பேடிக்கேண்டா. (Nee varenda / Pedikkenda.)",
+          mlp: "இஜ்ஜ் வரண்டா / பேடிக்கண்டா பாவி.",
+          scrStd: "നീ വരേണ്ട / പേടിക്കേണ്ട.",
+          scrMlp: "ഇജ്ജ് വരണ്ടാ / പേടിക്കണ്ടാ ബാവി.",
+          rule: "Verb-ஏண்டா (-enda) / மலப்புரத்தில்: -அண்டா = செய்ய வேண்டாம்"
+        },
+        must_not: {
+          tam: "அங்கே போகக் கூடாது.",
+          std: "அவிடெ போகான் பாடில்ல. (Avide pokaan paadilla.)",
+          mlp: "அவடெ போவான் பாடில்ல பாவி.",
+          scrStd: "അവിടെ പോകാൻ പാടില്ല.",
+          scrMlp: "അവടെ പോവാൻ പാടില്ല ബാവി.",
+          rule: "Verb-ஆன் + பாடில்ல (Paadilla) = செய்யக் கூடாது (Must not)"
+        },
+        can: {
+          tam: "உன்னால் வர முடியுமா? / என்னால் வர முடியும்.",
+          std: "நினக்கு வரான் பற்றுமோ? (Ninakku varaan pattumo?)",
+          mlp: "இனக்கு வரான் ஒக்குமோ பாவி? / கழியுமோ?",
+          scrStd: "നിനക്ക് വരാൻ പറ്റുമോ?",
+          scrMlp: "ഇനക്ക് വരാൻ ഒക്കുമോ ബാവി?",
+          rule: "Dative + Verb-ஆன் + பற்றும் / மலப்புரத்தில்: ஒக்கும் / கழியும்"
+        },
+        lets: {
+          tam: "நாம் டீ குடிக்கலாம்.",
+          std: "நம்மக்கு சாயா குடிக்காம். (Namukku chaaya kudikkaam.)",
+          mlp: "ஞம்மக்கு சாயா குடிக்காம் பாவி.",
+          scrStd: "നമുക്ക് ചായ കുടിക്കാം.",
+          scrMlp: "ഞമ്മക്ക് ചായ കുടിക്കാം ബാവി.",
+          rule: "நம்மக்கு / ஞம்மக்கு + Verb-ஆம் (-aam) = செய்யலாம் (Let's)"
+        }
+      };
+
+      const cur = templates[conn] || templates.question_o;
+      out.innerHTML = `
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+          <span style="font-size:0.75rem; color:#f59e0b; font-weight:800;">${cur.rule}</span>
+          <div style="display:flex; gap:6px;">
+            <button class="con-action-btn" onclick="speak('${escapeQuotes(cur.scrStd)}', '${escapeQuotes(cur.std)}')">🔊 Std</button>
+            <button class="con-action-btn" style="color:#34d399;" onclick="speak('${escapeQuotes(cur.scrMlp)}', '${escapeQuotes(cur.mlp)}')">🕌 Slang</button>
+          </div>
+        </div>
+        <div style="font-weight:700; color:var(--text-heading); font-size:0.95rem; margin-bottom:4px;">
+          தமிழ்: <span style="color:#fbbf24;">${cur.tam}</span>
+        </div>
+        <div style="font-size:0.85rem; color:#38bdf8; margin-bottom:2px;">
+          Standard: <strong>${cur.std}</strong> (${cur.scrStd})
+        </div>
+        <div style="font-size:0.85rem; color:#34d399;">
+          Malappuram Slang: <strong>${cur.mlp}</strong> (${cur.scrMlp})
+        </div>
+      `;
+    }
+
+    // Auto-init connectors tab when script finishes loading
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initConnectorsTab);
+    } else {
+      setTimeout(initConnectorsTab, 100);
     }
 
     // Register Service Worker for Offline Caching
